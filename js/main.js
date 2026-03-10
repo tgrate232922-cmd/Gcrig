@@ -376,7 +376,6 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!validateForm()) return;
 
     var btn = form.querySelector('.form-submit');
-    var formBody = form.querySelector('.form-fields');
     var success = document.getElementById('form-success');
 
     if (btn) {
@@ -386,8 +385,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Simulate submission delay
     setTimeout(function () {
-      if (formBody) formBody.style.display = 'none';
-      if (success) success.classList.add('visible');
+      form.style.display = 'none';
+      if (success) {
+        success.style.display = 'block';
+        success.classList.add('visible');
+      }
     }, 1200);
   });
 })();
