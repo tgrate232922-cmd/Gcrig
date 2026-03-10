@@ -233,7 +233,8 @@
       <p class="section-subtitle">Complete the form below and our investor relations team will contact you within 24 hours.</p>
     </div>
 
-    <form class="contact-form" id="contact-form" novalidate>
+    <form class="contact-form" id="contact-form" novalidate aria-describedby="form-instructions">
+      <p id="form-instructions" class="sr-only">All fields are required. Validation errors will be announced below each field.</p>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label" for="contact-name">Full Name</label>
@@ -276,7 +277,7 @@
       <button type="submit" class="form-submit btn btn-primary btn-lg">Submit Enquiry</button>
     </form>
 
-    <div class="form-success" id="form-success" style="display:none;">
+    <div class="form-success" id="form-success" style="display:none;" role="status" aria-live="polite">
       <div class="form-success-icon">✓</div>
       <h3>Thank You!</h3>
       <p>Your enquiry has been received. Our investor relations team will contact you within 24 hours.</p>
