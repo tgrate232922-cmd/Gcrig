@@ -336,12 +336,299 @@ html, body {
   background: linear-gradient(135deg, rgba(123, 47, 242, 0.06), rgba(0, 198, 251, 0.04));
 }
 
+/* Feature visual column layout */
+.feature-visual-col {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+}
+
 /* Why different / inline feature text heading */
 .feature-inner-title {
   font-size: 1.5rem;
   font-weight: 700;
   color: var(--text-primary);
   margin-bottom: 16px;
+}
+
+/* Feature item icon colour variants */
+.feature-item-icon-purple {
+  background: rgba(123, 47, 242, 0.1);
+  color: var(--purple-light);
+}
+
+.feature-item-icon-blue {
+  background: rgba(0, 198, 251, 0.1);
+  color: var(--blue-accent);
+}
+
+/* Grid alignment modifier */
+.grid-align-start {
+  align-items: start;
+}
+
+/* Block button — full width */
+.btn-block {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Tier type label */
+.tier-type-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.tier-type-label-purple {
+  color: var(--purple-light);
+}
+
+/* Tier icon background variants */
+.tier-icon-soft {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tier-icon-purple {
+  background: rgba(123, 47, 242, 0.1);
+}
+
+/* AI dashboard element helpers */
+.ai-dot-red    { background: #ef4444; }
+.ai-dot-yellow { background: #f59e0b; }
+.ai-dot-green  { background: #22c55e; }
+
+.ai-entity-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.ai-metric-gap {
+  margin-top: 12px;
+}
+
+.ai-recommendation-box {
+  margin-top: 20px;
+  padding: 14px;
+  background: rgba(123, 47, 242, 0.07);
+  border: 1px solid rgba(123, 47, 242, 0.2);
+  border-radius: var(--radius-sm);
+}
+
+.ai-recommendation-box-blue {
+  background: rgba(0, 198, 251, 0.07);
+  border-color: rgba(0, 198, 251, 0.2);
+}
+
+.ai-recommendation-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--purple-light);
+}
+
+.ai-recommendation-title-blue {
+  color: var(--blue-accent);
+}
+
+.ai-recommendation-note {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* Data metric card (financial stats) */
+.data-metric-card {
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(123, 47, 242, 0.2);
+  border-radius: 10px;
+}
+
+.data-metric-card-blue {
+  border-color: rgba(0, 198, 251, 0.2);
+}
+
+.data-metric-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+}
+
+.data-metric-number {
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--purple-light);
+}
+
+.data-metric-number-blue {
+  color: var(--blue-accent);
+}
+
+/* Data row (CRB network stats) */
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+}
+
+.data-row-label {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.data-row-value {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.data-row-value-purple { color: var(--purple-light); }
+.data-row-value-blue   { color: var(--blue-accent); }
+
+/* Data column container */
+.data-col {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Vision/mission section typography */
+.vm-section-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.vm-section-text {
+  font-size: 1.0625rem;
+  color: var(--text-secondary);
+  line-height: 1.8;
+}
+
+/* Badge with top margin */
+.badge-mt {
+  margin-top: 16px;
+}
+
+/* ESG compact card grid */
+.esg-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.esg-card {
+  padding: 24px;
+}
+
+.esg-icon {
+  font-size: 1.75rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+/* Check item for ESG list */
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(0, 198, 251, 0.15);
+  border-radius: 10px;
+}
+
+.check-icon {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(0, 198, 251, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--blue-accent);
+  font-size: 0.75rem;
+  font-weight: 900;
+  margin-top: 2px;
+}
+
+.check-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Small icon/number circle */
+.num-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(123, 47, 242, 0.12);
+  border-radius: 12px;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: var(--purple-light);
+}
+
+/* Footer location note */
+.footer-location {
+  font-size: 0.8125rem;
+  color: rgba(176, 176, 204, 0.5);
+  margin-top: 8px;
+  width: 100%;
+}
+
+/* Section tag centered */
+.section-tag-center {
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Revenue list container */
+.revenue-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Small muted text (contract value etc.) */
+.small-muted {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+/* Tier min price span variants */
+.tier-min-note {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+/* Stat number blue variant */
+.stat-inline-number-blue {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--blue-accent);
+  line-height: 1;
 }
 
 /* Text utilities */
@@ -360,6 +647,8 @@ html, body {
 .mb-16 { margin-bottom: 16px; }
 .mb-24 { margin-bottom: 24px; }
 .mb-32 { margin-bottom: 32px; }
+.mt-0  { margin-top: 0; }
+.mb-20 { margin-bottom: 20px; }
 
 /* Accessibility */
 .sr-only {
