@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -53,6 +54,12 @@
   <div class="mobile-menu-footer">
     <a href="investor-solutions.html" class="btn btn-primary btn-lg">Get Started</a>
   </div>
+<!-- CURRENCY TICKER -->
+<div class="ticker-bar" id="currency-ticker">
+  <div class="ticker-track" id="ticker-track">
+    <!-- Populated by JS -->
+  </div>
+</div>
 </div>
 
 <!-- PAGE HERO -->
@@ -64,7 +71,7 @@
       <span class="current">Vision &amp; Mission</span>
     </div>
     <div class="section-tag">Purpose &amp; Direction</div>
-    <h1 class="page-hero-title">Vision &amp; <span>Mission</span></h1>
+    <h1 class="page-hero-title">Vision &amp; <span class="gradient-text">Mission</span></h1>
     <p class="page-hero-subtitle">Guided by a clear purpose: to transform how the world understands and accesses emerging market credit.</p>
   </div>
 </section>
@@ -74,7 +81,7 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">Our Purpose</div>
-      <h2 class="section-title">What <span>Drives Us</span></h2>
+      <h2 class="section-title">What <span class="gradient-text">Drives Us</span></h2>
       <p class="section-subtitle">Two statements that define everything we build, every rating we publish, and every relationship we cultivate.</p>
     </div>
     <div class="grid-2">
@@ -100,7 +107,7 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">What We Stand For</div>
-      <h2 class="section-title">Our Core <span>Values</span></h2>
+      <h2 class="section-title">Our Core <span class="gradient-text">Values</span></h2>
       <p class="section-subtitle">Six principles that guide every decision, every analysis, and every relationship at GCRIG.</p>
     </div>
     <div class="values-grid">
@@ -150,7 +157,7 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">2025–2030 Roadmap</div>
-      <h2 class="section-title">Where We Are <span>Going</span></h2>
+      <h2 class="section-title">Where We Are <span class="gradient-text">Going</span></h2>
       <p class="section-subtitle">Three ambitious targets that define our strategic direction for the next five years.</p>
     </div>
     <div class="grid-3">
@@ -185,7 +192,7 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">ESG Integration</div>
-      <h2 class="section-title">Our Commitment to <span>Sustainable Finance</span></h2>
+      <h2 class="section-title">Our Commitment to <span class="gradient-text">Sustainable Finance</span></h2>
       <p class="section-subtitle">ESG is not a product feature at GCRIG — it is embedded in our core analytical methodology and company culture.</p>
     </div>
     <div class="feature-row">
@@ -217,20 +224,20 @@
           <div class="badge badge-teal">ESG Commitment</div>
           <h3 style="font-size:1.375rem;font-weight:700;color:var(--text-primary);">Our ESG Achievements</h3>
           <div style="width:100%;display:flex;flex-direction:column;gap:16px;">
-            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(23,195,178,0.15);border-radius:10px;">
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(23,195,178,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
+            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(0,198,251,0.15);border-radius:10px;">
+              <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,198,251,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue-accent);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
               <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;">100% of ratings include comprehensive ESG scoring across all three pillars</div>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(23,195,178,0.15);border-radius:10px;">
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(23,195,178,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
+            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(0,198,251,0.15);border-radius:10px;">
+              <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,198,251,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue-accent);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
               <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;">First emerging market agency to embed climate risk quantification in sovereign credit ratings (2023)</div>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(23,195,178,0.15);border-radius:10px;">
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(23,195,178,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
+            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(0,198,251,0.15);border-radius:10px;">
+              <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,198,251,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue-accent);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
               <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;">Signatory to the UN Principles for Responsible Investment (UN PRI)</div>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(23,195,178,0.15);border-radius:10px;">
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(23,195,178,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
+            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(0,198,251,0.15);border-radius:10px;">
+              <div style="width:28px;height:28px;border-radius:50%;background:rgba(0,198,251,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--blue-accent);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
               <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;">TCFD-aligned climate risk framework — fully disclosed in all sovereign and corporate reports</div>
             </div>
           </div>
@@ -316,6 +323,7 @@
         <a href="#" class="footer-legal-link">Cookies</a>
         <a href="#" class="footer-legal-link">Regulatory</a>
       </nav>
+          <p class="footer-location" style="font-size:0.8125rem;color:rgba(176,176,204,0.5);margin-top:8px;width:100%;">Global Operations | Multiple Jurisdictions</p>
     </div>
     <div class="footer-disclaimer">
       <strong>Important Disclaimer:</strong> GCRIG provides credit intelligence and advisory services for informational purposes only. Nothing on this website constitutes financial advice, an offer to buy or sell securities, or a guarantee of investment returns. All investments carry risk. Past performance is not indicative of future results.
