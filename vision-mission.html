@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -34,7 +35,7 @@
       <a href="vision-mission.html" class="nav-link active">Vision</a>
     </div>
     <div class="nav-cta">
-      <a href="investor-solutions.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.875rem;">Get Started</a>
+      <a href="investor-solutions.html" class="btn btn-primary btn-nav">Get Started</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -53,6 +54,12 @@
   <div class="mobile-menu-footer">
     <a href="investor-solutions.html" class="btn btn-primary btn-lg">Get Started</a>
   </div>
+<!-- CURRENCY TICKER -->
+<div class="ticker-bar" id="currency-ticker">
+  <div class="ticker-track" id="ticker-track">
+    <!-- Populated by JS -->
+  </div>
+</div>
 </div>
 
 <!-- PAGE HERO -->
@@ -64,7 +71,7 @@
       <span class="current">Vision &amp; Mission</span>
     </div>
     <div class="section-tag">Purpose &amp; Direction</div>
-    <h1 class="page-hero-title">Vision &amp; <span>Mission</span></h1>
+    <h1 class="page-hero-title">Vision &amp; <span class="gradient-text">Mission</span></h1>
     <p class="page-hero-subtitle">Guided by a clear purpose: to transform how the world understands and accesses emerging market credit.</p>
   </div>
 </section>
@@ -74,21 +81,21 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">Our Purpose</div>
-      <h2 class="section-title">What <span>Drives Us</span></h2>
+      <h2 class="section-title">What <span class="gradient-text">Drives Us</span></h2>
       <p class="section-subtitle">Two statements that define everything we build, every rating we publish, and every relationship we cultivate.</p>
     </div>
     <div class="grid-2">
 
       <div class="vm-card vision fade-up">
         <span class="vm-icon">🌍</span>
-        <h3 style="font-size:1.75rem;font-weight:800;color:var(--text-primary);margin-bottom:16px;">Our Vision</h3>
-        <p style="font-size:1.0625rem;color:var(--text-secondary);line-height:1.8;">A world where every creditworthy emerging market entity — whether a sovereign nation, a growing corporation, or a development project — has equal access to global capital markets, judged on transparent, unbiased, data-driven merit.</p>
+        <h3 class="vm-section-title">Our Vision</h3>
+        <p class="vm-section-text">A world where every creditworthy emerging market entity — whether a sovereign nation, a growing corporation, or a development project — has equal access to global capital markets, judged on transparent, unbiased, data-driven merit.</p>
       </div>
 
       <div class="vm-card mission fade-up delay-1">
         <span class="vm-icon">🎯</span>
-        <h3 style="font-size:1.75rem;font-weight:800;color:var(--text-primary);margin-bottom:16px;">Our Mission</h3>
-        <p style="font-size:1.0625rem;color:var(--text-secondary);line-height:1.8;">To deliver the most accurate, transparent, and actionable credit intelligence on emerging markets, using proprietary AI technology and a global network of trusted relationships — enabling institutional investors to deploy capital with confidence and issuers to access the capital they deserve.</p>
+        <h3 class="vm-section-title">Our Mission</h3>
+        <p class="vm-section-text">To deliver the most accurate, transparent, and actionable credit intelligence on emerging markets, using proprietary AI technology and a global network of trusted relationships — enabling institutional investors to deploy capital with confidence and issuers to access the capital they deserve.</p>
       </div>
 
     </div>
@@ -100,7 +107,7 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">What We Stand For</div>
-      <h2 class="section-title">Our Core <span>Values</span></h2>
+      <h2 class="section-title">Our Core <span class="gradient-text">Values</span></h2>
       <p class="section-subtitle">Six principles that guide every decision, every analysis, and every relationship at GCRIG.</p>
     </div>
     <div class="values-grid">
@@ -150,30 +157,30 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">2025–2030 Roadmap</div>
-      <h2 class="section-title">Where We Are <span>Going</span></h2>
+      <h2 class="section-title">Where We Are <span class="gradient-text">Going</span></h2>
       <p class="section-subtitle">Three ambitious targets that define our strategic direction for the next five years.</p>
     </div>
     <div class="grid-3">
 
       <div class="card fade-up">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">🌍</div>
+        <div class="card-icon icon-emoji">🌍</div>
         <h3 class="card-title">Expand to 100 Countries</h3>
         <p class="card-text">Grow CRB Network coverage from 50 to 100 emerging market countries by 2028, expanding into Central Asia, Pacific Islands, and Eastern Europe — bringing rigorous credit intelligence to every frontier market.</p>
-        <div class="badge badge-teal" style="margin-top:16px;">Target: 2028</div>
+        <div class="badge badge-teal badge-mt">Target: 2028</div>
       </div>
 
       <div class="card fade-up delay-1">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">💰</div>
+        <div class="card-icon icon-emoji">💰</div>
         <h3 class="card-title">$10B AUA by 2030</h3>
         <p class="card-text">Scale assets under advisory to $10 billion through network growth, product expansion, and deepened institutional relationships — becoming the definitive platform for emerging market allocation.</p>
-        <div class="badge badge-gold" style="margin-top:16px;">Target: 2030</div>
+        <div class="badge badge-gold badge-mt">Target: 2030</div>
       </div>
 
       <div class="card fade-up delay-2">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">🏆</div>
+        <div class="card-icon icon-emoji">🏆</div>
         <h3 class="card-title">Set the Global Standard</h3>
         <p class="card-text">Become the globally recognised independent standard for emerging market credit ratings, challenging the oligopoly of legacy rating agencies that have long underserved these markets.</p>
-        <div class="badge badge-teal" style="margin-top:16px;">Target: 2030</div>
+        <div class="badge badge-teal badge-mt">Target: 2030</div>
       </div>
 
     </div>
@@ -185,53 +192,53 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">ESG Integration</div>
-      <h2 class="section-title">Our Commitment to <span>Sustainable Finance</span></h2>
+      <h2 class="section-title">Our Commitment to <span class="gradient-text">Sustainable Finance</span></h2>
       <p class="section-subtitle">ESG is not a product feature at GCRIG — it is embedded in our core analytical methodology and company culture.</p>
     </div>
     <div class="feature-row">
       <div class="slide-left">
-        <div style="display:flex;flex-direction:column;gap:20px;">
+        <div class="esg-col">
 
-          <div class="card" style="padding:24px;">
-            <div style="font-size:1.75rem;margin-bottom:12px;">🌿</div>
-            <h3 class="card-title" style="font-size:1.1rem;">Environmental</h3>
+          <div class="card esg-card">
+            <div class="esg-icon">🌿</div>
+            <h3 class="card-title card-title-sm">Environmental</h3>
             <p class="card-text">We quantify climate transition risk, physical climate risk, and carbon intensity in every sovereign and corporate rating. Climate change is a credit event — we treat it as such.</p>
           </div>
 
-          <div class="card" style="padding:24px;">
-            <div style="font-size:1.75rem;margin-bottom:12px;">👥</div>
-            <h3 class="card-title" style="font-size:1.1rem;">Social</h3>
+          <div class="card esg-card">
+            <div class="esg-icon">👥</div>
+            <h3 class="card-title card-title-sm">Social</h3>
             <p class="card-text">We champion inclusive finance, measuring social inequality, labour standards, and community impact. SME access to capital is central to our mission of democratising emerging markets.</p>
           </div>
 
-          <div class="card" style="padding:24px;">
-            <div style="font-size:1.75rem;margin-bottom:12px;">🏛️</div>
-            <h3 class="card-title" style="font-size:1.1rem;">Governance</h3>
+          <div class="card esg-card">
+            <div class="esg-icon">🏛️</div>
+            <h3 class="card-title card-title-sm">Governance</h3>
             <p class="card-text">Anti-corruption scoring, board independence metrics, and transparency indices are core to our governance assessment framework — not optional add-ons.</p>
           </div>
 
         </div>
       </div>
       <div class="slide-right">
-        <div class="feature-visual" style="background:linear-gradient(135deg,rgba(23,195,178,0.06),rgba(200,168,93,0.04));flex-direction:column;gap:20px;align-items:flex-start;">
+        <div class="feature-visual feature-visual-gradient feature-visual-col">
           <div class="badge badge-teal">ESG Commitment</div>
-          <h3 style="font-size:1.375rem;font-weight:700;color:var(--text-primary);">Our ESG Achievements</h3>
-          <div style="width:100%;display:flex;flex-direction:column;gap:16px;">
-            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(23,195,178,0.15);border-radius:10px;">
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(23,195,178,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
-              <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;">100% of ratings include comprehensive ESG scoring across all three pillars</div>
+          <h3 class="feature-inner-title">Our ESG Achievements</h3>
+          <div class="data-col">
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <div class="check-text">100% of ratings include comprehensive ESG scoring across all three pillars</div>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(23,195,178,0.15);border-radius:10px;">
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(23,195,178,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
-              <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;">First emerging market agency to embed climate risk quantification in sovereign credit ratings (2023)</div>
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <div class="check-text">First emerging market agency to embed climate risk quantification in sovereign credit ratings (2023)</div>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(23,195,178,0.15);border-radius:10px;">
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(23,195,178,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
-              <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;">Signatory to the UN Principles for Responsible Investment (UN PRI)</div>
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <div class="check-text">Signatory to the UN Principles for Responsible Investment (UN PRI)</div>
             </div>
-            <div style="display:flex;align-items:flex-start;gap:14px;padding:16px;background:rgba(255,255,255,0.03);border:1px solid rgba(23,195,178,0.15);border-radius:10px;">
-              <div style="width:28px;height:28px;border-radius:50%;background:rgba(23,195,178,0.15);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--teal);font-size:0.75rem;font-weight:900;margin-top:2px;">✓</div>
-              <div style="color:var(--text-secondary);font-size:0.9rem;line-height:1.5;">TCFD-aligned climate risk framework — fully disclosed in all sovereign and corporate reports</div>
+            <div class="check-item">
+              <div class="check-icon">✓</div>
+              <div class="check-text">TCFD-aligned climate risk framework — fully disclosed in all sovereign and corporate reports</div>
             </div>
           </div>
         </div>
@@ -316,6 +323,7 @@
         <a href="#" class="footer-legal-link">Cookies</a>
         <a href="#" class="footer-legal-link">Regulatory</a>
       </nav>
+          <p class="footer-location">Global Operations | Multiple Jurisdictions</p>
     </div>
     <div class="footer-disclaimer">
       <strong>Important Disclaimer:</strong> GCRIG provides credit intelligence and advisory services for informational purposes only. Nothing on this website constitutes financial advice, an offer to buy or sell securities, or a guarantee of investment returns. All investments carry risk. Past performance is not indicative of future results.

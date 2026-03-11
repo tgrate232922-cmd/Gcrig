@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -34,7 +35,7 @@
       <a href="vision-mission.html" class="nav-link">Vision</a>
     </div>
     <div class="nav-cta">
-      <a href="investor-solutions.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.875rem;">Get Started</a>
+      <a href="investor-solutions.html" class="btn btn-primary btn-nav">Get Started</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -53,6 +54,12 @@
   <div class="mobile-menu-footer">
     <a href="investor-solutions.html" class="btn btn-primary btn-lg">Get Started</a>
   </div>
+<!-- CURRENCY TICKER -->
+<div class="ticker-bar" id="currency-ticker">
+  <div class="ticker-track" id="ticker-track">
+    <!-- Populated by JS -->
+  </div>
+</div>
 </div>
 
 <!-- PAGE HERO -->
@@ -64,7 +71,7 @@
       <span class="current">Services</span>
     </div>
     <div class="section-tag">What We Offer</div>
-    <h1 class="page-hero-title">Comprehensive Financial <span>Intelligence Services</span></h1>
+    <h1 class="page-hero-title">Comprehensive Financial <span class="gradient-text">Intelligence Services</span></h1>
     <p class="page-hero-subtitle">From credit ratings to deal origination, GCRIG delivers the full spectrum of emerging market financial intelligence.</p>
   </div>
 </section>
@@ -74,13 +81,13 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">Our Services</div>
-      <h2 class="section-title">Six Pillars of <span>Financial Intelligence</span></h2>
+      <h2 class="section-title">Six Pillars of <span class="gradient-text">Financial Intelligence</span></h2>
       <p class="section-subtitle">Each service is designed to address a specific gap in emerging market information and capital deployment.</p>
     </div>
     <div class="grid-3">
 
       <div class="card card-glow fade-up">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">📊</div>
+        <div class="card-icon icon-emoji">📊</div>
         <h3 class="card-title">AI Credit Ratings</h3>
         <p class="card-text">Sovereign and corporate credit ratings powered by 200+ data points and machine learning models.</p>
         <ul class="card-list">
@@ -93,7 +100,7 @@
       </div>
 
       <div class="card card-glow fade-up delay-1">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">🌐</div>
+        <div class="card-icon icon-emoji">🌐</div>
         <h3 class="card-title">CRB Network Access</h3>
         <p class="card-text">Proprietary network connecting issuers with institutional investors across 50+ emerging markets.</p>
         <ul class="card-list">
@@ -106,7 +113,7 @@
       </div>
 
       <div class="card card-glow fade-up delay-2">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">🎯</div>
+        <div class="card-icon icon-emoji">🎯</div>
         <h3 class="card-title">Investment Advisory</h3>
         <p class="card-text">Bespoke research and portfolio guidance tailored to your investment mandate and objectives.</p>
         <ul class="card-list">
@@ -119,7 +126,7 @@
       </div>
 
       <div class="card card-glow fade-up delay-3">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">🛡️</div>
+        <div class="card-icon icon-emoji">🛡️</div>
         <h3 class="card-title">Risk Management</h3>
         <p class="card-text">Comprehensive risk frameworks for institutional investors with emerging market exposure.</p>
         <ul class="card-list">
@@ -132,7 +139,7 @@
       </div>
 
       <div class="card card-glow fade-up delay-4">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">📈</div>
+        <div class="card-icon icon-emoji">📈</div>
         <h3 class="card-title">Market Analytics</h3>
         <p class="card-text">Real-time data platforms and dashboards for active portfolio management.</p>
         <ul class="card-list">
@@ -145,7 +152,7 @@
       </div>
 
       <div class="card card-glow fade-up delay-5">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">⚖️</div>
+        <div class="card-icon icon-emoji">⚖️</div>
         <h3 class="card-title">Regulatory Intelligence</h3>
         <p class="card-text">Compliance and regulatory monitoring across multiple jurisdictions.</p>
         <ul class="card-list">
@@ -166,31 +173,31 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">Our Process</div>
-      <h2 class="section-title">How We <span>Deliver Value</span></h2>
+      <h2 class="section-title">How We <span class="gradient-text">Deliver Value</span></h2>
       <p class="section-subtitle">A rigorous, transparent process from initial engagement to ongoing monitoring — designed to maximise the quality and relevance of our intelligence.</p>
     </div>
     <div class="grid-2">
 
       <div class="card fade-up">
-        <div style="font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:16px;opacity:0.6;">01</div>
+        <div class="step-num">01</div>
         <h3 class="card-title">Onboarding &amp; Mandate Definition</h3>
         <p class="card-text">We work with you to understand your investment objectives, risk appetite, and specific mandates before commencing any engagement. Every client relationship begins with a structured discovery process.</p>
       </div>
 
       <div class="card fade-up delay-1">
-        <div style="font-size:2.5rem;font-weight:900;color:var(--teal);line-height:1;margin-bottom:16px;opacity:0.6;">02</div>
+        <div class="step-num step-num-blue">02</div>
         <h3 class="card-title">Data Collection &amp; Analysis</h3>
         <p class="card-text">Our AI engine aggregates 200+ data points per entity, combining quantitative models with qualitative analyst review. All data is sourced from verified, authoritative providers and updated continuously.</p>
       </div>
 
       <div class="card fade-up delay-2">
-        <div style="font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:16px;opacity:0.6;">03</div>
+        <div class="step-num">03</div>
         <h3 class="card-title">Rating / Report Delivery</h3>
         <p class="card-text">Ratings and reports are delivered through our secure portal with full methodology documentation and analyst commentary. Every output includes confidence scoring and key risk factor summaries.</p>
       </div>
 
       <div class="card fade-up delay-3">
-        <div style="font-size:2.5rem;font-weight:900;color:var(--teal);line-height:1;margin-bottom:16px;opacity:0.6;">04</div>
+        <div class="step-num step-num-blue">04</div>
         <h3 class="card-title">Ongoing Monitoring</h3>
         <p class="card-text">We continuously monitor all rated entities and alert clients to material changes in credit profile, market conditions, or risk factors. Our relationship managers provide proactive guidance throughout.</p>
       </div>
@@ -275,6 +282,7 @@
         <a href="#" class="footer-legal-link">Cookies</a>
         <a href="#" class="footer-legal-link">Regulatory</a>
       </nav>
+          <p class="footer-location">Global Operations | Multiple Jurisdictions</p>
     </div>
     <div class="footer-disclaimer">
       <strong>Important Disclaimer:</strong> GCRIG provides credit intelligence and advisory services for informational purposes only. Nothing on this website constitutes financial advice, an offer to buy or sell securities, or a guarantee of investment returns. All investments carry risk. Past performance is not indicative of future results.

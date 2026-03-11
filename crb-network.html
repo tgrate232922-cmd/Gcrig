@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
@@ -34,7 +35,7 @@
       <a href="vision-mission.html" class="nav-link">Vision</a>
     </div>
     <div class="nav-cta">
-      <a href="investor-solutions.html" class="btn btn-primary" style="padding:10px 20px;font-size:0.875rem;">Get Started</a>
+      <a href="investor-solutions.html" class="btn btn-primary btn-nav">Get Started</a>
       <button class="hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -53,6 +54,12 @@
   <div class="mobile-menu-footer">
     <a href="investor-solutions.html" class="btn btn-primary btn-lg">Get Started</a>
   </div>
+<!-- CURRENCY TICKER -->
+<div class="ticker-bar" id="currency-ticker">
+  <div class="ticker-track" id="ticker-track">
+    <!-- Populated by JS -->
+  </div>
+</div>
 </div>
 
 <!-- PAGE HERO -->
@@ -64,7 +71,7 @@
       <span class="current">CRB Network</span>
     </div>
     <div class="section-tag">Proprietary Network</div>
-    <h1 class="page-hero-title">The Credit Rating <span>Bridge Network</span></h1>
+    <h1 class="page-hero-title">The Credit Rating <span class="gradient-text">Bridge Network</span></h1>
     <p class="page-hero-subtitle">A proprietary ecosystem of 340+ verified institutional members, issuers, and intermediaries spanning 50+ emerging market countries.</p>
   </div>
 </section>
@@ -87,7 +94,7 @@
       </div>
       <div class="stat-card fade-up delay-2">
         <div class="stat-card-number">
-          <span style="font-size:inherit;">$</span><span data-count="2.4" data-suffix="B+" data-decimals="1">2.4B+</span>
+          <span class="font-size-inherit">$</span><span data-count="2.4" data-suffix="B+" data-decimals="1">2.4B+</span>
         </div>
         <div class="stat-card-label">Deal Flow Originated</div>
       </div>
@@ -107,12 +114,12 @@
     <div class="feature-row">
       <div class="slide-left">
         <div class="section-tag">Network Overview</div>
-        <h2 class="section-title">A Verified <span>Marketplace for Capital</span></h2>
-        <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:20px;">The Credit Rating Bridge (CRB) Network is GCRIG's proprietary institutional marketplace — a curated, KYC-verified ecosystem connecting global capital with emerging market opportunities.</p>
-        <p style="color:var(--text-secondary);line-height:1.7;margin-bottom:32px;">Every member undergoes rigorous onboarding, continuous credit monitoring, and must meet our regulatory compliance standards. The result is a trusted network where deal execution happens with confidence.</p>
+        <h2 class="section-title">A Verified <span class="gradient-text">Marketplace for Capital</span></h2>
+        <p class="body-text mb-20">The Credit Rating Bridge (CRB) Network is GCRIG's proprietary institutional marketplace — a curated, KYC-verified ecosystem connecting global capital with emerging market opportunities.</p>
+        <p class="body-text mb-32">Every member undergoes rigorous onboarding, continuous credit monitoring, and must meet our regulatory compliance standards. The result is a trusted network where deal execution happens with confidence.</p>
         <div class="feature-list">
           <div class="feature-item">
-            <div class="feature-item-icon" style="background:rgba(23,195,178,0.1);color:var(--teal);">
+            <div class="feature-item-icon feature-item-icon-blue">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div class="feature-item-text">
@@ -121,7 +128,7 @@
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-item-icon" style="background:rgba(23,195,178,0.1);color:var(--teal);">
+            <div class="feature-item-icon feature-item-icon-blue">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div class="feature-item-text">
@@ -130,7 +137,7 @@
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-item-icon" style="background:rgba(23,195,178,0.1);color:var(--teal);">
+            <div class="feature-item-icon feature-item-icon-blue">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div class="feature-item-text">
@@ -139,7 +146,7 @@
             </div>
           </div>
           <div class="feature-item">
-            <div class="feature-item-icon" style="background:rgba(23,195,178,0.1);color:var(--teal);">
+            <div class="feature-item-icon feature-item-icon-blue">
               <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div class="feature-item-text">
@@ -150,29 +157,29 @@
         </div>
       </div>
       <div class="slide-right">
-        <div class="feature-visual" style="background:linear-gradient(135deg,rgba(200,168,93,0.06),rgba(23,195,178,0.04));flex-direction:column;gap:20px;align-items:flex-start;">
+        <div class="feature-visual feature-visual-gradient feature-visual-col">
           <div class="badge badge-gold">Live Network Data</div>
-          <h3 style="font-size:1.375rem;font-weight:700;color:var(--text-primary);">Network at a Glance</h3>
-          <div style="width:100%;display:flex;flex-direction:column;gap:16px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;">
-              <span style="color:var(--text-secondary);font-size:0.9rem;">Active Members</span>
-              <span style="color:var(--gold);font-weight:700;font-size:1.1rem;">340+</span>
+          <h3 class="feature-inner-title">Network at a Glance</h3>
+          <div class="data-col">
+            <div class="data-row">
+              <span class="data-row-label">Active Members</span>
+              <span class="data-row-value data-row-value-purple">340+</span>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;">
-              <span style="color:var(--text-secondary);font-size:0.9rem;">Countries Represented</span>
-              <span style="color:var(--teal);font-weight:700;font-size:1.1rem;">50+</span>
+            <div class="data-row">
+              <span class="data-row-label">Countries Represented</span>
+              <span class="data-row-value data-row-value-blue">50+</span>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;">
-              <span style="color:var(--text-secondary);font-size:0.9rem;">Total Deal Flow</span>
-              <span style="color:var(--gold);font-weight:700;font-size:1.1rem;">$2.4B+</span>
+            <div class="data-row">
+              <span class="data-row-label">Total Deal Flow</span>
+              <span class="data-row-value data-row-value-purple">$2.4B+</span>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;">
-              <span style="color:var(--text-secondary);font-size:0.9rem;">Avg. Member Retention</span>
-              <span style="color:var(--teal);font-weight:700;font-size:1.1rem;">92%</span>
+            <div class="data-row">
+              <span class="data-row-label">Avg. Member Retention</span>
+              <span class="data-row-value data-row-value-blue">92%</span>
             </div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 18px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;">
-              <span style="color:var(--text-secondary);font-size:0.9rem;">Deals Executed (2024)</span>
-              <span style="color:var(--gold);font-weight:700;font-size:1.1rem;">180+</span>
+            <div class="data-row">
+              <span class="data-row-label">Deals Executed (2024)</span>
+              <span class="data-row-value data-row-value-purple">180+</span>
             </div>
           </div>
         </div>
@@ -186,7 +193,7 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">Global Reach</div>
-      <h2 class="section-title">Our Members Span <span>50+ Countries</span></h2>
+      <h2 class="section-title">Our Members Span <span class="gradient-text">50+ Countries</span></h2>
       <p class="section-subtitle">From West Africa to Southeast Asia, the CRB Network connects institutional capital across the world's most dynamic emerging markets.</p>
     </div>
     <div class="world-map-container fade-up">
@@ -198,7 +205,7 @@
           </filter>
         </defs>
         <!-- Background -->
-        <rect width="960" height="500" fill="#0A1325"/>
+        <rect width="960" height="500" fill="#0B0B1A"/>
         <!-- Ocean grid lines -->
         <g stroke="rgba(255,255,255,0.03)" stroke-width="1">
           <line x1="0" y1="100" x2="960" y2="100"/>
@@ -228,7 +235,7 @@
         <path d="M730,300 L820,295 L860,320 L860,370 L840,400 L800,410 L760,400 L730,375 L720,340 L730,300Z" fill="rgba(255,255,255,0.07)" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
 
         <!-- CRB Network Connections — existing nodes -->
-        <g stroke="rgba(23,195,178,0.2)" stroke-width="1" class="map-connection">
+        <g stroke="rgba(123,47,242,0.2)" stroke-width="1" class="map-connection">
           <line x1="490" y1="220" x2="660" y2="120"/>
           <line x1="490" y1="220" x2="550" y2="80"/>
           <line x1="490" y1="220" x2="760" y2="225"/>
@@ -249,103 +256,103 @@
         <!-- Lagos, Nigeria -->
         <g class="map-node" transform="translate(490,220)">
           <circle class="pulse-outer" r="4" fill="none" stroke="rgba(200,168,93,0.5)" stroke-width="1.5"/>
-          <circle r="5" fill="#C8A85D" opacity="0.9" filter="url(#glow-filter)"/>
-          <circle r="3" fill="#C8A85D"/>
-          <text y="-12" text-anchor="middle" fill="rgba(200,168,93,0.9)" font-size="9" font-family="Inter,sans-serif" font-weight="600">Lagos</text>
+          <circle r="5" fill="#7B2FF2" opacity="0.9" filter="url(#glow-filter)"/>
+          <circle r="3" fill="#7B2FF2"/>
+          <text y="-12" text-anchor="middle" fill="rgba(184,129,255,0.9)" font-size="9" font-family="Inter,sans-serif" font-weight="600">Lagos</text>
         </g>
         <!-- Nairobi, Kenya -->
         <g class="map-node" transform="translate(540,260)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(23,195,178,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#17C3B2" opacity="0.9"/>
-          <circle r="2.5" fill="#17C3B2"/>
-          <text y="-10" text-anchor="middle" fill="rgba(23,195,178,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Nairobi</text>
+          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(123,47,242,0.5)" stroke-width="1.5"/>
+          <circle r="4" fill="#00C6FB" opacity="0.9"/>
+          <circle r="2.5" fill="#00C6FB"/>
+          <text y="-10" text-anchor="middle" fill="rgba(0,198,251,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Nairobi</text>
         </g>
         <!-- Dubai, UAE -->
         <g class="map-node" transform="translate(660,145)">
           <circle class="pulse-outer" r="4" fill="none" stroke="rgba(200,168,93,0.5)" stroke-width="1.5"/>
-          <circle r="5" fill="#C8A85D" opacity="0.9" filter="url(#glow-filter)"/>
-          <circle r="3" fill="#C8A85D"/>
-          <text y="-12" text-anchor="middle" fill="rgba(200,168,93,0.9)" font-size="9" font-family="Inter,sans-serif" font-weight="600">Dubai</text>
+          <circle r="5" fill="#7B2FF2" opacity="0.9" filter="url(#glow-filter)"/>
+          <circle r="3" fill="#7B2FF2"/>
+          <text y="-12" text-anchor="middle" fill="rgba(184,129,255,0.9)" font-size="9" font-family="Inter,sans-serif" font-weight="600">Dubai</text>
         </g>
         <!-- Singapore -->
         <g class="map-node" transform="translate(760,225)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(23,195,178,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#17C3B2" opacity="0.9"/>
-          <circle r="2.5" fill="#17C3B2"/>
-          <text y="-10" text-anchor="middle" fill="rgba(23,195,178,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Singapore</text>
+          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(123,47,242,0.5)" stroke-width="1.5"/>
+          <circle r="4" fill="#00C6FB" opacity="0.9"/>
+          <circle r="2.5" fill="#00C6FB"/>
+          <text y="-10" text-anchor="middle" fill="rgba(0,198,251,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Singapore</text>
         </g>
         <!-- London, UK -->
         <g class="map-node" transform="translate(455,80)">
           <circle class="pulse-outer" r="4" fill="none" stroke="rgba(200,168,93,0.5)" stroke-width="1.5"/>
-          <circle r="5" fill="#C8A85D" opacity="0.9" filter="url(#glow-filter)"/>
-          <circle r="3" fill="#C8A85D"/>
-          <text y="-12" text-anchor="middle" fill="rgba(200,168,93,0.9)" font-size="9" font-family="Inter,sans-serif" font-weight="600">London</text>
+          <circle r="5" fill="#7B2FF2" opacity="0.9" filter="url(#glow-filter)"/>
+          <circle r="3" fill="#7B2FF2"/>
+          <text y="-12" text-anchor="middle" fill="rgba(184,129,255,0.9)" font-size="9" font-family="Inter,sans-serif" font-weight="600">London</text>
         </g>
         <!-- New York, USA -->
         <g class="map-node" transform="translate(140,165)">
           <circle class="pulse-outer" r="4" fill="none" stroke="rgba(200,168,93,0.5)" stroke-width="1.5"/>
-          <circle r="5" fill="#C8A85D" opacity="0.9" filter="url(#glow-filter)"/>
-          <circle r="3" fill="#C8A85D"/>
-          <text y="-12" text-anchor="middle" fill="rgba(200,168,93,0.9)" font-size="9" font-family="Inter,sans-serif" font-weight="600">New York</text>
+          <circle r="5" fill="#7B2FF2" opacity="0.9" filter="url(#glow-filter)"/>
+          <circle r="3" fill="#7B2FF2"/>
+          <text y="-12" text-anchor="middle" fill="rgba(184,129,255,0.9)" font-size="9" font-family="Inter,sans-serif" font-weight="600">New York</text>
         </g>
         <!-- São Paulo, Brazil -->
         <g class="map-node" transform="translate(185,320)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(23,195,178,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#17C3B2" opacity="0.9"/>
-          <circle r="2.5" fill="#17C3B2"/>
-          <text y="-10" text-anchor="middle" fill="rgba(23,195,178,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">São Paulo</text>
+          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(123,47,242,0.5)" stroke-width="1.5"/>
+          <circle r="4" fill="#00C6FB" opacity="0.9"/>
+          <circle r="2.5" fill="#00C6FB"/>
+          <text y="-10" text-anchor="middle" fill="rgba(0,198,251,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">São Paulo</text>
         </g>
         <!-- Sydney, Australia -->
         <g class="map-node" transform="translate(785,345)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(23,195,178,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#17C3B2" opacity="0.9"/>
-          <circle r="2.5" fill="#17C3B2"/>
-          <text y="-10" text-anchor="middle" fill="rgba(23,195,178,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Sydney</text>
+          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(123,47,242,0.5)" stroke-width="1.5"/>
+          <circle r="4" fill="#00C6FB" opacity="0.9"/>
+          <circle r="2.5" fill="#00C6FB"/>
+          <text y="-10" text-anchor="middle" fill="rgba(0,198,251,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Sydney</text>
         </g>
 
         <!-- NEW Additional Nodes -->
         <!-- Cairo, Egypt -->
         <g class="map-node" transform="translate(540,170)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(23,195,178,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#17C3B2" opacity="0.9"/>
-          <circle r="2.5" fill="#17C3B2"/>
-          <text y="-10" text-anchor="middle" fill="rgba(23,195,178,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Cairo</text>
+          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(123,47,242,0.5)" stroke-width="1.5"/>
+          <circle r="4" fill="#00C6FB" opacity="0.9"/>
+          <circle r="2.5" fill="#00C6FB"/>
+          <text y="-10" text-anchor="middle" fill="rgba(0,198,251,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Cairo</text>
         </g>
         <!-- Mumbai, India -->
         <g class="map-node" transform="translate(690,185)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(23,195,178,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#17C3B2" opacity="0.9"/>
-          <circle r="2.5" fill="#17C3B2"/>
-          <text y="-10" text-anchor="middle" fill="rgba(23,195,178,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Mumbai</text>
+          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(123,47,242,0.5)" stroke-width="1.5"/>
+          <circle r="4" fill="#00C6FB" opacity="0.9"/>
+          <circle r="2.5" fill="#00C6FB"/>
+          <text y="-10" text-anchor="middle" fill="rgba(0,198,251,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Mumbai</text>
         </g>
         <!-- Jakarta, Indonesia -->
         <g class="map-node" transform="translate(760,250)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(23,195,178,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#17C3B2" opacity="0.9"/>
-          <circle r="2.5" fill="#17C3B2"/>
-          <text y="-10" text-anchor="middle" fill="rgba(23,195,178,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Jakarta</text>
+          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(123,47,242,0.5)" stroke-width="1.5"/>
+          <circle r="4" fill="#00C6FB" opacity="0.9"/>
+          <circle r="2.5" fill="#00C6FB"/>
+          <text y="-10" text-anchor="middle" fill="rgba(0,198,251,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Jakarta</text>
         </g>
         <!-- Buenos Aires, Argentina -->
         <g class="map-node" transform="translate(185,360)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(23,195,178,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#17C3B2" opacity="0.9"/>
-          <circle r="2.5" fill="#17C3B2"/>
-          <text y="-10" text-anchor="middle" fill="rgba(23,195,178,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Buenos Aires</text>
+          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(123,47,242,0.5)" stroke-width="1.5"/>
+          <circle r="4" fill="#00C6FB" opacity="0.9"/>
+          <circle r="2.5" fill="#00C6FB"/>
+          <text y="-10" text-anchor="middle" fill="rgba(0,198,251,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Buenos Aires</text>
         </g>
         <!-- Accra, Ghana -->
         <g class="map-node" transform="translate(465,225)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(23,195,178,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#17C3B2" opacity="0.9"/>
-          <circle r="2.5" fill="#17C3B2"/>
-          <text y="-10" text-anchor="middle" fill="rgba(23,195,178,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Accra</text>
+          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(123,47,242,0.5)" stroke-width="1.5"/>
+          <circle r="4" fill="#00C6FB" opacity="0.9"/>
+          <circle r="2.5" fill="#00C6FB"/>
+          <text y="-10" text-anchor="middle" fill="rgba(0,198,251,0.9)" font-size="8" font-family="Inter,sans-serif" font-weight="600">Accra</text>
         </g>
 
         <!-- Legend -->
         <g transform="translate(20,460)">
-          <circle cx="6" cy="6" r="5" fill="#C8A85D" opacity="0.9"/>
-          <text x="16" y="10" fill="rgba(200,168,93,0.8)" font-size="9" font-family="Inter,sans-serif">HQ / Primary Node</text>
-          <circle cx="120" cy="6" r="4" fill="#17C3B2" opacity="0.9"/>
-          <text x="130" y="10" fill="rgba(23,195,178,0.8)" font-size="9" font-family="Inter,sans-serif">Regional Node</text>
+          <circle cx="6" cy="6" r="5" fill="#7B2FF2" opacity="0.9"/>
+          <text x="16" y="10" fill="rgba(184,129,255,0.8)" font-size="9" font-family="Inter,sans-serif">HQ / Primary Node</text>
+          <circle cx="120" cy="6" r="4" fill="#00C6FB" opacity="0.9"/>
+          <text x="130" y="10" fill="rgba(0,198,251,0.8)" font-size="9" font-family="Inter,sans-serif">Regional Node</text>
         </g>
       </svg>
     </div>
@@ -357,27 +364,27 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">Process</div>
-      <h2 class="section-title">How the <span>CRB Network Works</span></h2>
+      <h2 class="section-title">How the <span class="gradient-text">CRB Network Works</span></h2>
       <p class="section-subtitle">A three-step journey from application to deal execution, built on rigorous verification and intelligent matching.</p>
     </div>
     <div class="grid-3">
       <div class="card fade-up">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(200,168,93,0.12);border-radius:12px;font-size:1.5rem;font-weight:900;color:var(--gold);">01</span>
+        <div class="card-icon icon-emoji">
+          <span class="num-circle">01</span>
         </div>
         <h3 class="card-title">Member Vetting</h3>
         <p class="card-text">Apply and undergo comprehensive KYC/AML verification and AI credit scoring. Our team conducts a 360° due diligence review before granting network access.</p>
       </div>
       <div class="card fade-up delay-1">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(23,195,178,0.12);border-radius:12px;font-size:1.5rem;font-weight:900;color:var(--teal);">02</span>
+        <div class="card-icon icon-emoji">
+          <span class="num-circle num-circle-blue num-circle-sm">02</span>
         </div>
         <h3 class="card-title">Network Integration</h3>
         <p class="card-text">Gain access to the deal flow pipeline, counterparty matching engine, and real-time market intelligence — all powered by our AI advisory platform.</p>
       </div>
       <div class="card fade-up delay-2">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">
-          <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;background:rgba(200,168,93,0.12);border-radius:12px;font-size:1.5rem;font-weight:900;color:var(--gold);">03</span>
+        <div class="card-icon icon-emoji">
+          <span class="num-circle">03</span>
         </div>
         <h3 class="card-title">Deal Execution</h3>
         <p class="card-text">Transact through our structured marketplace with full legal and compliance support. GCRIG provides ongoing monitoring and relationship management post-execution.</p>
@@ -391,27 +398,27 @@
   <div class="container">
     <div class="section-header centered">
       <div class="section-tag">Member Types</div>
-      <h2 class="section-title">Who Joins <span>The Network</span></h2>
+      <h2 class="section-title">Who Joins <span class="gradient-text">The Network</span></h2>
       <p class="section-subtitle">The CRB Network serves four distinct categories of institutional participant, each bringing unique capabilities and requirements to our marketplace.</p>
     </div>
     <div class="grid-2">
       <div class="card fade-up">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">🏛️</div>
+        <div class="card-icon icon-emoji">🏛️</div>
         <h3 class="card-title">Sovereign Entities</h3>
         <p class="card-text">Governments, central banks, and sovereign wealth funds seeking structured capital market access and independent credit intelligence for policy decisions.</p>
       </div>
       <div class="card fade-up delay-1">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">🏦</div>
+        <div class="card-icon icon-emoji">🏦</div>
         <h3 class="card-title">Development Finance</h3>
         <p class="card-text">DFIs, multilateral institutions, and development banks deploying concessional and blended finance across emerging market infrastructure and social projects.</p>
       </div>
       <div class="card fade-up delay-2">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">🏢</div>
+        <div class="card-icon icon-emoji">🏢</div>
         <h3 class="card-title">Private Institutional</h3>
         <p class="card-text">Pension funds, insurance companies, and family offices seeking emerging market diversification with robust due diligence and ongoing monitoring support.</p>
       </div>
       <div class="card fade-up delay-3">
-        <div class="card-icon" style="font-size:2rem;margin-bottom:16px;">🏗️</div>
+        <div class="card-icon icon-emoji">🏗️</div>
         <h3 class="card-title">Corporate Issuers</h3>
         <p class="card-text">Investment-grade corporates seeking international capital for growth and infrastructure projects, with GCRIG providing ratings, advisory, and investor introductions.</p>
       </div>
@@ -495,6 +502,7 @@
         <a href="#" class="footer-legal-link">Cookies</a>
         <a href="#" class="footer-legal-link">Regulatory</a>
       </nav>
+          <p class="footer-location">Global Operations | Multiple Jurisdictions</p>
     </div>
     <div class="footer-disclaimer">
       <strong>Important Disclaimer:</strong> GCRIG provides credit intelligence and advisory services for informational purposes only. Nothing on this website constitutes financial advice, an offer to buy or sell securities, or a guarantee of investment returns. All investments carry risk. Past performance is not indicative of future results.
