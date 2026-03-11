@@ -203,153 +203,7 @@
     });
   }
 
-  /* ============================================================
-     5. HERO CANVAS PARTICLE NETWORK
-  ============================================================ */
-  function initParticleCanvas() {
-    var canvas = document.getElementById('hero-canvas');
-    if (!canvas) return;
 
-    var ctx = canvas.getContext('2d');
-    var COLORS = ['#7B2FF2', '#F357A8', '#B881FF', '#00C6FB'];
-    var PARTICLE_COUNT = 80;
-    var CONNECTION_DIST = 120;
-    var MOUSE_RADIUS = 200;
-    var MOUSE_OFFSCREEN = -9999;
-    var mouse = { x: MOUSE_OFFSCREEN, y: MOUSE_OFFSCREEN };
-    var particles = [];
-    var animId;
-
-    function resize() {
-      canvas.width = canvas.offsetWidth;
-      canvas.height = canvas.offsetHeight;
-    }
-
-    function Particle() {
-      this.x = Math.random() * canvas.width;
-      this.y = Math.random() * canvas.height;
-      this.vx = (Math.random() - 0.5) * 0.6;
-      this.vy = (Math.random() - 0.5) * 0.6;
-      this.r = Math.random() * 2 + 1;
-      this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
-    }
-
-    Particle.prototype.update = function () {
-      // Mouse attraction
-      var dx = mouse.x - this.x;
-      var dy = mouse.y - this.y;
-      var dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < MOUSE_RADIUS && dist > 0) {
-        var force = (MOUSE_RADIUS - dist) / MOUSE_RADIUS * 0.03;
-        this.vx += dx / dist * force;
-        this.vy += dy / dist * force;
-      }
-
-      // Dampen velocity
-      this.vx *= 0.99;
-      this.vy *= 0.99;
-
-      this.x += this.vx;
-      this.y += this.vy;
-
-      // Bounce off edges
-      if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-      if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      this.x = Math.max(0, Math.min(canvas.width, this.x));
-      this.y = Math.max(0, Math.min(canvas.height, this.y));
-    };
-
-    Particle.prototype.draw = function () {
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = this.color;
-      ctx.fill();
-    };
-
-    function hexToRgb(hex) {
-      var r = parseInt(hex.slice(1, 3), 16);
-      var g = parseInt(hex.slice(3, 5), 16);
-      var b = parseInt(hex.slice(5, 7), 16);
-      return r + ',' + g + ',' + b;
-    }
-
-    function drawConnections() {
-      for (var i = 0; i < particles.length; i++) {
-        for (var j = i + 1; j < particles.length; j++) {
-          var dx = particles[i].x - particles[j].x;
-          var dy = particles[i].y - particles[j].y;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < CONNECTION_DIST) {
-            var opacity = 1 - dist / CONNECTION_DIST;
-            var grad = ctx.createLinearGradient(
-              particles[i].x, particles[i].y,
-              particles[j].x, particles[j].y
-            );
-            grad.addColorStop(0, 'rgba(' + hexToRgb(particles[i].color) + ',' + (opacity * 0.6) + ')');
-            grad.addColorStop(1, 'rgba(' + hexToRgb(particles[j].color) + ',' + (opacity * 0.6) + ')');
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = grad;
-            ctx.lineWidth = opacity;
-            ctx.stroke();
-          }
-        }
-      }
-    }
-
-    function loop() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      particles.forEach(function (p) { p.update(); p.draw(); });
-      drawConnections();
-      animId = requestAnimationFrame(loop);
-    }
-
-    function init() {
-      resize();
-      particles = [];
-      for (var i = 0; i < PARTICLE_COUNT; i++) {
-        particles.push(new Particle());
-      }
-      if (animId) cancelAnimationFrame(animId);
-      loop();
-    }
-
-    canvas.addEventListener('mousemove', function (e) {
-      var rect = canvas.getBoundingClientRect();
-      mouse.x = e.clientX - rect.left;
-      mouse.y = e.clientY - rect.top;
-    });
-    canvas.addEventListener('mouseleave', function () {
-      mouse.x = MOUSE_OFFSCREEN;
-      mouse.y = MOUSE_OFFSCREEN;
-    });
-
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(init, 150);
-    });
-
-    init();
-  }
-
-  /* ============================================================
-     6. FLOATING ORBS
-  ============================================================ */
-  function initFloatingOrbs() {
-    var hero = document.querySelector('section.hero') ||
-               document.querySelector('.hero');
-    if (!hero) return;
-
-    [1, 2, 3].forEach(function (n) {
-      if (!hero.querySelector('.orb-' + n)) {
-        var orb = document.createElement('div');
-        orb.className = 'orb orb-' + n;
-        hero.appendChild(orb);
-      }
-    });
-  }
 
   /* ============================================================
      7. TYPING EFFECT
@@ -606,8 +460,8 @@
     Chart.defaults.font.family = 'Inter, sans-serif';
 
     var chartConfigs = [
-      { id: 'chart-eurusd', currency: 'EUR', color: '#7B2FF2', rateId: 'chart-rate-eur' },
-      { id: 'chart-gbpusd', currency: 'GBP', color: '#F357A8', rateId: 'chart-rate-gbp' },
+      { id: 'chart-eurusd', currency: 'EUR', color: '#3b82f6', rateId: 'chart-rate-eur' },
+      { id: 'chart-gbpusd', currency: 'GBP', color: '#8b5cf6', rateId: 'chart-rate-gbp' },
       { id: 'chart-jpyusd', currency: 'JPY', color: '#00C6FB', rateId: 'chart-rate-jpy' },
       { id: 'chart-cnyusd', currency: 'CNY', color: '#B881FF', rateId: 'chart-rate-cny' }
     ];
@@ -642,8 +496,8 @@
 
     function createGradient(ctx, color) {
       var gradient = ctx.createLinearGradient(0, 0, 0, 300);
-      var rgb = color === '#7B2FF2' ? '123,47,242' :
-                color === '#F357A8' ? '243,87,168' :
+      var rgb = color === '#3b82f6' ? '59,130,246' :
+                color === '#8b5cf6' ? '139,92,246' :
                 color === '#00C6FB' ? '0,198,251'  : '184,129,255';
       gradient.addColorStop(0, 'rgba(' + rgb + ',0.4)');
       gradient.addColorStop(1, 'rgba(' + rgb + ',0)');
@@ -912,7 +766,7 @@
      16. CONFETTI ON FORM SUBMIT
   ============================================================ */
   function initConfetti() {
-    var CONFETTI_COLORS = ['#7B2FF2', '#F357A8', '#B881FF', '#26EB77', '#00C6FB'];
+    var CONFETTI_COLORS = ['#3b82f6', '#8b5cf6', '#22c55e', '#f59e0b', '#ec4899'];
 
     function launchConfetti() {
       var style = document.createElement('style');
@@ -976,10 +830,10 @@
     btn.style.cssText = [
       'position:fixed', 'bottom:2rem', 'right:2rem',
       'width:48px', 'height:48px', 'border-radius:50%',
-      'background:linear-gradient(135deg,#7B2FF2,#F357A8)',
+      'background:#0f172a',
       'color:#fff', 'border:none', 'cursor:pointer',
       'font-size:1.4rem', 'line-height:1', 'z-index:9000',
-      'box-shadow:0 4px 20px rgba(123,47,242,0.4)',
+      'box-shadow:0 4px 20px rgba(15,23,42,0.15)',
       'opacity:0', 'pointer-events:none',
       'transition:opacity 0.3s ease, transform 0.3s ease',
       'display:flex', 'align-items:center', 'justify-content:center'
@@ -1043,8 +897,6 @@
     try { initNavbar(); }           catch (e) { console.warn('Navbar:', e); }
     try { initScrollAnimations(); } catch (e) { console.warn('ScrollAnims:', e); }
     try { initCounters(); }         catch (e) { console.warn('Counters:', e); }
-    try { initParticleCanvas(); }   catch (e) { console.warn('Particles:', e); }
-    try { initFloatingOrbs(); }     catch (e) { console.warn('FloatingOrbs:', e); }
     try { initTypingEffect(); }     catch (e) { console.warn('Typing:', e); }
     try { initMetricBars(); }       catch (e) { console.warn('MetricBars:', e); }
     try { initCurrencyTicker(); }   catch (e) { console.warn('Ticker:', e); }
