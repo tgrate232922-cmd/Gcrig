@@ -76,32 +76,35 @@
     var hamburger = navbar.querySelector('.hamburger') ||
                     navbar.querySelector('.navbar-toggle') ||
                     navbar.querySelector('[data-toggle="menu"]');
-    var mobileMenu = navbar.querySelector('.navbar-menu') ||
-                     navbar.querySelector('.nav-menu') ||
-                     navbar.querySelector('.nav-links');
+    var mobileMenu = document.getElementById('mobile-menu') ||
+                     navbar.querySelector('.navbar-menu') ||
+                     navbar.querySelector('.nav-menu');
 
     if (hamburger && mobileMenu) {
       hamburger.addEventListener('click', function () {
-        var isOpen = mobileMenu.classList.toggle('open');
+        var isOpen = mobileMenu.classList.toggle('active');
         hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         hamburger.classList.toggle('active', isOpen);
+        document.body.style.overflow = isOpen ? 'hidden' : '';
       });
 
       // Close on nav link click
       mobileMenu.querySelectorAll('a').forEach(function (link) {
         link.addEventListener('click', function () {
-          mobileMenu.classList.remove('open');
+          mobileMenu.classList.remove('active');
           hamburger.classList.remove('active');
           hamburger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
         });
       });
 
       // Close on outside click
       document.addEventListener('click', function (e) {
-        if (!navbar.contains(e.target)) {
-          mobileMenu.classList.remove('open');
+        if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
+          mobileMenu.classList.remove('active');
           hamburger.classList.remove('active');
           hamburger.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
         }
       });
     }
@@ -213,10 +216,10 @@
     if (!el) return;
 
     var phrases = [
-      'Emerging Market Opportunities',
-      'Global Investment Intelligence',
-      'Credit Rating Innovation',
-      'Data-Driven Finance'
+      'Investment Opportunities',
+      'Global Cash Recycling',
+      'Emerging Market Growth',
+      'Sustainable Returns'
     ];
 
     // Create cursor
