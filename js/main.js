@@ -1,146 +1,143 @@
 /*!
  * GCRIG – main.js
- * Pure vanilla JS – no modules, no build tools
+ * Global Cash Recycle Investment Group
+ * Pure vanilla JS — no modules, no build tools
+ * ES6 compatible, IIFE pattern
  */
-
 (function () {
   'use strict';
 
-  /* ============================================================
-     CONSTANTS & SHARED STATE
-  ============================================================ */
-  var FALLBACK_RATES = {
-    EUR: 0.9234, GBP: 0.7891, JPY: 149.82, CNY: 7.2341,
-    AED: 3.6725, INR: 83.12,  CAD: 1.3612, AUD: 1.5234,
-    CHF: 0.8923, NGN: 1590.5
-  };
-
-  var cachedRates = null; // shared USD-base rates cache
-
-  /* ============================================================
-     1. PAGE TRANSITION
-  ============================================================ */
+  /* =====================================================
+     SECTION 1: PAGE TRANSITION
+     Fades out the overlay on load; fades in on link click
+     ===================================================== */
   function initPageTransition() {
-    var overlay = document.createElement('div');
-    overlay.className = 'page-transition active';
-    document.body.appendChild(overlay);
+    var overlay = document.querySelector('.page-transition');
+    if (!overlay) return;
 
-    // Fade in (remove active)
-    requestAnimationFrame(function () {
-      requestAnimationFrame(function () {
-        overlay.classList.remove('active');
-      });
+    // Already animated out via CSS keyframes — just remove from flow
+    overlay.addEventListener('animationend', function () {
+      overlay.style.display = 'none';
     });
 
-    // Intercept anchor clicks to .html pages
+    // On internal link click — fade in briefly before navigating
     document.addEventListener('click', function (e) {
-      var anchor = e.target.closest('a');
-      if (!anchor) return;
-      var href = anchor.getAttribute('href');
-      if (!href) return;
-      if (href.startsWith('#') || href.startsWith('mailto:') ||
-          href.startsWith('tel:') || href.startsWith('http') ||
-          anchor.target === '_blank') return;
-      if (!href.endsWith('.html') && href !== '/') return;
-      if (anchor.hostname && anchor.hostname !== window.location.hostname) return;
-
+      var link = e.target.closest('a[href]');
+      if (!link) return;
+      var href = link.getAttribute('href');
+      // Only handle same-origin, non-anchor, non-JS links
+      if (!href || href.startsWith('#') || href.startsWith('mailto:')
+          || href.startsWith('tel:') || href.startsWith('javascript:')
+          || link.target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey) return;
+      // External URLs
+      try {
+        var url = new URL(href, window.location.href);
+        if (url.origin !== window.location.origin) return;
+      } catch (err) {
+        return;
+      }
       e.preventDefault();
-      overlay.classList.add('active');
+      overlay.style.display = 'block';
+      overlay.style.opacity = '0';
+      overlay.style.animation = 'none';
+      // Force reflow
+      overlay.offsetHeight; // eslint-disable-line no-unused-expressions
+      overlay.style.transition = 'opacity 0.3s ease';
+      overlay.style.opacity = '1';
       setTimeout(function () {
         window.location.href = href;
-      }, 300);
+      }, 320);
     });
   }
 
-  /* ============================================================
-     2. NAVBAR
-  ============================================================ */
-  function initNavbar() {
-    var navbar = document.querySelector('.navbar') ||
-                 document.querySelector('nav') ||
-                 document.querySelector('header');
+  /* =====================================================
+     SECTION 2: NAVBAR SCROLL
+     Adds/removes "scrolled" class after 80px scroll
+     ===================================================== */
+  function initNavbarScroll() {
+    var navbar = document.querySelector('.navbar');
     if (!navbar) return;
 
-    // Scroll detection
     function onScroll() {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 80) {
         navbar.classList.add('scrolled');
       } else {
         navbar.classList.remove('scrolled');
       }
     }
+
     window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    onScroll(); // run on load
+  }
 
-    // Hamburger toggle
-    var hamburger = navbar.querySelector('.hamburger') ||
-                    navbar.querySelector('.navbar-toggle') ||
-                    navbar.querySelector('[data-toggle="menu"]');
-    var mobileMenu = document.getElementById('mobile-menu') ||
-                     navbar.querySelector('.navbar-menu') ||
-                     navbar.querySelector('.nav-menu');
+  /* =====================================================
+     SECTION 3: MOBILE MENU
+     Hamburger toggles active class on menu + backdrop
+     ===================================================== */
+  function initMobileMenu() {
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobile-menu');
+    if (!hamburger || !mobileMenu) return;
 
-    if (hamburger && mobileMenu) {
-      hamburger.addEventListener('click', function () {
-        var isOpen = mobileMenu.classList.toggle('active');
-        hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        hamburger.classList.toggle('active', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
-      });
-
-      // Close on nav link click
-      mobileMenu.querySelectorAll('a').forEach(function (link) {
-        link.addEventListener('click', function () {
-          mobileMenu.classList.remove('active');
-          hamburger.classList.remove('active');
-          hamburger.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        });
-      });
-
-      // Close on outside click
-      document.addEventListener('click', function (e) {
-        if (!navbar.contains(e.target) && !mobileMenu.contains(e.target)) {
-          mobileMenu.classList.remove('active');
-          hamburger.classList.remove('active');
-          hamburger.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        }
-      });
+    // Create or find backdrop
+    var backdrop = document.querySelector('.mobile-menu-backdrop');
+    if (!backdrop) {
+      backdrop = document.createElement('div');
+      backdrop.className = 'mobile-menu-backdrop';
+      document.body.appendChild(backdrop);
     }
 
-    // Active page highlighting
-    var path = window.location.pathname.split('/').pop() || 'index.html';
-    navbar.querySelectorAll('a').forEach(function (link) {
-      var linkPath = (link.getAttribute('href') || '').split('/').pop();
-      if (linkPath === path ||
-          (path === '' && (linkPath === 'index.html' || linkPath === ''))) {
-        link.classList.add('active');
-        link.setAttribute('aria-current', 'page');
+    function openMenu() {
+      hamburger.classList.add('active');
+      mobileMenu.classList.add('active');
+      backdrop.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      hamburger.classList.remove('active');
+      mobileMenu.classList.remove('active');
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', function () {
+      if (mobileMenu.classList.contains('active')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    backdrop.addEventListener('click', closeMenu);
+
+    // Close on nav link click
+    mobileMenu.querySelectorAll('.nav-link').forEach(function (link) {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on ESC key
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+        closeMenu();
       }
     });
   }
 
-  /* ============================================================
-     3. SCROLL ANIMATIONS (IntersectionObserver)
-  ============================================================ */
+  /* =====================================================
+     SECTION 4: SCROLL REVEAL ANIMATIONS
+     IntersectionObserver on .reveal, .fade-up, .slide-left, .slide-right
+     ===================================================== */
   function initScrollAnimations() {
-    if (!window.IntersectionObserver) return;
-
-    // Set up delay classes
-    for (var d = 1; d <= 5; d++) {
-      var style = document.getElementById('anim-delay-' + d);
-      if (!style) {
-        var s = document.createElement('style');
-        s.id = 'anim-delay-' + d;
-        s.textContent = '.delay-' + d + ' { transition-delay: ' + (d * 0.1) + 's !important; }';
-        document.head.appendChild(s);
-      }
-    }
-
-    var selector = '.fade-up, .slide-left, .slide-right, .scale-up';
-    var elements = document.querySelectorAll(selector);
+    var selectors = '.reveal, .fade-up, .slide-left, .slide-right';
+    var elements = document.querySelectorAll(selectors);
     if (!elements.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      // Fallback: show all immediately
+      elements.forEach(function (el) { el.classList.add('visible'); });
+      return;
+    }
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
@@ -149,769 +146,1019 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-    elements.forEach(function (el) {
-      observer.observe(el);
-    });
+    elements.forEach(function (el) { observer.observe(el); });
   }
 
-  /* ============================================================
-     4. COUNTER ANIMATIONS
-  ============================================================ */
+  /* =====================================================
+     SECTION 5: COUNTER ANIMATIONS
+     Animates elements with data-count attribute
+     Also handles .stat-card-number with text content
+     ===================================================== */
   function initCounters() {
-    if (!window.IntersectionObserver) return;
-
-    var counters = document.querySelectorAll('[data-count]');
+    var counters = document.querySelectorAll('[data-count], .stat-card-number');
     if (!counters.length) return;
 
-    function easeOutQuart(t) {
-      return 1 - Math.pow(1 - t, 4);
-    }
+    if (!('IntersectionObserver' in window)) return;
 
-    function animateCounter(el) {
-      var target = parseFloat(el.getAttribute('data-count')) || 0;
-      var decimals = parseInt(el.getAttribute('data-decimals'), 10) || 0;
+    function animateCount(el) {
+      var raw = el.getAttribute('data-count') || el.textContent.replace(/[^0-9.]/g, '') || '0';
+      var target = parseFloat(raw);
+      if (isNaN(target)) return;
+
       var suffix = el.getAttribute('data-suffix') || '';
-      var duration = 1500;
-      var start = null;
+      var prefix = el.getAttribute('data-prefix') || '';
+      var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
 
-      function step(timestamp) {
-        if (!start) start = timestamp;
-        var elapsed = timestamp - start;
+      // Try to detect suffix from content
+      if (!suffix) {
+        var content = el.textContent.trim();
+        var numPart = content.replace(/[^0-9.]/g, '');
+        if (numPart && content !== numPart) {
+          suffix = content.slice(content.indexOf(numPart) + numPart.length);
+          prefix = content.slice(0, content.indexOf(numPart));
+        }
+      }
+
+      var duration = 1800;
+      var start = performance.now();
+      var startVal = 0;
+
+      function step(now) {
+        var elapsed = now - start;
         var progress = Math.min(elapsed / duration, 1);
-        var eased = easeOutQuart(progress);
-        var current = eased * target;
-        el.textContent = current.toFixed(decimals) + suffix;
+        // Ease out cubic
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var current = startVal + (target - startVal) * ease;
+
+        el.textContent = prefix + current.toFixed(decimals) + suffix;
+
         if (progress < 1) {
           requestAnimationFrame(step);
         } else {
-          el.textContent = target.toFixed(decimals) + suffix;
+          el.textContent = prefix + target.toFixed(decimals) + suffix;
         }
       }
+
       requestAnimationFrame(step);
     }
 
-    var observer = new IntersectionObserver(function (entries) {
+    var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          animateCounter(entry.target);
-          observer.unobserve(entry.target);
+          animateCount(entry.target);
+          obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.3 });
 
-    counters.forEach(function (el) {
-      observer.observe(el);
-    });
+    counters.forEach(function (el) { obs.observe(el); });
   }
 
-
-
-  /* ============================================================
-     7. TYPING EFFECT
-  ============================================================ */
+  /* =====================================================
+     SECTION 6: TYPING EFFECT
+     Cycles words in element #typing-text
+     ===================================================== */
   function initTypingEffect() {
     var el = document.getElementById('typing-text');
     if (!el) return;
 
-    var phrases = [
-      'Investment Opportunities',
-      'Global Cash Recycling',
-      'Emerging Market Growth',
-      'Sustainable Returns'
-    ];
+    var words = el.getAttribute('data-words')
+      ? el.getAttribute('data-words').split(',').map(function (w) { return w.trim(); })
+      : ['Investments', 'Growth', 'Wealth', 'Returns', 'Futures'];
 
-    // Create cursor
-    var cursor = document.createElement('span');
-    cursor.className = 'typing-cursor';
-    cursor.textContent = '|';
-    el.insertAdjacentElement('afterend', cursor);
-
-    var phraseIndex = 0;
+    var typingSpeed = 90;
+    var deletingSpeed = 55;
+    var pauseAfterType = 1800;
+    var pauseAfterDelete = 400;
+    var wordIndex = 0;
     var charIndex = 0;
     var isDeleting = false;
-    var timer;
 
-    function tick() {
-      var current = phrases[phraseIndex];
-      if (isDeleting) {
-        charIndex--;
-        el.textContent = current.slice(0, charIndex);
-        if (charIndex === 0) {
-          isDeleting = false;
-          phraseIndex = (phraseIndex + 1) % phrases.length;
-          timer = setTimeout(tick, 400);
-          return;
-        }
-        timer = setTimeout(tick, 40);
-      } else {
-        charIndex++;
-        el.textContent = current.slice(0, charIndex);
-        if (charIndex === current.length) {
-          isDeleting = true;
-          timer = setTimeout(tick, 2500);
-          return;
-        }
-        timer = setTimeout(tick, 80);
+    function type() {
+      var current = words[wordIndex];
+      var display = isDeleting
+        ? current.slice(0, charIndex - 1)
+        : current.slice(0, charIndex + 1);
+
+      el.textContent = display;
+      charIndex = isDeleting ? charIndex - 1 : charIndex + 1;
+
+      var delay = isDeleting ? deletingSpeed : typingSpeed;
+
+      if (!isDeleting && display === current) {
+        delay = pauseAfterType;
+        isDeleting = true;
+      } else if (isDeleting && display === '') {
+        isDeleting = false;
+        charIndex = 0;
+        wordIndex = (wordIndex + 1) % words.length;
+        delay = pauseAfterDelete;
       }
+
+      setTimeout(type, delay);
     }
 
-    tick();
+    type();
   }
 
-  /* ============================================================
-     8. AI METRIC BARS ANIMATION
-  ============================================================ */
-  function initMetricBars() {
-    var bars = document.querySelectorAll('.ai-metric-fill[data-width]');
-    if (!bars.length || !window.IntersectionObserver) return;
+  /* =====================================================
+     SECTION 7: AI METRIC BARS
+     Animates .ai-metric-fill width from 0 → data-width on scroll
+     ===================================================== */
+  function initAIMetricBars() {
+    var bars = document.querySelectorAll('.ai-metric-fill');
+    if (!bars.length) return;
 
-    var observer = new IntersectionObserver(function (entries) {
+    if (!('IntersectionObserver' in window)) {
+      bars.forEach(function (bar) {
+        bar.style.width = (bar.getAttribute('data-width') || '70') + '%';
+      });
+      return;
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) {
-          var el = entry.target;
-          var width = el.getAttribute('data-width');
-          setTimeout(function () {
-            el.style.width = width;
-          }, 100);
-          observer.unobserve(el);
+          var w = entry.target.getAttribute('data-width') || '70';
+          entry.target.style.width = w + '%';
+          obs.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.3 });
 
     bars.forEach(function (bar) {
       bar.style.width = '0%';
-      observer.observe(bar);
+      obs.observe(bar);
     });
   }
 
-  /* ============================================================
-     9. LIVE CURRENCY TICKER
-  ============================================================ */
-  function initCurrencyTicker() {
-    var track = document.getElementById('ticker-track');
-    if (!track) return;
+  /* =====================================================
+     SECTION 8: CURRENCY TICKER
+     Fetches live rates; scrolls pairs in the ticker bar
+     Falls back to static rates if API fails
+     ===================================================== */
+  var FALLBACK_RATES = {
+    EUR: 0.9234, GBP: 0.7865, JPY: 149.45, CHF: 0.8821,
+    AUD: 1.5234, CAD: 1.3612, CNY: 7.2415, HKD: 7.8234,
+    SGD: 1.3421, NZD: 1.6123, SEK: 10.4523, NOK: 10.8765,
+    DKK: 6.8945, ZAR: 18.6234, BRL: 4.9765, MXN: 17.2341,
+    INR: 83.2156, KRW: 1325.45, AED: 3.6725, SAR: 3.7501
+  };
 
-    var PAIRS = [
-      'USD/EUR','USD/GBP','USD/JPY','USD/CNY','USD/AED','USD/INR',
-      'USD/CAD','USD/AUD','USD/CHF','EUR/GBP','GBP/JPY','USD/NGN'
-    ];
+  var liveRates = {};
+  var previousRates = {};
 
-    function getRateFromUSD(rates, from, to) {
-      if (from === 'USD') return rates[to];
-      if (to === 'USD') return 1 / rates[from];
-      // Cross rate
-      return rates[to] / rates[from];
-    }
-
-    function formatRate(rate, pair) {
-      if (pair.includes('JPY')) return rate.toFixed(2);
-      if (rate >= 100) return rate.toFixed(2);
-      return rate.toFixed(4);
-    }
-
-    function buildTickerHTML(rates) {
-      var items = PAIRS.map(function (pair) {
-        var parts = pair.split('/');
-        var from = parts[0];
-        var to = parts[1];
-        var rate = getRateFromUSD(rates, from, to);
-        if (!rate || isNaN(rate)) return '';
-        var up = Math.random() > 0.5;
-        var changeClass = up ? 'ticker-up' : 'ticker-down';
-        var arrow = up ? '▲' : '▼';
-        var changeVal = (Math.random() * 0.5).toFixed(2) + '%';
-        return '<span class="ticker-item">' +
-               '<span class="ticker-pair">' + pair + '</span>' +
-               '<span class="ticker-rate">' + formatRate(rate, pair) + '</span>' +
-               '<span class="ticker-change ' + changeClass + '">' + arrow + ' ' + changeVal + '</span>' +
-               '</span>';
-      }).filter(Boolean);
-
-      var html = items.join('');
-      track.innerHTML = html + html; // duplicate for seamless loop
-    }
-
-    function fetchAndBuild() {
-      fetch('https://open.er-api.com/v6/latest/USD')
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          if (data && data.rates) {
-            cachedRates = data.rates;
-            buildTickerHTML(data.rates);
-          } else {
-            buildTickerHTML(FALLBACK_RATES);
-          }
-        })
-        .catch(function () {
-          buildTickerHTML(FALLBACK_RATES);
-        });
-    }
-
-    fetchAndBuild();
-    setInterval(fetchAndBuild, 60000);
+  function buildTickerHTML(rates) {
+    var pairs = Object.keys(rates);
+    var html = '';
+    pairs.forEach(function (pair) {
+      var rate = rates[pair];
+      var prev = previousRates[pair];
+      var changeClass = '';
+      var changeText = '';
+      if (prev) {
+        var diff = ((rate - prev) / prev) * 100;
+        changeClass = diff >= 0 ? 'up' : 'down';
+        changeText = (diff >= 0 ? '▲' : '▼') + ' ' + Math.abs(diff).toFixed(3) + '%';
+      }
+      html += '<span class="ticker-item">'
+        + '<span class="ticker-pair">USD/' + pair + '</span>'
+        + '<span class="ticker-rate">' + rate.toFixed(4) + '</span>'
+        + (changeText ? '<span class="ticker-change ' + changeClass + '">' + changeText + '</span>' : '')
+        + '</span>';
+    });
+    // Duplicate for seamless loop
+    return html + html;
   }
 
-  /* ============================================================
-     10. LIVE CURRENCY CONVERTER
-  ============================================================ */
-  function initCurrencyConverter() {
-    var form = document.getElementById('currency-converter');
+  function updateTicker(rates) {
+    var track = document.querySelector('.ticker-track');
+    if (!track) return;
+    track.innerHTML = buildTickerHTML(rates);
+  }
+
+  function fetchTicker() {
+    var track = document.querySelector('.ticker-track');
+    if (!track) return;
+
+    // Build with fallback first
+    updateTicker(FALLBACK_RATES);
+
+    fetch('https://open.er-api.com/v6/latest/USD')
+      .then(function (res) {
+        if (!res.ok) throw new Error('Network response not ok');
+        return res.json();
+      })
+      .then(function (data) {
+        if (data && data.rates) {
+          previousRates = Object.assign({}, liveRates);
+          var keys = Object.keys(FALLBACK_RATES);
+          keys.forEach(function (k) {
+            if (data.rates[k]) liveRates[k] = data.rates[k];
+          });
+          if (Object.keys(liveRates).length) {
+            updateTicker(liveRates);
+          }
+        }
+      })
+      .catch(function () {
+        // Keep fallback already rendered
+        liveRates = Object.assign({}, FALLBACK_RATES);
+      });
+
+    // Refresh every 60 seconds
+    setInterval(function () {
+      fetch('https://open.er-api.com/v6/latest/USD')
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (data && data.rates) {
+            previousRates = Object.assign({}, liveRates);
+            var keys = Object.keys(FALLBACK_RATES);
+            keys.forEach(function (k) {
+              if (data.rates[k]) liveRates[k] = data.rates[k];
+            });
+            updateTicker(liveRates);
+          }
+        })
+        .catch(function () {});
+    }, 60000);
+  }
+
+  /* =====================================================
+     SECTION 9: CURRENCY CONVERTER
+     Form: #converter-form with from/to selects and amount input
+     ===================================================== */
+  var CURRENCY_LIST = [
+    'USD','EUR','GBP','JPY','CHF','AUD','CAD','CNY','HKD',
+    'SGD','NZD','SEK','NOK','DKK','ZAR','BRL','MXN','INR',
+    'KRW','AED','SAR','NGN','KES','GHS','TZS','EGP','MAD'
+  ];
+
+  function buildCurrencyOptions(selected) {
+    return CURRENCY_LIST.map(function (c) {
+      return '<option value="' + c + '"' + (c === selected ? ' selected' : '') + '>' + c + '</option>';
+    }).join('');
+  }
+
+  function getRate(from, to, rates) {
+    if (from === 'USD') return rates[to] || null;
+    if (to === 'USD') return rates[from] ? 1 / rates[from] : null;
+    var toUSD = rates[from] ? 1 / rates[from] : null;
+    var fromUSD = rates[to] || null;
+    if (toUSD && fromUSD) return toUSD * fromUSD;
+    return null;
+  }
+
+  function initConverter() {
+    var form = document.getElementById('converter-form');
     if (!form) return;
 
-    var amountEl   = document.getElementById('conv-amount');
-    var fromEl     = document.getElementById('conv-from');
-    var toEl       = document.getElementById('conv-to');
-    var btn        = document.getElementById('conv-btn');
+    var fromSelect = document.getElementById('conv-from');
+    var toSelect   = document.getElementById('conv-to');
+    var amountInput = document.getElementById('conv-amount');
     var swapBtn    = document.getElementById('conv-swap');
-    var resultCont = document.getElementById('conv-result-container');
-    var resultEl   = document.getElementById('conv-result');
-    var rateEl     = document.getElementById('conv-rate');
-    var updatedEl  = document.getElementById('conv-updated');
+    var resultBox  = document.getElementById('conv-result');
 
-    if (!amountEl || !fromEl || !toEl) return;
+    // Populate dropdowns if present
+    if (fromSelect) fromSelect.innerHTML = buildCurrencyOptions('USD');
+    if (toSelect)   toSelect.innerHTML   = buildCurrencyOptions('EUR');
 
-    function calcFromCache(amount, from, to, rates) {
-      // rates are all USD-based
-      var usdAmount;
-      if (from === 'USD') {
-        usdAmount = amount;
-      } else {
-        if (!rates[from]) return null;
-        usdAmount = amount / rates[from];
+    function getRates() {
+      return Object.keys(liveRates).length ? liveRates : FALLBACK_RATES;
+    }
+
+    function convert() {
+      if (!fromSelect || !toSelect || !amountInput || !resultBox) return;
+      var from   = fromSelect.value;
+      var to     = toSelect.value;
+      var amount = parseFloat(amountInput.value);
+      if (isNaN(amount) || amount <= 0) {
+        resultBox.style.display = 'none';
+        return;
       }
-      if (to === 'USD') return usdAmount;
-      if (!rates[to]) return null;
-      return usdAmount * rates[to];
-    }
 
-    function formatResult(value) {
-      if (value >= 1000) return value.toFixed(2);
-      return value.toFixed(4);
-    }
+      var rates = getRates();
+      // Build a pseudo-rates map with USD as base
+      var usdRates = Object.assign({ USD: 1 }, rates);
+      var rate = getRate(from, to, usdRates);
 
-    function setLoading(loading) {
-      if (!btn) return;
-      btn.disabled = loading;
-      btn.textContent = loading ? 'Converting…' : 'Convert';
-    }
+      if (!rate) {
+        resultBox.style.display = 'none';
+        return;
+      }
 
-    function showResult(amount, from, to, result, rate, timestamp) {
-      if (resultCont) resultCont.style.display = 'block';
-      if (resultEl) resultEl.textContent = formatResult(result) + ' ' + to;
-      if (rateEl) rateEl.textContent = '1 ' + from + ' = ' + formatResult(rate) + ' ' + to;
+      var result = amount * rate;
+      var mainEl    = resultBox.querySelector('.conv-result-main');
+      var rateEl    = resultBox.querySelector('.conv-result-rate');
+      var updatedEl = resultBox.querySelector('.conv-result-updated');
+
+      if (mainEl) mainEl.textContent = result.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 4
+      }) + ' ' + to;
+      if (rateEl) rateEl.textContent = '1 ' + from + ' = ' + rate.toFixed(6) + ' ' + to;
       if (updatedEl) {
-        var d = timestamp ? new Date(timestamp * 1000) : new Date();
-        updatedEl.textContent = 'Updated: ' + d.toLocaleString();
+        var now = new Date();
+        updatedEl.textContent = 'Updated ' + now.toLocaleTimeString();
       }
+
+      resultBox.style.display = 'block';
     }
 
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      var amount = parseFloat(amountEl.value);
-      var from   = (fromEl.value || 'USD').toUpperCase();
-      var to     = (toEl.value   || 'EUR').toUpperCase();
-      if (isNaN(amount) || amount <= 0) return;
-
-      setLoading(true);
-
-      fetch('https://open.er-api.com/v6/latest/' + from)
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          setLoading(false);
-          if (data && data.rates && data.rates[to] != null) {
-            var rate = data.rates[to];
-            var result = amount * rate;
-            showResult(amount, from, to, result, rate, data.time_last_update_unix);
-          } else {
-            // Use fallback via USD cross
-            var fallbackResult = calcFromCache(amount, from, to, FALLBACK_RATES);
-            if (fallbackResult != null) {
-              var fallbackRate = calcFromCache(1, from, to, FALLBACK_RATES);
-              showResult(amount, from, to, fallbackResult, fallbackRate, null);
-            }
-          }
-        })
-        .catch(function () {
-          setLoading(false);
-          var result = calcFromCache(amount, from, to, FALLBACK_RATES);
-          if (result != null) {
-            var rate = calcFromCache(1, from, to, FALLBACK_RATES);
-            showResult(amount, from, to, result, rate, null);
-          }
-        });
+      convert();
     });
 
     if (swapBtn) {
       swapBtn.addEventListener('click', function () {
-        var tmp = fromEl.value;
-        fromEl.value = toEl.value;
-        toEl.value = tmp;
+        var temp = fromSelect.value;
+        fromSelect.value = toSelect.value;
+        toSelect.value   = temp;
+        convert();
       });
     }
+
+    if (amountInput) {
+      amountInput.addEventListener('input', function () {
+        if (amountInput.value) convert();
+      });
+    }
+    if (fromSelect) fromSelect.addEventListener('change', convert);
+    if (toSelect)   toSelect.addEventListener('change', convert);
   }
 
-  /* ============================================================
-     11. CURRENCY CHARTS (Chart.js)
-  ============================================================ */
-  function initCurrencyCharts() {
-    if (typeof window.Chart === 'undefined') return;
+  /* =====================================================
+     SECTION 10: CURRENCY CHARTS (Chart.js)
+     Renders small line charts using Frankfurter historical API
+     ===================================================== */
+  var CHART_PAIRS = [
+    { pair: 'EUR/USD', base: 'EUR', to: 'USD', canvasId: 'chart-eurusd' },
+    { pair: 'GBP/USD', base: 'GBP', to: 'USD', canvasId: 'chart-gbpusd' },
+    { pair: 'USD/JPY', base: 'USD', to: 'JPY', canvasId: 'chart-usdjpy' }
+  ];
 
-    Chart.defaults.color = '#B0B0CC';
-    Chart.defaults.borderColor = 'rgba(123,47,242,0.15)';
-    Chart.defaults.font.family = 'Inter, sans-serif';
+  function getLast30Days() {
+    var dates = [];
+    var now = new Date();
+    for (var i = 29; i >= 0; i--) {
+      var d = new Date(now);
+      d.setDate(d.getDate() - i);
+      dates.push(d.toISOString().slice(0, 10));
+    }
+    return dates;
+  }
 
-    var chartConfigs = [
-      { id: 'chart-eurusd', currency: 'EUR', color: '#3b82f6', rateId: 'chart-rate-eur' },
-      { id: 'chart-gbpusd', currency: 'GBP', color: '#8b5cf6', rateId: 'chart-rate-gbp' },
-      { id: 'chart-jpyusd', currency: 'JPY', color: '#00C6FB', rateId: 'chart-rate-jpy' },
-      { id: 'chart-cnyusd', currency: 'CNY', color: '#B881FF', rateId: 'chart-rate-cny' }
-    ];
+  function generateFallbackChartData(base, points) {
+    // Generate realistic-looking sine-wave data
+    var seed = base.charCodeAt(0) + base.charCodeAt(1);
+    var data = [];
+    var val = (seed % 50) * 0.02 + 0.9;
+    for (var i = 0; i < points; i++) {
+      val += (Math.sin(i * 0.4 + seed) * 0.003) + (Math.random() * 0.002 - 0.001);
+      data.push(parseFloat(val.toFixed(5)));
+    }
+    return data;
+  }
 
-    // Check if any canvas exists
-    var anyCanvas = chartConfigs.some(function (c) {
-      return document.getElementById(c.id);
-    });
-    if (!anyCanvas) return;
+  function renderChart(canvasId, labels, data, pair, color) {
+    var canvas = document.getElementById(canvasId);
+    if (!canvas) return;
+    if (typeof Chart === 'undefined') return;
 
-    function generateMockData(base, count) {
-      var data = [];
-      var v = base;
-      for (var i = 0; i < count; i++) {
-        v += (Math.random() - 0.5) * base * 0.008;
-        v = Math.max(base * 0.85, Math.min(base * 1.15, v));
-        data.push(parseFloat(v.toFixed(4)));
+    var ctx = canvas.getContext('2d');
+    var grad = ctx.createLinearGradient(0, 0, 0, 160);
+    grad.addColorStop(0, color + '44');
+    grad.addColorStop(1, color + '00');
+
+    // Update display elements
+    var card = canvas.closest('.chart-card');
+    if (card) {
+      var rateEl = card.querySelector('.chart-rate');
+      var changeEl = card.querySelector('.chart-change');
+      if (rateEl && data.length) {
+        rateEl.textContent = data[data.length - 1].toFixed(4);
       }
-      return data;
-    }
-
-    function generateLabels(count) {
-      var labels = [];
-      var start = new Date('2024-01-01');
-      for (var i = 0; i < count; i++) {
-        var d = new Date(start);
-        d.setDate(d.getDate() + i);
-        labels.push(d.toISOString().slice(0, 10));
+      if (changeEl && data.length > 1) {
+        var first = data[0], last = data[data.length - 1];
+        var pct = ((last - first) / first) * 100;
+        changeEl.textContent = (pct >= 0 ? '+' : '') + pct.toFixed(2) + '%';
+        changeEl.className = 'chart-change ' + (pct >= 0 ? 'up' : 'down');
       }
-      return labels;
     }
 
-    function createGradient(ctx, color) {
-      var gradient = ctx.createLinearGradient(0, 0, 0, 300);
-      var rgb = color === '#3b82f6' ? '59,130,246' :
-                color === '#8b5cf6' ? '139,92,246' :
-                color === '#00C6FB' ? '0,198,251'  : '184,129,255';
-      gradient.addColorStop(0, 'rgba(' + rgb + ',0.4)');
-      gradient.addColorStop(1, 'rgba(' + rgb + ',0)');
-      return gradient;
-    }
-
-    function buildChart(config, labels, values) {
-      var canvas = document.getElementById(config.id);
-      if (!canvas) return;
-      var ctx = canvas.getContext('2d');
-      var gradient = createGradient(ctx, config.color);
-
-      new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: labels,
-          datasets: [{
-            data: values,
-            borderColor: config.color,
-            borderWidth: 2,
-            backgroundColor: gradient,
-            fill: true,
-            pointRadius: 0,
-            tension: 0.4
-          }]
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          data: data,
+          borderColor: color,
+          borderWidth: 2,
+          backgroundColor: grad,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 0,
+          pointHoverRadius: 4
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            mode: 'index',
+            intersect: false,
+            callbacks: {
+              label: function (ctx) {
+                return pair + ': ' + ctx.parsed.y.toFixed(4);
+              }
+            }
+          }
         },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: {
-            legend: { display: false },
-            tooltip: {
-              backgroundColor: 'rgba(15,12,41,0.95)',
-              titleColor: '#B0B0CC',
-              bodyColor: '#fff',
-              borderColor: 'rgba(123,47,242,0.3)',
-              borderWidth: 1,
-              padding: 10
-            }
-          },
-          scales: {
-            x: {
-              grid: { color: 'rgba(123,47,242,0.08)', drawBorder: false },
-              ticks: {
-                maxTicksLimit: 6,
-                color: '#B0B0CC',
-                font: { size: 11 }
-              }
-            },
-            y: {
-              grid: { color: 'rgba(123,47,242,0.08)', drawBorder: false },
-              ticks: {
-                color: '#B0B0CC',
-                font: { size: 11 }
-              }
-            }
+        scales: {
+          x: { display: false },
+          y: {
+            display: false,
+            grace: '5%'
           }
-        }
-      });
-    }
-
-    // Fetch historical data
-    try {
-      fetch('https://api.frankfurter.app/2024-01-01..2024-12-31?from=USD&to=EUR,GBP,JPY,CNY')
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          if (!data || !data.rates) throw new Error('no data');
-          var dates = Object.keys(data.rates).sort();
-          var labels = dates;
-          var EUR = dates.map(function (d) { return data.rates[d].EUR || null; }).filter(Boolean);
-          var GBP = dates.map(function (d) { return data.rates[d].GBP || null; }).filter(Boolean);
-          var JPY = dates.map(function (d) { return data.rates[d].JPY || null; }).filter(Boolean);
-          var CNY = dates.map(function (d) { return data.rates[d].CNY || null; }).filter(Boolean);
-
-          buildChart(chartConfigs[0], labels, EUR);
-          buildChart(chartConfigs[1], labels, GBP);
-          buildChart(chartConfigs[2], labels, JPY);
-          buildChart(chartConfigs[3], labels, CNY);
-        })
-        .catch(function () {
-          var labels = generateLabels(365);
-          buildChart(chartConfigs[0], labels, generateMockData(0.9234, 365));
-          buildChart(chartConfigs[1], labels, generateMockData(0.7891, 365));
-          buildChart(chartConfigs[2], labels, generateMockData(149.82, 365));
-          buildChart(chartConfigs[3], labels, generateMockData(7.2341, 365));
-        });
-    } catch (err) {
-      console.warn('Chart init error:', err);
-    }
-
-    // Update rate display elements
-    fetch('https://open.er-api.com/v6/latest/USD')
-      .then(function (r) { return r.json(); })
-      .then(function (data) {
-        if (!data || !data.rates) return;
-        var map = { 'chart-rate-eur': 'EUR', 'chart-rate-gbp': 'GBP',
-                    'chart-rate-jpy': 'JPY', 'chart-rate-cny': 'CNY' };
-        Object.keys(map).forEach(function (id) {
-          var el = document.getElementById(id);
-          if (el && data.rates[map[id]]) {
-            var v = data.rates[map[id]];
-            el.textContent = map[id] === 'JPY' ? v.toFixed(2) : v.toFixed(4);
-          }
-        });
-      })
-      .catch(function () {
-        var fb = { 'chart-rate-eur': FALLBACK_RATES.EUR, 'chart-rate-gbp': FALLBACK_RATES.GBP,
-                   'chart-rate-jpy': FALLBACK_RATES.JPY, 'chart-rate-cny': FALLBACK_RATES.CNY };
-        Object.keys(fb).forEach(function (id) {
-          var el = document.getElementById(id);
-          if (el) el.textContent = id === 'chart-rate-jpy' ? fb[id].toFixed(2) : fb[id].toFixed(4);
-        });
-      });
+        },
+        interaction: { mode: 'nearest', axis: 'x', intersect: false }
+      }
+    });
   }
 
-  /* ============================================================
-     12. MARKET OVERVIEW
-  ============================================================ */
+  function initCharts() {
+    var hasCanvas = CHART_PAIRS.some(function (p) {
+      return document.getElementById(p.canvasId);
+    });
+    if (!hasCanvas) return;
+    if (typeof Chart === 'undefined') {
+      // Chart.js not loaded yet — skip
+      return;
+    }
+
+    var colors = ['#7B2FF2', '#00D4AA', '#F5B041'];
+    var dates = getLast30Days();
+
+    CHART_PAIRS.forEach(function (config, i) {
+      var canvas = document.getElementById(config.canvasId);
+      if (!canvas) return;
+
+      // Fetch from Frankfurter API
+      var startDate = dates[0];
+      var endDate   = dates[dates.length - 1];
+      var apiUrl = 'https://api.frankfurter.app/' + startDate + '..' + endDate
+        + '?from=' + config.base + '&to=' + config.to;
+
+      fetch(apiUrl)
+        .then(function (res) { return res.json(); })
+        .then(function (data) {
+          if (!data.rates) throw new Error('No rate data');
+          var dataPoints = [];
+          var labels = [];
+          Object.keys(data.rates).sort().forEach(function (date) {
+            labels.push(date.slice(5)); // MM-DD
+            dataPoints.push(data.rates[date][config.to]);
+          });
+          renderChart(config.canvasId, labels, dataPoints, config.pair, colors[i]);
+        })
+        .catch(function () {
+          var fb = generateFallbackChartData(config.base, 30);
+          var labels = dates.map(function (d) { return d.slice(5); });
+          renderChart(config.canvasId, labels, fb, config.pair, colors[i]);
+        });
+    });
+  }
+
+  /* =====================================================
+     SECTION 11: MARKET OVERVIEW
+     Populates #market-grid with live rates + color coding
+     ===================================================== */
+  var MARKET_PAIRS = [
+    { pair: 'EUR/USD', base: 'USD', quote: 'EUR' },
+    { pair: 'GBP/USD', base: 'USD', quote: 'GBP' },
+    { pair: 'USD/JPY', base: 'USD', quote: 'JPY' },
+    { pair: 'USD/CHF', base: 'USD', quote: 'CHF' },
+    { pair: 'AUD/USD', base: 'USD', quote: 'AUD' },
+    { pair: 'USD/CAD', base: 'USD', quote: 'CAD' }
+  ];
+
+  var marketPrevRates = {};
+
+  function buildMarketCard(pairConfig, rate, change) {
+    var changeClass = change >= 0 ? 'rate-up' : 'rate-down';
+    var changeSign  = change >= 0 ? '+' : '';
+    return '<div class="market-card">'
+      + '<div class="market-card-header">'
+      + '<span class="market-pair">' + pairConfig.pair + '</span>'
+      + '<span class="market-status">LIVE</span>'
+      + '</div>'
+      + '<div class="market-rate ' + changeClass + '">' + rate.toFixed(4) + '</div>'
+      + '<div class="market-change ' + changeClass + '">'
+      + changeSign + change.toFixed(3) + '%</div>'
+      + '</div>';
+  }
+
+  function updateMarketGrid(rates) {
+    var grid = document.getElementById('market-grid');
+    if (!grid) return;
+
+    var html = '';
+    MARKET_PAIRS.forEach(function (config) {
+      var rate = rates[config.quote];
+      if (!rate) return;
+      var prev = marketPrevRates[config.pair] || rate;
+      var change = ((rate - prev) / prev) * 100;
+      html += buildMarketCard(config, rate, change);
+    });
+
+    if (html) grid.innerHTML = html;
+  }
+
   function initMarketOverview() {
-    var ids = {
-      'mkt-usdeur': { from: 'USD', to: 'EUR' },
-      'mkt-usdgbp': { from: 'USD', to: 'GBP' },
-      'mkt-usdjpy': { from: 'USD', to: 'JPY' },
-      'mkt-eurgbp': { from: 'EUR', to: 'GBP' },
-      'mkt-usdcny': { from: 'USD', to: 'CNY' },
-      'mkt-gbpjpy': { from: 'GBP', to: 'JPY' }
-    };
+    var grid = document.getElementById('market-grid');
+    if (!grid) return;
 
-    var anyEl = Object.keys(ids).some(function (id) { return document.getElementById(id); });
-    if (!anyEl) return;
+    // Use already fetched live rates or fallback
+    var rates = Object.keys(liveRates).length ? liveRates : FALLBACK_RATES;
+    updateMarketGrid(rates);
 
-    function getRate(rates, from, to) {
-      if (from === 'USD') return rates[to];
-      if (to === 'USD') return 1 / rates[from];
-      return rates[to] / rates[from];
-    }
-
-    function formatMktRate(rate, to) {
-      if (to === 'JPY') return rate.toFixed(2);
-      return rate.toFixed(4);
-    }
-
-    function flashEl(el, up) {
-      var cls = up ? 'flash-up' : 'flash-down';
-      el.classList.add(cls);
-      setTimeout(function () { el.classList.remove(cls); }, 800);
-    }
-
-    function updateMarket(rates) {
-      Object.keys(ids).forEach(function (id) {
-        var el = document.getElementById(id);
-        if (!el) return;
-        var pair = ids[id];
-        var rate = getRate(rates, pair.from, pair.to);
-        if (!rate || isNaN(rate)) return;
-        var formatted = formatMktRate(rate, pair.to);
-        var prev = el.textContent;
-        el.textContent = formatted;
-        if (prev && prev !== formatted && prev !== '--') {
-          flashEl(el, parseFloat(formatted) > parseFloat(prev));
-        }
+    // Simulate small rate fluctuations every 5 seconds for demo
+    setInterval(function () {
+      var currentRates = Object.keys(liveRates).length ? liveRates : FALLBACK_RATES;
+      marketPrevRates = {};
+      MARKET_PAIRS.forEach(function (p) {
+        marketPrevRates[p.pair] = currentRates[p.quote];
       });
-    }
-
-    function fetchMarket() {
-      fetch('https://open.er-api.com/v6/latest/USD')
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          if (data && data.rates) {
-            cachedRates = data.rates;
-            updateMarket(data.rates);
-          } else {
-            updateMarket(FALLBACK_RATES);
-          }
-        })
-        .catch(function () {
-          updateMarket(FALLBACK_RATES);
-        });
-    }
-
-    fetchMarket();
-    setInterval(fetchMarket, 60000);
+      // Add tiny random fluctuation
+      var simRates = Object.assign({}, currentRates);
+      Object.keys(simRates).forEach(function (k) {
+        simRates[k] = simRates[k] * (1 + (Math.random() * 0.0004 - 0.0002));
+      });
+      updateMarketGrid(simRates);
+    }, 5000);
   }
 
-  /* ============================================================
-     13. 3D CARD TILT
-  ============================================================ */
+  /* =====================================================
+     SECTION 12: 3D CARD TILT
+     .tilt-card elements get perspective tilt on mousemove
+     ===================================================== */
   function initCardTilt() {
     var cards = document.querySelectorAll('.tilt-card');
     if (!cards.length) return;
 
+    // Skip on touch devices
+    if ('ontouchstart' in window) return;
+
     cards.forEach(function (card) {
       card.addEventListener('mousemove', function (e) {
         var rect = card.getBoundingClientRect();
-        var cx = rect.left + rect.width / 2;
-        var cy = rect.top + rect.height / 2;
-        var dx = (e.clientX - cx) / (rect.width / 2);
-        var dy = (e.clientY - cy) / (rect.height / 2);
-        var maxDeg = 10;
-        var rotX = -dy * maxDeg;
-        var rotY = dx * maxDeg;
-        card.style.transform = 'perspective(1000px) rotateX(' + rotX + 'deg) rotateY(' + rotY + 'deg) scale3d(1.02,1.02,1.02)';
-        card.style.transition = 'transform 0.05s linear';
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        var midX = rect.width / 2;
+        var midY = rect.height / 2;
+        var rotateX = ((y - midY) / midY) * -8;
+        var rotateY = ((x - midX) / midX) * 8;
+        card.style.transform = 'perspective(1000px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) scale(1.02)';
+        card.style.transition = 'transform 0.1s ease';
       });
 
       card.addEventListener('mouseleave', function () {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)';
+        card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1)';
         card.style.transition = 'transform 0.4s ease';
       });
     });
   }
 
-  /* ============================================================
-     14. MAGNETIC BUTTON EFFECT
-  ============================================================ */
+  /* =====================================================
+     SECTION 13: MAGNETIC BUTTONS
+     .magnetic-btn elements subtly follow cursor
+     ===================================================== */
   function initMagneticButtons() {
     var btns = document.querySelectorAll('.magnetic-btn');
     if (!btns.length) return;
+    if ('ontouchstart' in window) return;
 
     btns.forEach(function (btn) {
       btn.addEventListener('mousemove', function (e) {
         var rect = btn.getBoundingClientRect();
-        var cx = rect.left + rect.width / 2;
-        var cy = rect.top + rect.height / 2;
-        var dx = (e.clientX - cx) / (rect.width / 2);
-        var dy = (e.clientY - cy) / (rect.height / 2);
-        var maxOffset = 8;
-        btn.style.transform = 'translate(' + (dx * maxOffset) + 'px, ' + (dy * maxOffset) + 'px)';
-        btn.style.transition = 'transform 0.1s linear';
+        var x = e.clientX - rect.left - rect.width / 2;
+        var y = e.clientY - rect.top  - rect.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.25) + 'px, ' + (y * 0.25) + 'px)';
+        btn.style.transition = 'transform 0.1s ease';
       });
 
       btn.addEventListener('mouseleave', function () {
-        btn.style.transform = 'translate(0,0)';
-        btn.style.transition = 'transform 0.3s ease';
+        btn.style.transform = 'translate(0, 0)';
+        btn.style.transition = 'transform 0.4s ease';
       });
     });
   }
 
-  /* ============================================================
-     15. PARALLAX SCROLLING
-  ============================================================ */
+  /* =====================================================
+     SECTION 14: PARALLAX
+     [data-parallax] elements shift on scroll
+     ===================================================== */
   function initParallax() {
-    var els = document.querySelectorAll('[data-parallax]');
-    if (!els.length) return;
-
-    var ticking = false;
-
-    function updateParallax() {
-      var scrollY = window.scrollY;
-      els.forEach(function (el) {
-        var speed = parseFloat(el.getAttribute('data-parallax')) || 0.3;
-        el.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
-      });
-      ticking = false;
-    }
+    var elements = document.querySelectorAll('[data-parallax]');
+    if (!elements.length) return;
+    if ('ontouchstart' in window) return;
 
     window.addEventListener('scroll', function () {
-      if (!ticking) {
-        requestAnimationFrame(updateParallax);
-        ticking = true;
-      }
+      var scrollY = window.scrollY;
+      elements.forEach(function (el) {
+        var speed = parseFloat(el.getAttribute('data-parallax') || '0.3');
+        el.style.transform = 'translateY(' + (scrollY * speed) + 'px)';
+      });
     }, { passive: true });
   }
 
-  /* ============================================================
-     16. CONFETTI ON FORM SUBMIT
-  ============================================================ */
-  function initConfetti() {
-    var CONFETTI_COLORS = ['#3b82f6', '#8b5cf6', '#22c55e', '#f59e0b', '#ec4899'];
-
-    function launchConfetti() {
-      var style = document.createElement('style');
-      style.textContent = [
-        '@keyframes confetti-fall {',
-        '  0%   { transform: translateY(-20px) rotate(0deg); opacity: 1; }',
-        '  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }',
-        '}',
-        '.confetti-particle {',
-        '  position: fixed; top: 0; pointer-events: none; z-index: 99999;',
-        '  border-radius: 2px;',
-        '}'
-      ].join('\n');
-      document.head.appendChild(style);
-
-      var frag = document.createDocumentFragment();
-      for (var i = 0; i < 80; i++) {
-        var p = document.createElement('div');
-        p.className = 'confetti-particle';
-        var size = 6 + Math.random() * 6;
-        var duration = 1.5 + Math.random() * 1.5;
-        var delay = Math.random();
-        p.style.cssText = [
-          'left:' + (Math.random() * 100) + 'vw',
-          'width:' + size + 'px',
-          'height:' + size + 'px',
-          'background:' + CONFETTI_COLORS[Math.floor(Math.random() * CONFETTI_COLORS.length)],
-          'transform:rotate(' + (Math.random() * 360) + 'deg)',
-          'animation:confetti-fall ' + duration + 's ' + delay + 's ease-in forwards'
-        ].join(';');
-        frag.appendChild(p);
-      }
-      document.body.appendChild(frag);
-      setTimeout(function () {
-        document.querySelectorAll('.confetti-particle').forEach(function (p) {
-          p.remove();
-        });
-        style.remove();
-      }, 4000);
-    }
-
-    // Contact forms
-    document.querySelectorAll('.contact-form').forEach(function (form) {
-      form.addEventListener('submit', function () {
-        setTimeout(launchConfetti, 100);
-      });
-    });
-
-    // Currency converter success (patched via custom event)
-    document.addEventListener('converter-success', launchConfetti);
-  }
-
-  /* ============================================================
-     17. SCROLL TO TOP BUTTON
-  ============================================================ */
-  function initScrollToTop() {
-    var btn = document.createElement('button');
-    btn.id = 'scroll-top-btn';
-    btn.setAttribute('aria-label', 'Scroll to top');
-    btn.innerHTML = '&#8679;';
-    btn.style.cssText = [
-      'position:fixed', 'bottom:2rem', 'right:2rem',
-      'width:48px', 'height:48px', 'border-radius:50%',
-      'background:#0f172a',
-      'color:#fff', 'border:none', 'cursor:pointer',
-      'font-size:1.4rem', 'line-height:1', 'z-index:9000',
-      'box-shadow:0 4px 20px rgba(15,23,42,0.15)',
-      'opacity:0', 'pointer-events:none',
-      'transition:opacity 0.3s ease, transform 0.3s ease',
-      'display:flex', 'align-items:center', 'justify-content:center'
-    ].join(';');
-    document.body.appendChild(btn);
+  /* =====================================================
+     SECTION 15: SCROLL TO TOP BUTTON
+     Shows #scroll-top after scrolling 400px
+     ===================================================== */
+  function initScrollTop() {
+    var btn = document.getElementById('scroll-top') || document.querySelector('.scroll-top');
+    if (!btn) return;
 
     window.addEventListener('scroll', function () {
       if (window.scrollY > 400) {
-        btn.style.opacity = '1';
-        btn.style.pointerEvents = 'auto';
+        btn.classList.add('visible');
       } else {
-        btn.style.opacity = '0';
-        btn.style.pointerEvents = 'none';
+        btn.classList.remove('visible');
       }
     }, { passive: true });
 
     btn.addEventListener('click', function () {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
-
-    btn.addEventListener('mouseenter', function () {
-      btn.style.transform = 'scale(1.1)';
-    });
-    btn.addEventListener('mouseleave', function () {
-      btn.style.transform = 'scale(1)';
-    });
   }
 
-  /* ============================================================
-     18. SMOOTH SECTION DETECTION
-  ============================================================ */
-  function initSectionDetection() {
-    if (!window.IntersectionObserver) return;
-
+  /* =====================================================
+     SECTION 16: ACTIVE NAV LINK (section-based)
+     Highlights the matching nav link based on scroll position
+     ===================================================== */
+  function initActiveNav() {
     var sections = document.querySelectorAll('section[id]');
-    if (!sections.length) return;
-
-    var navLinks = document.querySelectorAll('.navbar a[href], nav a[href]');
-    if (!navLinks.length) return;
+    var navLinks = document.querySelectorAll('.nav-link[href]');
+    if (!sections.length || !navLinks.length) return;
 
     var observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var id = entry.target.id;
-        navLinks.forEach(function (link) {
-          var href = link.getAttribute('href') || '';
-          var isActive = href === '#' + id || href.endsWith('#' + id);
-          link.classList.toggle('section-active', isActive);
-        });
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          navLinks.forEach(function (link) {
+            var href = link.getAttribute('href') || '';
+            if (href === '#' + id || href.endsWith('#' + id)) {
+              link.classList.add('active');
+            } else {
+              link.classList.remove('active');
+            }
+          });
+        }
       });
-    }, { threshold: 0.4 });
+    }, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
 
     sections.forEach(function (s) { observer.observe(s); });
+
+    // Also set active based on current page filename
+    var path = window.location.pathname.split('/').pop() || 'index.html';
+    navLinks.forEach(function (link) {
+      var href = (link.getAttribute('href') || '').split('/').pop();
+      if (href === path || (path === '' && href === 'index.html')) {
+        link.classList.add('active');
+      }
+    });
   }
 
-  /* ============================================================
-     19. INITIALIZE ALL
-  ============================================================ */
-  document.addEventListener('DOMContentLoaded', function () {
-    try { initPageTransition(); }   catch (e) { console.warn('PageTransition:', e); }
-    try { initNavbar(); }           catch (e) { console.warn('Navbar:', e); }
-    try { initScrollAnimations(); } catch (e) { console.warn('ScrollAnims:', e); }
-    try { initCounters(); }         catch (e) { console.warn('Counters:', e); }
-    try { initTypingEffect(); }     catch (e) { console.warn('Typing:', e); }
-    try { initMetricBars(); }       catch (e) { console.warn('MetricBars:', e); }
-    try { initCurrencyTicker(); }   catch (e) { console.warn('Ticker:', e); }
-    try { initCurrencyConverter(); }catch (e) { console.warn('Converter:', e); }
-    try { initCurrencyCharts(); }   catch (e) { console.warn('Charts:', e); }
-    try { initMarketOverview(); }   catch (e) { console.warn('Market:', e); }
-    try { initCardTilt(); }         catch (e) { console.warn('CardTilt:', e); }
-    try { initMagneticButtons(); }  catch (e) { console.warn('MagneticBtns:', e); }
-    try { initParallax(); }         catch (e) { console.warn('Parallax:', e); }
-    try { initConfetti(); }         catch (e) { console.warn('Confetti:', e); }
-    try { initScrollToTop(); }      catch (e) { console.warn('ScrollTop:', e); }
-    try { initSectionDetection(); } catch (e) { console.warn('SectionDetect:', e); }
-  });
+  /* =====================================================
+     SECTION 17: CONFETTI
+     Canvas confetti on .contact-form submit
+     ===================================================== */
+  function createConfetti() {
+    var canvas = document.getElementById('confetti-canvas');
+    if (!canvas) {
+      canvas = document.createElement('canvas');
+      canvas.id = 'confetti-canvas';
+      document.body.appendChild(canvas);
+    }
+
+    var ctx = canvas.getContext('2d');
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '9000';
+
+    var colors = ['#7B2FF2','#F5B041','#00D4AA','#9B4FFF','#5A00D6','#fff'];
+    var particles = [];
+
+    for (var i = 0; i < 120; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: -10 - Math.random() * 200,
+        w: 8 + Math.random() * 8,
+        h: 4 + Math.random() * 4,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        vx: (Math.random() - 0.5) * 3,
+        vy: 2 + Math.random() * 4,
+        rot: Math.random() * 360,
+        rotV: (Math.random() - 0.5) * 8,
+        opacity: 1
+      });
+    }
+
+    var startTime = Date.now();
+    var duration  = 3500; // ms
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      var elapsed = Date.now() - startTime;
+      var fade = Math.max(0, 1 - elapsed / duration);
+
+      particles.forEach(function (p) {
+        p.x  += p.vx;
+        p.y  += p.vy;
+        p.rot += p.rotV;
+        p.vy  += 0.08; // gravity
+
+        ctx.save();
+        ctx.globalAlpha = fade;
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rot * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+        ctx.restore();
+      });
+
+      if (elapsed < duration) {
+        requestAnimationFrame(draw);
+      } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  function initContactForm() {
+    var forms = document.querySelectorAll('.contact-form');
+    if (!forms.length) return;
+
+    forms.forEach(function (form) {
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        // Show success message
+        var existing = form.querySelector('.form-success');
+        if (!existing) {
+          var successDiv = document.createElement('div');
+          successDiv.className = 'form-success';
+          successDiv.innerHTML = '<span class="form-success-icon">✓</span>'
+            + '<span>Thank you! Your message has been received. We\'ll be in touch soon.</span>';
+          form.appendChild(successDiv);
+        }
+
+        // Launch confetti
+        createConfetti();
+
+        // Reset after delay
+        setTimeout(function () {
+          form.reset();
+          var msg = form.querySelector('.form-success');
+          if (msg) {
+            msg.style.opacity = '0';
+            msg.style.transition = 'opacity 0.4s';
+            setTimeout(function () { if (msg.parentNode) msg.parentNode.removeChild(msg); }, 400);
+          }
+        }, 4000);
+      });
+    });
+  }
+
+  /* =====================================================
+     SECTION 18: REVENUE PCT BAR ANIMATION
+     Animates .revenue-pct-fill bars on scroll
+     ===================================================== */
+  function initRevenueBars() {
+    var bars = document.querySelectorAll('.revenue-pct-fill');
+    if (!bars.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      bars.forEach(function (bar) {
+        bar.style.width = (bar.getAttribute('data-width') || bar.style.width || '50%');
+      });
+      return;
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var w = entry.target.getAttribute('data-width') || '50';
+          entry.target.style.width = w + '%';
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    bars.forEach(function (bar) {
+      bar.style.width = '0%';
+      obs.observe(bar);
+    });
+  }
+
+  /* =====================================================
+     SECTION 19: ACCORDION
+     Simple show/hide for .accordion-item
+     ===================================================== */
+  function initAccordions() {
+    var triggers = document.querySelectorAll('.accordion-trigger');
+    if (!triggers.length) return;
+
+    triggers.forEach(function (trigger) {
+      trigger.addEventListener('click', function () {
+        var item = trigger.closest('.accordion-item');
+        if (!item) return;
+        var isOpen = item.classList.contains('open');
+
+        // Close all in same parent
+        var parent = item.parentElement;
+        parent.querySelectorAll('.accordion-item.open').forEach(function (openItem) {
+          openItem.classList.remove('open');
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+  }
+
+  /* =====================================================
+     SECTION 20: TABS
+     Tab buttons with .tab-btn / .tab-panel
+     ===================================================== */
+  function initTabs() {
+    var tabContainers = document.querySelectorAll('[data-tabs]');
+    if (!tabContainers.length) return;
+
+    tabContainers.forEach(function (container) {
+      var btns   = container.querySelectorAll('.tab-btn');
+      var panels = container.querySelectorAll('.tab-panel');
+
+      btns.forEach(function (btn, index) {
+        btn.addEventListener('click', function () {
+          btns.forEach(function (b) { b.classList.remove('active'); });
+          panels.forEach(function (p) { p.classList.remove('active'); });
+          btn.classList.add('active');
+          if (panels[index]) panels[index].classList.add('active');
+        });
+      });
+
+      // Activate first by default
+      if (btns[0])   btns[0].classList.add('active');
+      if (panels[0]) panels[0].classList.add('active');
+    });
+  }
+
+  /* =====================================================
+     SECTION 21: PROGRESS BARS
+     Animates .progress-fill on scroll
+     ===================================================== */
+  function initProgressBars() {
+    var bars = document.querySelectorAll('.progress-fill');
+    if (!bars.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      bars.forEach(function (bar) {
+        bar.style.width = (bar.getAttribute('data-width') || '70') + '%';
+      });
+      return;
+    }
+
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.style.width = (entry.target.getAttribute('data-width') || '70') + '%';
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    bars.forEach(function (bar) {
+      bar.style.width = '0%';
+      obs.observe(bar);
+    });
+  }
+
+  /* =====================================================
+     SECTION 22: SMOOTH ANCHOR SCROLLING
+     Internal #anchor links scroll smoothly
+     ===================================================== */
+  function initSmoothAnchors() {
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="#"]');
+      if (!link) return;
+      var hash = link.getAttribute('href');
+      if (hash === '#') return;
+      var target = document.querySelector(hash);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+
+  /* =====================================================
+     SECTION 23: WORLD MAP ANIMATION
+     Animates SVG nodes and connections on the map
+     ===================================================== */
+  function initWorldMap() {
+    var mapNodes = document.querySelectorAll('.map-node');
+    if (!mapNodes.length) return;
+
+    // Stagger pulse animations
+    mapNodes.forEach(function (node, i) {
+      node.style.animationDelay = (i * 0.4) + 's';
+    });
+
+    var pulseOuters = document.querySelectorAll('.pulse-outer');
+    pulseOuters.forEach(function (el, i) {
+      el.style.animationDelay = (i * 0.6) + 's';
+    });
+  }
+
+  /* =====================================================
+     SECTION 24: FLOATING NUMBERS / SPARKLE HERO EFFECT
+     Creates small floating number elements behind hero
+     ===================================================== */
+  function initHeroSparkle() {
+    var hero = document.querySelector('.hero');
+    if (!hero) return;
+    if (window.matchMedia('(max-width: 768px)').matches) return;
+
+    var symbols = ['+2.4%', '$', '€', '¥', '£', '98.3', '↑', '7.12%', '1.0832'];
+    for (var i = 0; i < 12; i++) {
+      (function (idx) {
+        var span = document.createElement('span');
+        span.textContent = symbols[idx % symbols.length];
+        span.style.cssText = [
+          'position:absolute',
+          'color:rgba(255,255,255,0.06)',
+          'font-size:' + (12 + Math.random() * 18) + 'px',
+          'font-weight:700',
+          'left:' + (Math.random() * 90) + '%',
+          'top:' + (10 + Math.random() * 80) + '%',
+          'pointer-events:none',
+          'user-select:none',
+          'animation:float ' + (4 + Math.random() * 4) + 's ease-in-out ' + (Math.random() * 3) + 's infinite',
+          'z-index:1'
+        ].join(';');
+        hero.appendChild(span);
+      })(i);
+    }
+  }
+
+  /* =====================================================
+     SECTION 25: INITIALIZE EVERYTHING
+     Called on DOMContentLoaded
+     ===================================================== */
+  function init() {
+    initPageTransition();
+    initNavbarScroll();
+    initMobileMenu();
+    initScrollAnimations();
+    initCounters();
+    initTypingEffect();
+    initAIMetricBars();
+    fetchTicker();
+    initConverter();
+    initCharts();
+    initMarketOverview();
+    initCardTilt();
+    initMagneticButtons();
+    initParallax();
+    initScrollTop();
+    initActiveNav();
+    initContactForm();
+    initRevenueBars();
+    initAccordions();
+    initTabs();
+    initProgressBars();
+    initSmoothAnchors();
+    initWorldMap();
+    initHeroSparkle();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 
 }());
