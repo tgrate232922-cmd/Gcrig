@@ -3,149 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>About Us — GCRIG</title>
-  <meta name="description" content="Learn about GCRIG's history, mission, and vision to revolutionise emerging market credit intelligence globally." />
+  <title>About — GCRIG Global Cash Recycle Investment Group</title>
+  <meta name="description" content="Learn about GCRIG — Global Cash Recycle Investment Group. Founded in 2009, we channel surplus global liquidity into emerging market opportunities across 50+ countries." />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
+<!-- PAGE TRANSITION OVERLAY -->
+<div class="page-transition" aria-hidden="true"></div>
 <!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-logo">
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-container container">
+    <a href="index.html" class="nav-logo" aria-label="GCRIG Home">
       <div class="nav-logo-icon">GC</div>
       <div class="nav-logo-text">
         <span class="nav-logo-name">GCRIG</span>
         <span class="nav-logo-tagline">Global Cash Recycle Investment</span>
       </div>
     </a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="crb-network.html" class="nav-link">CRB Network</a>
-      <a href="services.html" class="nav-link">Services</a>
-      <a href="technology.html" class="nav-link">Technology</a>
-      <a href="investor-solutions.html" class="nav-link">Investors</a>
-      <a href="business-model.html" class="nav-link">Business Model</a>
-      <a href="vision-mission.html" class="nav-link">Vision</a>
+    <div class="nav-links" id="nav-links" role="menubar">
+      <div class="nav-item nav-dropdown">
+        <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+          Solutions
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="dropdown-menu" role="menu">
+          <div class="dropdown-grid">
+            <a href="services.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">AI Credit Ratings</span><span class="dropdown-item-desc">Real-time sovereign risk scores</span></span>
+            </a>
+            <a href="technology.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">AI Technology</span><span class="dropdown-item-desc">Machine learning infrastructure</span></span>
+            </a>
+            <a href="crb-network.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">CRB Network</span><span class="dropdown-item-desc">340+ global cash recycle bridges</span></span>
+            </a>
+            <a href="investor-solutions.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">Investor Solutions</span><span class="dropdown-item-desc">Institutional &amp; retail offerings</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item nav-dropdown">
+        <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+          Company
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="dropdown-menu" role="menu">
+          <div class="dropdown-grid">
+            <a href="about.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">About GCRIG</span><span class="dropdown-item-desc">Our story and leadership team</span></span>
+            </a>
+            <a href="business-model.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">Business Model</span><span class="dropdown-item-desc">How GCRIG creates value</span></span>
+            </a>
+            <a href="vision-mission.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">Vision &amp; Mission</span><span class="dropdown-item-desc">Our purpose and long-term goals</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="crb-network.html" class="nav-link" role="menuitem">CRB Network</a>
+      <a href="investor-solutions.html" class="nav-link" role="menuitem">Investors</a>
     </div>
     <div class="nav-cta">
-      <a href="investor-solutions.html" class="btn btn-primary btn-nav">Get Started</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <a href="investor-solutions.html" class="btn btn-primary btn-sm magnetic-btn">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
-<div class="mobile-menu" id="mobile-menu">
-  <a href="index.html" class="nav-link">Home</a>
-  <a href="about.html" class="nav-link active">About</a>
-  <a href="crb-network.html" class="nav-link">CRB Network</a>
-  <a href="services.html" class="nav-link">Services</a>
-  <a href="technology.html" class="nav-link">Technology</a>
-  <a href="investor-solutions.html" class="nav-link">Investor Solutions</a>
-  <a href="business-model.html" class="nav-link">Business Model</a>
-  <a href="vision-mission.html" class="nav-link">Vision &amp; Mission</a>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+  <div class="mobile-menu-header">
+    <a href="index.html" class="nav-logo" aria-label="GCRIG Home">
+      <div class="nav-logo-icon">GC</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">GCRIG</span>
+        <span class="nav-logo-tagline">Global Cash Recycle Investment</span>
+      </div>
+    </a>
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu-nav" aria-label="Mobile navigation links">
+    <div class="mobile-section-label">Solutions</div>
+    <a href="services.html" class="mobile-nav-link">AI Credit Ratings</a>
+    <a href="technology.html" class="mobile-nav-link">AI Technology</a>
+    <a href="crb-network.html" class="mobile-nav-link">CRB Network</a>
+    <a href="investor-solutions.html" class="mobile-nav-link">Investor Solutions</a>
+    <div class="mobile-section-label">Company</div>
+    <a href="about.html" class="mobile-nav-link">About GCRIG</a>
+    <a href="business-model.html" class="mobile-nav-link">Business Model</a>
+    <a href="vision-mission.html" class="mobile-nav-link">Vision &amp; Mission</a>
+  </nav>
   <div class="mobile-menu-footer">
-    <a href="investor-solutions.html" class="btn btn-primary btn-lg">Get Started</a>
+    <a href="investor-solutions.html" class="btn btn-primary btn-lg" style="width:100%;text-align:center;">Get Started Today</a>
   </div>
 </div>
+<div class="mobile-menu-backdrop" id="mobile-menu-backdrop" aria-hidden="true"></div>
 
 <!-- CURRENCY TICKER -->
-<div class="ticker-bar" id="currency-ticker">
-  <div class="ticker-track" id="ticker-track">
-    <!-- Populated by JS -->
+<div class="ticker-bar" id="currency-ticker" aria-label="Live currency rates ticker" role="marquee">
+  <div class="ticker-label" aria-hidden="true">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    LIVE
   </div>
+  <div class="ticker-track" id="ticker-track" aria-live="off"></div>
 </div>
 
 <!-- PAGE HERO -->
-<section class="page-hero">
+<section class="page-hero section--dark" aria-label="Page hero">
   <div class="container">
-    <div class="page-hero-breadcrumb">
-      <a href="index.html">Home</a>
-      <span>/</span>
-      <span class="current">About Us</span>
-    </div>
-    <div class="section-tag">Our Story</div>
-    <h1 class="page-hero-title">Built for the <span class="gradient-text">Future of Finance</span></h1>
-    <p class="page-hero-subtitle">GCRIG was founded with a singular mission: to democratise access to high-quality credit intelligence for emerging markets and close the information gap that has long held back institutional investment in these regions.</p>
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="index.html" class="breadcrumb-link">Home</a>
+      <span class="breadcrumb-sep" aria-hidden="true">/</span>
+      <span class="breadcrumb-current">About</span>
+    </nav>
+    <h1 class="page-hero-title reveal">About <span class="gradient-text">GCRIG</span></h1>
+    <p class="page-hero-subtitle reveal">Building bridges between global capital and emerging market opportunities since 2009.</p>
   </div>
 </section>
 
 <!-- COMPANY OVERVIEW -->
-<section class="section">
+<section class="section section--light" id="overview" aria-label="Company overview">
   <div class="container">
-    <div class="feature-row">
-      <div class="slide-left">
-        <div class="section-tag">Who We Are</div>
-        <h2 class="section-title">Global Cash Recycle <span class="gradient-text">Investment Group</span></h2>
-        <p class="section-subtitle mb-24">GCRIG is an independent, AI-powered financial intelligence firm with a presence spanning key global financial hubs, including London, Dubai, Singapore, New York, and beyond.</p>
-        <p class="body-text mb-20">We bridge the structural information gap between global institutional capital and high-potential emerging market opportunities. Our proprietary Cash Recycle Bridge (CRB) Network and AI advisory engine provide the transparency, data, and connectivity that institutional investors need to deploy capital with confidence.</p>
-        <p class="body-text">GCRIG operates across the full investment lifecycle — from initial credit assessment and risk scoring to deal origination, due diligence support, and ongoing portfolio monitoring.</p>
-        <div class="mt-32 stat-inline-group">
-          <div>
-            <div class="stat-inline-number">2009</div>
-            <div class="stat-inline-label">Year Founded</div>
+    <div class="_2-column-grid feature-row">
+      <div class="feature-text reveal">
+        <span class="section-tag">OUR STORY</span>
+        <h2 class="section-title">Pioneering Global Cash Recycling</h2>
+        <p class="section-body">Founded in London in 2009, GCRIG — Global Cash Recycle Investment Group — was established to address a critical gap in global finance: the mismatch between surplus capital sitting idle in developed markets and high-yield investment opportunities in emerging economies.</p>
+        <p class="section-body" style="margin-top:1rem;">Over 15+ years, we have built a world-class platform that channels surplus liquidity into structured investment opportunities across Africa, Asia, the Middle East, and Latin America, operating from 6+ global hubs with 180+ team members covering operations in 50+ countries.</p>
+        <div class="inline-stats reveal" style="display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;">
+          <div class="inline-stat">
+            <span class="inline-stat-num gradient-text" data-count="50" data-suffix="+">50+</span>
+            <span class="inline-stat-label">Countries</span>
           </div>
-          <div>
-            <div class="stat-inline-number">6+</div>
-            <div class="stat-inline-label">Global Hubs</div>
+          <div class="inline-stat">
+            <span class="inline-stat-num gradient-text" data-prefix="$" data-count="2.4" data-suffix="B" data-decimals="1">$2.4B</span>
+            <span class="inline-stat-label">AUA</span>
           </div>
-          <div>
-            <div class="stat-inline-number">180+</div>
-            <div class="stat-inline-label">Team Members</div>
-          </div>
-          <div>
-            <div class="stat-inline-number-blue">50+</div>
-            <div class="stat-inline-label">Countries Covered</div>
+          <div class="inline-stat">
+            <span class="inline-stat-num gradient-text" data-count="180" data-suffix="+">180+</span>
+            <span class="inline-stat-label">Team Members</span>
           </div>
         </div>
       </div>
-      <div class="slide-right">
-        <div class="feature-visual feature-visual-gradient feature-visual-col">
-          <div class="badge badge-gold">Independent &amp; Unbiased</div>
-          <h3 class="feature-inner-title">Why GCRIG Is Different</h3>
-          <div class="feature-list mt-0">
-            <div class="feature-item">
-              <div class="feature-item-icon feature-item-icon-purple">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="feature-item-text">
-                <h4>No Ratings Shopping</h4>
-                <p>We are issuer-agnostic — our ratings are commissioned by investors, not issuers, eliminating conflicts of interest.</p>
-              </div>
+      <div class="feature-visual reveal">
+        <div class="glass-card" style="background:var(--gradient-hero);border:1px solid rgba(123,47,242,0.3);padding:2rem;">
+          <h3 style="color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:1.5rem;">Why GCRIG is Different</h3>
+          <div class="diff-item" style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+            <span style="background:var(--gradient-primary);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </span>
+            <div>
+              <strong style="color:#fff;display:block;font-size:0.95rem;">No Ratings Shopping</strong>
+              <span style="color:var(--color-text-muted);font-size:0.85rem;">Independent methodology, not swayed by client preferences</span>
             </div>
-            <div class="feature-item">
-              <div class="feature-item-icon feature-item-icon-purple">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="feature-item-text">
-                <h4>Emerging Market Specialists</h4>
-                <p>100% focused on frontier and emerging markets — not an afterthought division of a global conglomerate.</p>
-              </div>
+          </div>
+          <div class="diff-item" style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+            <span style="background:var(--gradient-teal);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 010 20"/></svg>
+            </span>
+            <div>
+              <strong style="color:#fff;display:block;font-size:0.95rem;">Emerging Market Specialists</strong>
+              <span style="color:var(--color-text-muted);font-size:0.85rem;">Deep regional expertise in Africa, Asia, Middle East, LatAm</span>
             </div>
-            <div class="feature-item">
-              <div class="feature-item-icon feature-item-icon-purple">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="feature-item-text">
-                <h4>Technology-First</h4>
-                <p>AI-augmented analysis that processes information 50x faster than traditional methods while improving accuracy.</p>
-              </div>
+          </div>
+          <div class="diff-item" style="display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.25rem;">
+            <span style="background:var(--gradient-gold);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+            </span>
+            <div>
+              <strong style="color:#fff;display:block;font-size:0.95rem;">Technology-First</strong>
+              <span style="color:var(--color-text-muted);font-size:0.85rem;">AI-powered analysis processing 200+ data points per entity</span>
             </div>
-            <div class="feature-item">
-              <div class="feature-item-icon feature-item-icon-purple">
-                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
-              </div>
-              <div class="feature-item-text">
-                <h4>Network Effect</h4>
-                <p>Our CRB Network creates a proprietary data moat that grows stronger with every new member and transaction.</p>
-              </div>
+          </div>
+          <div class="diff-item" style="display:flex;gap:1rem;align-items:flex-start;">
+            <span style="background:linear-gradient(135deg,#9B4FFF,#7B2FF2);width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+            </span>
+            <div>
+              <strong style="color:#fff;display:block;font-size:0.95rem;">Network Effect</strong>
+              <span style="color:var(--color-text-muted);font-size:0.85rem;">Each new CRB member strengthens intelligence for all participants</span>
             </div>
           </div>
         </div>
@@ -154,147 +207,229 @@
   </div>
 </section>
 
-<!-- TIMELINE -->
-<section class="section bg-navy-2">
+<!-- TEAM SECTION -->
+<section class="section section--dark" id="team" aria-label="Our team">
   <div class="container">
-    <div class="section-header">
-      <div class="section-tag">Our Journey</div>
-      <h2 class="section-title">Milestones &amp; <span class="gradient-text">Growth</span></h2>
-      <p class="section-subtitle">From a small research boutique to a global credit intelligence platform — our journey reflects the growing demand for emerging market insight.</p>
+    <div class="section-header reveal" style="text-align:center;margin-bottom:3rem;">
+      <span class="section-tag">OUR TEAM</span>
+      <h2 class="section-title" style="color:#fff;">180+ Experts Across the Globe</h2>
+      <p class="section-subtitle" style="color:var(--color-text-muted);">Our diverse team of analysts, technologists, and advisors brings deep regional expertise to every engagement.</p>
     </div>
-    <div class="grid-2 grid-align-start">
-      <div class="timeline fade-up">
-        <div class="timeline-item">
-          <div class="timeline-year">2009</div>
-          <div class="timeline-title">Founded in London</div>
-          <p class="timeline-text">GCRIG established as an independent credit research boutique focused on Sub-Saharan Africa. Initial team of 8 analysts with deep regional expertise.</p>
+    <div class="grid-3 reveal">
+      <div class="glass-card team-card" style="padding:2rem;text-align:center;">
+        <div style="width:64px;height:64px;background:var(--gradient-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2012</div>
-          <div class="timeline-title">Middle East &amp; North Africa Expansion</div>
-          <p class="timeline-text">Opened Dubai regional hub and launched MENA coverage. Grew research coverage to 25 sovereign and 100+ corporate entities.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2015</div>
-          <div class="timeline-title">Asia-Pacific Entry &amp; Series A Funding</div>
-          <p class="timeline-text">Singapore office opened. Raised Series A funding of $12M to accelerate technology development and geographic expansion into Southeast Asia.</p>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2017</div>
-          <div class="timeline-title">AI Platform Launch</div>
-          <p class="timeline-text">Launched the first version of our proprietary AI advisory engine, integrating machine learning models for real-time credit scoring across all coverage universes.</p>
+        <h3 style="color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;">Global Research Team</h3>
+        <p style="color:var(--color-text-muted);font-size:0.9rem;margin-bottom:1rem;">80+ analysts covering emerging markets across 25+ countries with deep local knowledge and on-the-ground intelligence networks.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;">
+          <div style="text-align:center;"><span style="color:var(--color-gold);font-size:1.4rem;font-weight:800;">80+</span><br><span style="color:var(--color-text-muted);font-size:0.75rem;">Analysts</span></div>
+          <div style="text-align:center;"><span style="color:var(--color-gold);font-size:1.4rem;font-weight:800;">25+</span><br><span style="color:var(--color-text-muted);font-size:0.75rem;">Countries</span></div>
         </div>
       </div>
-      <div class="timeline fade-up delay-2">
-        <div class="timeline-item">
-          <div class="timeline-year">2019</div>
-          <div class="timeline-title">CRB Network Beta Launch</div>
-          <p class="timeline-text">Introduced the Credit Rating Bridge Network concept with 50 founding members. Connected institutional investors directly with vetted emerging market deal flow.</p>
+      <div class="glass-card team-card" style="padding:2rem;text-align:center;">
+        <div style="width:64px;height:64px;background:var(--gradient-teal);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2021</div>
-          <div class="timeline-title">Global Scale — 340+ Partners</div>
-          <p class="timeline-text">CRB Network surpassed 340 institutional members. Expanded Americas coverage with New York and São Paulo offices. Series B funding of $45M closed.</p>
+        <h3 style="color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;">Technology Division</h3>
+        <p style="color:var(--color-text-muted);font-size:0.9rem;margin-bottom:1rem;">40+ engineers and data scientists specializing in AI/ML, NLP, and alternative data processing for financial intelligence applications.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;">
+          <div style="text-align:center;"><span style="color:var(--color-teal);font-size:1.4rem;font-weight:800;">40+</span><br><span style="color:var(--color-text-muted);font-size:0.75rem;">Engineers</span></div>
+          <div style="text-align:center;"><span style="color:var(--color-teal);font-size:1.4rem;font-weight:800;">$40M+</span><br><span style="color:var(--color-text-muted);font-size:0.75rem;">R&amp;D</span></div>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2023</div>
-          <div class="timeline-title">ESG Intelligence Integration</div>
-          <p class="timeline-text">Launched comprehensive ESG scoring module. Became the first emerging market intelligence provider to embed climate risk quantification into sovereign credit ratings.</p>
+      </div>
+      <div class="glass-card team-card" style="padding:2rem;text-align:center;">
+        <div style="width:64px;height:64px;background:var(--gradient-gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
         </div>
-        <div class="timeline-item">
-          <div class="timeline-year">2025</div>
-          <div class="timeline-title">GCRIG 2.0 — AI Advisory Engine</div>
-          <p class="timeline-text">Launched next-generation AI platform. Achieved $2.4B in assets under advisory. Recognised as the leading emerging market credit intelligence platform globally.</p>
+        <h3 style="color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:0.5rem;">Advisory Network</h3>
+        <p style="color:var(--color-text-muted);font-size:0.9rem;margin-bottom:1rem;">60+ senior advisors including former central bank officials, finance ministers, and institutional investment professionals across all regions.</p>
+        <div style="display:flex;gap:1rem;justify-content:center;">
+          <div style="text-align:center;"><span style="color:var(--color-gold);font-size:1.4rem;font-weight:800;">60+</span><br><span style="color:var(--color-text-muted);font-size:0.75rem;">Advisors</span></div>
+          <div style="text-align:center;"><span style="color:var(--color-gold);font-size:1.4rem;font-weight:800;">6+</span><br><span style="color:var(--color-text-muted);font-size:0.75rem;">Global Hubs</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-
-<!-- CTA -->
-<section class="cta-section">
+<!-- TIMELINE SECTION -->
+<section class="section section--light" id="timeline" aria-label="Company timeline">
   <div class="container">
-    <h2 class="cta-title">Partner with <span class="text-gradient">GCRIG</span></h2>
-    <p class="cta-subtitle">Discover how our team and platform can help you access emerging market opportunities with confidence.</p>
-    <div class="cta-actions">
-      <a href="investor-solutions.html" class="btn btn-primary btn-lg">Explore Solutions</a>
-      <a href="vision-mission.html" class="btn btn-secondary btn-lg">Our Vision &amp; Mission</a>
+    <div class="section-header reveal" style="text-align:center;margin-bottom:3rem;">
+      <span class="section-tag">OUR JOURNEY</span>
+      <h2 class="section-title">15+ Years of Innovation</h2>
+      <p class="section-subtitle">A decade and a half transforming emerging market investment intelligence</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <div class="timeline-year">2009</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">Founding</h3>
+          <p class="timeline-desc">Founded in London, initial focus on Sub-Saharan African credit intelligence and investment facilitation.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2011</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">CRB Network Launch</h3>
+          <p class="timeline-desc">Launched the Cash Recycle Bridge (CRB) Network with 12 founding members across 5 countries.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2013</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">Regional Expansion</h3>
+          <p class="timeline-desc">Expanded to Middle East &amp; Asia Pacific, growing to 50+ network members across three continents.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2015</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">AI Credit Scoring</h3>
+          <p class="timeline-desc">Introduced first AI-powered credit scoring model specifically designed for emerging market dynamics.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2017</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">$500M Milestone</h3>
+          <p class="timeline-desc">Reached $500M in total deal flow facilitated through the CRB Network — a landmark achievement.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">AI Engine 2.0</h3>
+          <p class="timeline-desc">Launched second-generation AI engine with NLP capabilities and alternative data integration.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">$2B+ Deal Flow</h3>
+          <p class="timeline-desc">Surpassed 300 CRB members across 50+ countries with $2B+ cumulative deal flow facilitated.</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-content">
+          <h3 class="timeline-title">AI Advisory Engine 3.0</h3>
+          <p class="timeline-desc">GCRIG AI Advisory Engine 3.0 launched achieving 94%+ prediction accuracy — setting a new industry standard.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer">
+<!-- GLOBAL PRESENCE STATS -->
+<section class="stats-bar section--dark" aria-label="Global presence statistics">
   <div class="container">
-    <div class="footer-top">
+    <div class="stats-grid reveal">
+      <div class="stat-card">
+        <div class="stat-number gradient-text" data-count="15" data-suffix="+">15+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number gradient-text" data-count="2400" data-suffix="+">2400+</div>
+        <div class="stat-label">Deals Executed</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number gradient-text" data-count="50" data-suffix="+">50+</div>
+        <div class="stat-label">Markets Covered</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number gradient-text" data-count="340" data-suffix="+">340+</div>
+        <div class="stat-label">Global Partners</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number gradient-text" data-count="98" data-suffix="%">98%</div>
+        <div class="stat-label">Client Satisfaction</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section section--dark" aria-label="Call to action">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <h2 class="cta-title">Ready to Access Global Investment Opportunities?</h2>
+      <p class="cta-subtitle">Join 340+ institutional partners across 50+ countries leveraging GCRIG's AI-powered intelligence.</p>
+      <div class="cta-actions">
+        <a href="investor-solutions.html" class="btn btn-primary btn-lg magnetic-btn">Get Started Today</a>
+        <a href="crb-network.html" class="btn btn-outline btn-lg">Explore CRB Network</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer section--dark" role="contentinfo" aria-label="Site footer">
+  <div class="container">
+    <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo">
+        <a href="index.html" class="nav-logo footer-logo" aria-label="GCRIG Home">
           <div class="nav-logo-icon">GC</div>
           <div class="nav-logo-text">
             <span class="nav-logo-name">GCRIG</span>
             <span class="nav-logo-tagline">Global Cash Recycle Investment</span>
           </div>
         </a>
-        <p class="footer-tagline">Connecting global institutional capital with emerging market opportunities through AI-driven credit intelligence.</p>
-        <div class="footer-socials">
-          <a href="#" class="footer-social-link" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <p class="footer-brand-desc">GCRIG channels surplus global liquidity into high-yield emerging market opportunities through our AI-driven Cash Recycle Bridge (CRB) Network, spanning 50+ countries.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="https://linkedin.com" class="footer-social-link" aria-label="GCRIG on LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
-          <a href="#" class="footer-social-link" aria-label="Twitter/X">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          <a href="https://twitter.com" class="footer-social-link" aria-label="GCRIG on Twitter" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
           </a>
-          <a href="#" class="footer-social-link" aria-label="Email">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:invest@gcrig.com" class="footer-social-link" aria-label="Email GCRIG">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </a>
         </div>
       </div>
-      <div>
+      <nav class="footer-col" aria-label="Company navigation">
         <h4 class="footer-col-title">Company</h4>
-        <nav class="footer-links">
-          <a href="about.html" class="footer-link">About Us</a>
-          <a href="vision-mission.html" class="footer-link">Vision &amp; Mission</a>
-          <a href="business-model.html" class="footer-link">Business Model</a>
-          <a href="#" class="footer-link">Careers</a>
-          <a href="#" class="footer-link">Press &amp; Media</a>
-        </nav>
-      </div>
-      <div>
+        <ul class="footer-links" role="list">
+          <li><a href="about.html" class="footer-link">About GCRIG</a></li>
+          <li><a href="business-model.html" class="footer-link">Business Model</a></li>
+          <li><a href="vision-mission.html" class="footer-link">Vision &amp; Mission</a></li>
+          <li><a href="about.html#careers" class="footer-link">Careers</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Services navigation">
         <h4 class="footer-col-title">Services</h4>
-        <nav class="footer-links">
-          <a href="services.html" class="footer-link">Credit Ratings</a>
-          <a href="crb-network.html" class="footer-link">CRB Network</a>
-          <a href="technology.html" class="footer-link">Technology</a>
-          <a href="investor-solutions.html" class="footer-link">Investor Solutions</a>
-          <a href="services.html" class="footer-link">Risk Management</a>
-        </nav>
-      </div>
-      <div>
+        <ul class="footer-links" role="list">
+          <li><a href="services.html" class="footer-link">AI Credit Ratings</a></li>
+          <li><a href="crb-network.html" class="footer-link">CRB Network</a></li>
+          <li><a href="investor-solutions.html" class="footer-link">Investment Intelligence</a></li>
+          <li><a href="technology.html" class="footer-link">Technology</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Legal navigation">
         <h4 class="footer-col-title">Legal</h4>
-        <nav class="footer-links">
-          <a href="#" class="footer-link">Privacy Policy</a>
-          <a href="#" class="footer-link">Terms of Service</a>
-          <a href="#" class="footer-link">Disclaimer</a>
-          <a href="#" class="footer-link">Regulatory Info</a>
-          <a href="#" class="footer-link">Cookie Policy</a>
-        </nav>
-      </div>
+        <ul class="footer-links" role="list">
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Terms of Service</a></li>
+          <li><a href="#" class="footer-link">Disclaimer</a></li>
+          <li><a href="#" class="footer-link">Compliance</a></li>
+        </ul>
+      </nav>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copyright">&copy; 2025 GCRIG — Global Cash Recycle Investment Group. All rights reserved.</p>
-      <nav class="footer-legal">
-        <a href="#" class="footer-legal-link">Privacy</a>
-        <a href="#" class="footer-legal-link">Terms</a>
-        <a href="#" class="footer-legal-link">Cookies</a>
-        <a href="#" class="footer-legal-link">Regulatory</a>
-      </nav>
-      <p class="footer-location">Global Operations | Multiple Jurisdictions</p>
-    </div>
-    <div class="footer-disclaimer">
-      <strong>Important Disclaimer:</strong> GCRIG provides credit intelligence and advisory services for informational purposes only. Nothing on this website constitutes financial advice, an offer to buy or sell securities, or a guarantee of investment returns. All investments carry risk. Past performance is not indicative of future results.
+      <p class="footer-copyright">&copy; <span id="footer-year">2025</span> GCRIG &mdash; Global Cash Recycle Investment Group. All rights reserved.</p>
+      <p class="footer-disclaimer"><strong>Important Disclaimer:</strong> GCRIG provides financial intelligence and advisory services. The information on this website does not constitute investment advice or a solicitation to invest. Past performance is not indicative of future results. All investments carry risk, including the potential loss of capital. Please consult your financial advisor before making investment decisions.</p>
     </div>
   </div>
 </footer>
+
+<button class="scroll-top" id="scroll-top" aria-label="Scroll to top of page" title="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script src="js/main.js"></script>
+</body>
+</html>
 
 <script src="js/main.js"></script>
 </body>

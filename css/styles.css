@@ -2,7 +2,7 @@
    GCRIG - Global Cash Recycle Investment Group
    Premium Dark Fintech Stylesheet
    Design: Purple / Navy / Gold Color System
-   Font: Inter (Google Fonts)
+   Font: Montserrat (Google Fonts)
    =================================================== */
 
 /* ===================================================
@@ -51,7 +51,7 @@
   --transition-slow: 0.4s ease;
 
   /* Typography */
-  --font-primary: 'Inter', sans-serif;
+  --font-primary: 'Montserrat', sans-serif;
 
   /* Layout */
   --container-max: 1280px;
