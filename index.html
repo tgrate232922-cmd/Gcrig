@@ -4,665 +4,888 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GCRIG — Global Cash Recycle Investment Group</title>
-  <meta name="description" content="GCRIG — Global Cash Recycle Investment Group — channels surplus global liquidity into emerging market investment opportunities through our AI-driven Cash Recycle Bridge (CRB) Network." />
+  <meta name="description" content="GCRIG channels surplus global liquidity into high-yield emerging market opportunities through our AI-driven Cash Recycle Bridge (CRB) Network, spanning 50+ countries worldwide." />
+  <meta name="keywords" content="GCRIG, Cash Recycle, Investment Group, CRB Network, AI Credit Ratings, Emerging Markets, Global Investment" />
+  <meta property="og:title" content="GCRIG — Global Cash Recycle Investment Group" />
+  <meta property="og:description" content="AI-powered platform recycling global cash into investment opportunities across 50+ countries." />
+  <meta property="og:type" content="website" />
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
 
+<!-- PAGE TRANSITION OVERLAY -->
+<div class="page-transition" aria-hidden="true"></div>
 <!-- NAVBAR -->
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-logo">
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-container container">
+    <a href="index.html" class="nav-logo" aria-label="GCRIG Home">
       <div class="nav-logo-icon">GC</div>
       <div class="nav-logo-text">
         <span class="nav-logo-name">GCRIG</span>
         <span class="nav-logo-tagline">Global Cash Recycle Investment</span>
       </div>
     </a>
-    <div class="nav-links">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="crb-network.html" class="nav-link">CRB Network</a>
-      <a href="services.html" class="nav-link">Services</a>
-      <a href="technology.html" class="nav-link">Technology</a>
-      <a href="investor-solutions.html" class="nav-link">Investors</a>
-      <a href="business-model.html" class="nav-link">Business Model</a>
-      <a href="vision-mission.html" class="nav-link">Vision</a>
+    <div class="nav-links" id="nav-links" role="menubar">
+      <div class="nav-item nav-dropdown">
+        <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+          Solutions
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="dropdown-menu" role="menu">
+          <div class="dropdown-grid">
+            <a href="services.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">AI Credit Ratings</span><span class="dropdown-item-desc">Real-time sovereign risk scores</span></span>
+            </a>
+            <a href="technology.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">AI Technology</span><span class="dropdown-item-desc">Machine learning infrastructure</span></span>
+            </a>
+            <a href="crb-network.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">CRB Network</span><span class="dropdown-item-desc">340+ global cash recycle bridges</span></span>
+            </a>
+            <a href="investor-solutions.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">Investor Solutions</span><span class="dropdown-item-desc">Institutional &amp; retail offerings</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item nav-dropdown">
+        <a href="#" class="nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="menuitem">
+          Company
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true" class="dropdown-arrow"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <div class="dropdown-menu" role="menu">
+          <div class="dropdown-grid">
+            <a href="about.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">About GCRIG</span><span class="dropdown-item-desc">Our story and leadership team</span></span>
+            </a>
+            <a href="business-model.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">Business Model</span><span class="dropdown-item-desc">How GCRIG creates value</span></span>
+            </a>
+            <a href="vision-mission.html" class="dropdown-item" role="menuitem">
+              <span class="dropdown-item-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg></span>
+              <span class="dropdown-item-content"><span class="dropdown-item-title">Vision &amp; Mission</span><span class="dropdown-item-desc">Our purpose and long-term goals</span></span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <a href="crb-network.html" class="nav-link" role="menuitem">CRB Network</a>
+      <a href="investor-solutions.html" class="nav-link" role="menuitem">Investors</a>
     </div>
     <div class="nav-cta">
-      <a href="investor-solutions.html" class="btn btn-primary btn-nav">Get Started</a>
-      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <a href="investor-solutions.html" class="btn btn-primary btn-sm magnetic-btn">Get Started</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </div>
 </nav>
-
 <!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
-  <a href="index.html" class="nav-link">Home</a>
-  <a href="about.html" class="nav-link">About</a>
-  <a href="crb-network.html" class="nav-link">CRB Network</a>
-  <a href="services.html" class="nav-link">Services</a>
-  <a href="technology.html" class="nav-link">Technology</a>
-  <a href="investor-solutions.html" class="nav-link">Investor Solutions</a>
-  <a href="business-model.html" class="nav-link">Business Model</a>
-  <a href="vision-mission.html" class="nav-link">Vision &amp; Mission</a>
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation" aria-modal="true">
+  <div class="mobile-menu-header">
+    <a href="index.html" class="nav-logo" aria-label="GCRIG Home">
+      <div class="nav-logo-icon">GC</div>
+      <div class="nav-logo-text">
+        <span class="nav-logo-name">GCRIG</span>
+        <span class="nav-logo-tagline">Global Cash Recycle Investment</span>
+      </div>
+    </a>
+    <button class="mobile-menu-close" id="mobile-menu-close" aria-label="Close menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <nav class="mobile-menu-nav" aria-label="Mobile navigation links">
+    <div class="mobile-section-label">Solutions</div>
+    <a href="services.html" class="mobile-nav-link">AI Credit Ratings</a>
+    <a href="technology.html" class="mobile-nav-link">AI Technology</a>
+    <a href="crb-network.html" class="mobile-nav-link">CRB Network</a>
+    <a href="investor-solutions.html" class="mobile-nav-link">Investor Solutions</a>
+    <div class="mobile-section-label">Company</div>
+    <a href="about.html" class="mobile-nav-link">About GCRIG</a>
+    <a href="business-model.html" class="mobile-nav-link">Business Model</a>
+    <a href="vision-mission.html" class="mobile-nav-link">Vision &amp; Mission</a>
+  </nav>
   <div class="mobile-menu-footer">
-    <a href="investor-solutions.html" class="btn btn-primary btn-lg">Get Started</a>
+    <a href="investor-solutions.html" class="btn btn-primary btn-lg" style="width:100%;text-align:center;">Get Started Today</a>
   </div>
 </div>
+<div class="mobile-menu-backdrop" id="mobile-menu-backdrop" aria-hidden="true"></div>
+
 <!-- CURRENCY TICKER -->
-<div class="ticker-bar" id="currency-ticker">
-  <div class="ticker-track" id="ticker-track">
-    <!-- Populated by JS -->
+<div class="ticker-bar" id="currency-ticker" aria-label="Live currency rates ticker" role="marquee">
+  <div class="ticker-label" aria-hidden="true">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    LIVE
   </div>
+  <div class="ticker-track" id="ticker-track" aria-live="off"></div>
 </div>
-
 <!-- HERO SECTION -->
-<section class="hero">
-  <div class="hero-content container">
-    <div class="hero-badge">
-      <span class="dot"></span>
-      AI-POWERED CASH RECYCLE PLATFORM
-    </div>
-    <h1 class="hero-title">
-      Recycling Global Cash into<br />
-      <span class="gradient-text">Investment</span> <span class="gradient-text" id="typing-text">Opportunities</span>
-    </h1>
-    <p class="hero-subtitle">
-      GCRIG — Global Cash Recycle Investment Group — channels surplus liquidity and idle capital into high-yield emerging market opportunities through our AI-driven Cash Recycle Bridge (CRB) Network, spanning 50+ countries worldwide.
-    </p>
-    <div class="hero-actions">
-      <a href="investor-solutions.html" class="btn btn-primary btn-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 17 18 12 13 7"/><polyline points="6 17 11 12 6 7"/></svg>
-        Explore Investor Solutions
-      </a>
-      <a href="crb-network.html" class="btn btn-secondary btn-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        View CRB Network
-      </a>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-number"><span data-count="50" data-suffix="+">50+</span></div>
-        <div class="hero-stat-label">Countries Covered</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-number">$<span data-count="2.4" data-suffix="B" data-decimals="1">2.4B</span></div>
-        <div class="hero-stat-label">Assets Under Advisory</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-number"><span data-count="340" data-suffix="+">340+</span></div>
-        <div class="hero-stat-label">Institutional Partners</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-number"><span data-count="98" data-suffix="%">98%</span></div>
-        <div class="hero-stat-label">Client Satisfaction</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STATS SECTION -->
-<section class="stats-section">
+<section class="hero section--dark" id="hero" aria-label="Hero section">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="container">
-    <div class="stats-grid">
-      <div class="stat-card fade-up">
-        <div class="stat-card-number"><span data-count="15" data-suffix="+">15+</span></div>
-        <div class="stat-card-label">Years of Market Intelligence</div>
+    <div class="hero-grid _2-column-grid">
+      <div class="hero-content reveal">
+        <div class="hero-badge" aria-label="Platform category">
+          <span class="hero-badge-dot" aria-hidden="true"></span>
+          AI-POWERED CASH RECYCLE PLATFORM
+        </div>
+        <h1 class="hero-title">
+          Recycling Global Cash into<br>
+          <span class="gradient-text" id="typing-text">Investment Opportunities</span>
+        </h1>
+        <p class="hero-subtitle">GCRIG channels surplus liquidity into high-yield emerging market opportunities through our AI-driven Cash Recycle Bridge (CRB) Network, spanning 50+ countries worldwide.</p>
+        <div class="hero-actions">
+          <a href="investor-solutions.html" class="btn btn-primary btn-lg magnetic-btn">
+            Explore Investor Solutions
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="crb-network.html" class="btn btn-outline btn-lg">View CRB Network</a>
+        </div>
+        <div class="hero-stats-row" aria-label="Key metrics">
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-count="50" data-suffix="+" aria-label="50 plus countries">50+</span>
+            <span class="hero-stat-label">Countries</span>
+          </div>
+          <div class="hero-stat-divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-prefix="$" data-count="2.4" data-suffix="B" data-decimals="1" aria-label="2.4 billion dollars assets under advisory">$2.4B</span>
+            <span class="hero-stat-label">Assets Under Advisory</span>
+          </div>
+          <div class="hero-stat-divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-count="340" data-suffix="+" aria-label="340 plus CRB partners">340+</span>
+            <span class="hero-stat-label">CRB Partners</span>
+          </div>
+          <div class="hero-stat-divider" aria-hidden="true"></div>
+          <div class="hero-stat">
+            <span class="hero-stat-number" data-count="98" data-suffix="%" aria-label="98 percent client satisfaction">98%</span>
+            <span class="hero-stat-label">Client Satisfaction</span>
+          </div>
+        </div>
       </div>
-      <div class="stat-card fade-up delay-1">
-        <div class="stat-card-number"><span data-count="2400" data-suffix="+">2400+</span></div>
-        <div class="stat-card-label">Deals Analysed</div>
-      </div>
-      <div class="stat-card fade-up delay-2">
-        <div class="stat-card-number"><span data-count="50" data-suffix="+">50+</span></div>
-        <div class="stat-card-label">Emerging Markets</div>
-      </div>
-      <div class="stat-card fade-up delay-3">
-        <div class="stat-card-number"><span data-count="340" data-suffix="+">340+</span></div>
-        <div class="stat-card-label">Global Partners</div>
+      <div class="hero-visual reveal" aria-hidden="true">
+        <div class="hero-visual-ring ring-1"></div>
+        <div class="hero-visual-ring ring-2"></div>
+        <div class="hero-visual-ring ring-3"></div>
+        <div class="hero-visual-card card-main">
+          <div class="vc-header">
+            <span class="vc-dot"></span>
+            <span class="vc-title">AI Advisory Engine</span>
+            <span class="vc-live-badge">LIVE</span>
+          </div>
+          <div class="vc-metric">
+            <span class="vc-metric-label">Macroeconomic Score</span>
+            <div class="vc-bar" role="progressbar" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100"><div class="vc-bar-fill" style="width:82%"></div></div>
+            <span class="vc-metric-value">82</span>
+          </div>
+          <div class="vc-metric">
+            <span class="vc-metric-label">Political Stability</span>
+            <div class="vc-bar" role="progressbar" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100"><div class="vc-bar-fill" style="width:71%"></div></div>
+            <span class="vc-metric-value">71</span>
+          </div>
+          <div class="vc-metric">
+            <span class="vc-metric-label">Debt Sustainability</span>
+            <div class="vc-bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100"><div class="vc-bar-fill" style="width:88%"></div></div>
+            <span class="vc-metric-value">88</span>
+          </div>
+          <div class="vc-metric">
+            <span class="vc-metric-label">ESG Score</span>
+            <div class="vc-bar" role="progressbar" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100"><div class="vc-bar-fill" style="width:76%"></div></div>
+            <span class="vc-metric-value">76</span>
+          </div>
+          <div class="vc-footer">
+            <span class="vc-badge">INVESTMENT GRADE</span>
+            <span class="vc-score">AA+</span>
+          </div>
+        </div>
+        <div class="hero-visual-card card-mini card-mini-1">
+          <span class="card-mini-icon">&#127757;</span>
+          <span>50+ Countries</span>
+        </div>
+        <div class="hero-visual-card card-mini card-mini-2">
+          <span class="card-mini-icon">&#128200;</span>
+          <span>Live Analytics</span>
+        </div>
+        <svg class="hero-dots" viewBox="0 0 400 400" aria-hidden="true">
+          <defs>
+            <pattern id="dot-pattern" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1.5" fill="rgba(123,47,242,0.3)"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="400" fill="url(#dot-pattern)"/>
+        </svg>
       </div>
     </div>
   </div>
+  <div class="hero-scroll-hint" aria-hidden="true">
+    <div class="hero-scroll-line"></div>
+    <span>Scroll to explore</span>
+  </div>
 </section>
-
-<!-- SERVICES OVERVIEW SECTION -->
-<section class="section section-gradient">
+<!-- STATS BAR -->
+<section class="stats-bar section--light" aria-label="Key statistics">
   <div class="container">
-    <div class="section-header centered">
-      <div class="section-tag">What We Do</div>
-      <h2 class="section-title">Comprehensive <span class="gradient-text">Financial Intelligence</span></h2>
-      <p class="section-subtitle">From credit ratings to deal origination, our integrated platform delivers the full spectrum of financial intelligence services.</p>
-    </div>
-    <div class="grid-3">
-      <div class="card card-glow fade-up">
-        <div class="card-icon card-icon-gold">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-        </div>
-        <h3 class="card-title">AI-Driven Credit Ratings</h3>
-        <p class="card-text">Our proprietary AI engine analyses over 200 data points per entity to deliver real-time, unbiased credit assessments across sovereign and corporate issuers.</p>
-        <a href="services.html" class="highlight-teal learn-more-link">Learn more →</a>
+    <div class="stats-bar-grid">
+      <div class="stats-bar-item reveal">
+        <span class="stats-bar-number gradient-text" data-count="15" data-suffix="+">15+</span>
+        <span class="stats-bar-label">Years Experience</span>
       </div>
-      <div class="card card-glow fade-up delay-1">
-        <div class="card-icon card-icon-teal">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3 class="card-title">CRB Network Access</h3>
-        <p class="card-text">Connect to our Credit Rating Bridge Network spanning 50+ emerging markets — a curated ecosystem of vetted counterparties, intermediaries, and deal flow.</p>
-        <a href="crb-network.html" class="highlight-teal learn-more-link">Learn more →</a>
+      <div class="stats-bar-divider" aria-hidden="true"></div>
+      <div class="stats-bar-item reveal">
+        <span class="stats-bar-number gradient-text" data-count="2400" data-suffix="+">2400+</span>
+        <span class="stats-bar-label">Deals Executed</span>
       </div>
-      <div class="card card-glow fade-up delay-2">
-        <div class="card-icon card-icon-gradient">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-        </div>
-        <h3 class="card-title">Investment Intelligence</h3>
-        <p class="card-text">Data-backed insights, deal origination support, and risk-adjusted analysis that empowers institutional investors to make informed decisions with confidence.</p>
-        <a href="services.html" class="highlight-teal learn-more-link">Learn more →</a>
+      <div class="stats-bar-divider" aria-hidden="true"></div>
+      <div class="stats-bar-item reveal">
+        <span class="stats-bar-number gradient-text" data-count="50" data-suffix="+">50+</span>
+        <span class="stats-bar-label">Markets Covered</span>
       </div>
-      <div class="card card-glow fade-up delay-3">
-        <div class="card-icon card-icon-gold">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 class="card-title">Institutional Advisory</h3>
-        <p class="card-text">Dedicated advisory services for sovereign wealth funds, pension funds, family offices, and development finance institutions seeking emerging market exposure.</p>
-        <a href="investor-solutions.html" class="highlight-teal learn-more-link">Learn more →</a>
+      <div class="stats-bar-divider" aria-hidden="true"></div>
+      <div class="stats-bar-item reveal">
+        <span class="stats-bar-number gradient-text" data-count="340" data-suffix="+">340+</span>
+        <span class="stats-bar-label">Global Partners</span>
       </div>
-      <div class="card card-glow fade-up delay-4">
-        <div class="card-icon card-icon-teal">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 class="card-title">Risk Management</h3>
-        <p class="card-text">Comprehensive risk frameworks including country risk, currency exposure, geopolitical analysis, and ESG scoring integrated into every rating.</p>
-        <a href="services.html" class="highlight-teal learn-more-link">Learn more →</a>
+      <div class="stats-bar-divider" aria-hidden="true"></div>
+      <div class="stats-bar-item reveal">
+        <span class="stats-bar-number gradient-text" data-count="98" data-suffix="%">98%</span>
+        <span class="stats-bar-label">Client Satisfaction</span>
       </div>
-      <div class="card card-glow fade-up delay-5">
-        <div class="card-icon card-icon-gradient">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-        <h3 class="card-title">Market Analytics</h3>
-        <p class="card-text">Real-time dashboards, portfolio analytics, benchmarking, and custom research reports tailored to your investment mandate and reporting requirements.</p>
-        <a href="technology.html" class="highlight-teal learn-more-link">Learn more →</a>
-      </div>
-    </div>
-    <div class="text-center mt-48">
-      <a href="services.html" class="btn btn-secondary btn-lg">View All Services</a>
     </div>
   </div>
 </section>
-
+<!-- SERVICES SECTION -->
+<section class="section section--dark services-section" id="services" aria-labelledby="services-heading">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag">OUR SERVICES</div>
+      <h2 class="section-title" id="services-heading">Comprehensive Investment Intelligence</h2>
+      <p class="section-subtitle">From AI-powered credit assessments to global market access, GCRIG equips investors with every tool needed to deploy capital with confidence across emerging markets.</p>
+    </div>
+    <div class="services-grid reveal">
+      <article class="glass-card service-card tilt-card" aria-label="AI Credit Ratings service">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3 class="service-card-title">AI Credit Ratings</h3>
+        <p class="service-card-desc">Real-time sovereign and corporate credit scoring powered by machine learning models trained on 20+ years of macroeconomic data across 180 countries.</p>
+        <a href="services.html" class="service-card-link" aria-label="Learn more about AI Credit Ratings">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </article>
+      <article class="glass-card service-card tilt-card" aria-label="CRB Network Access service">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+        </div>
+        <h3 class="service-card-title">CRB Network Access</h3>
+        <p class="service-card-desc">Tap into 340+ Cash Recycle Bridge nodes spanning Africa, Asia, the Middle East, Europe, and the Americas for seamless cross-border capital deployment.</p>
+        <a href="crb-network.html" class="service-card-link" aria-label="Learn more about CRB Network Access">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </article>
+      <article class="glass-card service-card tilt-card" aria-label="Investment Intelligence service">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="service-card-title">Investment Intelligence</h3>
+        <p class="service-card-desc">Live data dashboards, sentiment analysis, and predictive market signals that synthesize global news, economic indicators, and geopolitical developments.</p>
+        <a href="services.html" class="service-card-link" aria-label="Learn more about Investment Intelligence">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </article>
+      <article class="glass-card service-card tilt-card" aria-label="Institutional Advisory service">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3 class="service-card-title">Institutional Advisory</h3>
+        <p class="service-card-desc">Dedicated advisory mandates for sovereign wealth funds, pension funds, and family offices seeking structured exposure to high-growth emerging economies.</p>
+        <a href="investor-solutions.html" class="service-card-link" aria-label="Learn more about Institutional Advisory">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </article>
+      <article class="glass-card service-card tilt-card" aria-label="Risk Management service">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3 class="service-card-title">Risk Management</h3>
+        <p class="service-card-desc">Multi-layered risk frameworks covering currency exposure, political instability, liquidity risk, and counterparty default — with real-time stress testing.</p>
+        <a href="services.html" class="service-card-link" aria-label="Learn more about Risk Management">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </article>
+      <article class="glass-card service-card tilt-card" aria-label="Market Analytics service">
+        <div class="service-card-icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        </div>
+        <h3 class="service-card-title">Market Analytics</h3>
+        <p class="service-card-desc">Deep quantitative analytics spanning forex, commodities, and fixed income markets in Africa, Southeast Asia, Latin America, and the Middle East.</p>
+        <a href="technology.html" class="service-card-link" aria-label="Learn more about Market Analytics">Learn More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
 <!-- AI TECHNOLOGY SECTION -->
-<section class="section bg-navy-2">
+<section class="section section--light ai-tech-section" id="ai-technology" aria-labelledby="ai-tech-heading">
   <div class="container">
-    <div class="feature-row">
-      <div class="feature-content slide-left">
-        <div class="section-tag">Proprietary Technology</div>
-        <h2 class="section-title">The <span class="gradient-text">GCRIG AI</span> Advisory Engine</h2>
-        <p class="section-subtitle">Our next-generation AI platform combines machine learning, natural language processing, and proprietary financial models to deliver credit intelligence at scale.</p>
-        <div class="feature-list">
-          <div class="feature-item">
-            <div class="feature-item-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-            </div>
-            <div class="feature-item-text">
-              <h4>Real-Time Analysis</h4>
-              <p>Continuous monitoring of 200+ data signals per entity with instant rating updates when conditions change.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-item-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            </div>
-            <div class="feature-item-text">
-              <h4>Predictive Scoring</h4>
-              <p>Forward-looking models trained on 20+ years of emerging market data to anticipate credit events before they occur.</p>
-            </div>
-          </div>
-          <div class="feature-item">
-            <div class="feature-item-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <div class="feature-item-text">
-              <h4>ESG Integration</h4>
-              <p>Environmental, social, and governance factors are embedded into every rating, not added as an afterthought.</p>
-            </div>
-          </div>
-        </div>
-        <div class="mt-32">
-          <a href="technology.html" class="btn btn-primary">Explore Our Technology</a>
+    <div class="feature-row _2-column-grid">
+      <div class="feature-text reveal">
+        <div class="section-tag">AI TECHNOLOGY</div>
+        <h2 class="section-title" id="ai-tech-heading">Powered by Next-Generation Artificial Intelligence</h2>
+        <p class="feature-desc">Our proprietary AI engine continuously processes terabytes of macroeconomic, geopolitical, and financial data to surface investment-grade opportunities before they reach the mainstream market.</p>
+        <ul class="feature-list" aria-label="AI technology capabilities">
+          <li class="feature-list-item">
+            <span class="feature-list-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span><strong>Deep Learning Credit Models</strong> &mdash; Neural networks trained on 180+ sovereign economies with 98.7% backtesting accuracy.</span>
+          </li>
+          <li class="feature-list-item">
+            <span class="feature-list-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span><strong>NLP Sentiment Analysis</strong> &mdash; Real-time parsing of 50,000+ daily news sources across 40 languages for risk signal extraction.</span>
+          </li>
+          <li class="feature-list-item">
+            <span class="feature-list-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span><strong>Predictive Macro Modelling</strong> &mdash; 6 to 36-month forward projections for GDP growth, inflation, and currency volatility.</span>
+          </li>
+          <li class="feature-list-item">
+            <span class="feature-list-icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+            <span><strong>Adaptive Portfolio Optimisation</strong> &mdash; Continuous Sharpe ratio rebalancing across 200+ asset classes in real time.</span>
+          </li>
+        </ul>
+        <div class="feature-actions">
+          <a href="technology.html" class="btn btn-primary magnetic-btn">
+            Explore Our Technology
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
         </div>
       </div>
-      <div class="slide-right">
-        <div class="ai-dashboard">
-          <div class="ai-dashboard-header">
-            <div class="ai-dashboard-dot ai-dot-red"></div>
-            <div class="ai-dashboard-dot ai-dot-yellow"></div>
-            <div class="ai-dashboard-dot ai-dot-green"></div>
-            <span class="ai-dashboard-title">GCRIG AI Engine — Live Analysis</span>
+      <div class="feature-visual ai-dashboard reveal" aria-hidden="true">
+        <div class="ai-dash-card glass-card">
+          <div class="ai-dash-header">
+            <div class="ai-dash-title">
+              <span class="ai-dash-dot"></span>
+              GCRIG AI Engine &mdash; Live
+            </div>
+            <span class="ai-dash-chip">v4.2.1</span>
           </div>
-          <div class="ai-dashboard-body">
-            <div class="ai-entity-label">Entity: Sovereign — West Africa Region</div>
-            <div class="ai-metric">
-              <span class="ai-metric-name">Macroeconomic Score</span>
-              <span class="ai-metric-value">82/100</span>
+          <div class="ai-dash-metric-row">
+            <span class="ai-dash-metric-label">Model Accuracy</span>
+            <span class="ai-dash-metric-val teal">98.7%</span>
+          </div>
+          <div class="ai-dash-bars" id="ai-metric-bars">
+            <div class="ai-bar-group">
+              <div class="ai-bar-label">Africa &mdash; Opportunity Index</div>
+              <div class="ai-bar-track"><div class="ai-bar-fill" data-target="78" style="width:0%"></div></div>
+              <span class="ai-bar-val">78</span>
             </div>
-            <div class="ai-metric-bar"><div class="ai-metric-fill" data-width="82%"></div></div>
-            <div class="ai-metric ai-metric-gap">
-              <span class="ai-metric-name">Political Stability Index</span>
-              <span class="ai-metric-value metric-purple">74/100</span>
+            <div class="ai-bar-group">
+              <div class="ai-bar-label">Southeast Asia &mdash; Growth Score</div>
+              <div class="ai-bar-track"><div class="ai-bar-fill" data-target="85" style="width:0%"></div></div>
+              <span class="ai-bar-val">85</span>
             </div>
-            <div class="ai-metric-bar"><div class="ai-metric-fill fill-purple" data-width="74%"></div></div>
-            <div class="ai-metric ai-metric-gap">
-              <span class="ai-metric-name">Debt Sustainability</span>
-              <span class="ai-metric-value">68/100</span>
+            <div class="ai-bar-group">
+              <div class="ai-bar-label">Latin America &mdash; Risk-Adjusted Yield</div>
+              <div class="ai-bar-track"><div class="ai-bar-fill" data-target="69" style="width:0%"></div></div>
+              <span class="ai-bar-val">69</span>
             </div>
-            <div class="ai-metric-bar"><div class="ai-metric-fill" data-width="68%"></div></div>
-            <div class="ai-metric ai-metric-gap">
-              <span class="ai-metric-name">ESG Composite Score</span>
-              <span class="ai-metric-value metric-blue">79/100</span>
+            <div class="ai-bar-group">
+              <div class="ai-bar-label">Middle East &mdash; Stability Rating</div>
+              <div class="ai-bar-track"><div class="ai-bar-fill" data-target="91" style="width:0%"></div></div>
+              <span class="ai-bar-val">91</span>
             </div>
-            <div class="ai-metric-bar"><div class="ai-metric-fill fill-blue" data-width="79%"></div></div>
-            <div class="ai-recommendation-box">
-              <div class="note-label">AI CREDIT RATING RECOMMENDATION</div>
-              <div class="ai-recommendation-title">BB+ (Stable Outlook)</div>
-              <div class="ai-recommendation-note">Confidence: 94.2% · Updated: Real-time</div>
+            <div class="ai-bar-group">
+              <div class="ai-bar-label">Central Asia &mdash; FDI Potential</div>
+              <div class="ai-bar-track"><div class="ai-bar-fill" data-target="73" style="width:0%"></div></div>
+              <span class="ai-bar-val">73</span>
             </div>
+          </div>
+          <div class="ai-dash-footer">
+            <span>Next model refresh in</span>
+            <span class="ai-dash-countdown" id="ai-countdown">04:57</span>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- CRB NETWORK PREVIEW -->
-<section class="section section-gradient">
+<!-- CRB NETWORK SECTION -->
+<section class="section section--dark crb-section" id="crb-network" aria-labelledby="crb-heading">
   <div class="container">
-    <div class="section-header centered">
-      <div class="section-tag">Global Network</div>
-      <h2 class="section-title">The Credit Rating <span class="gradient-text">Bridge Network</span></h2>
-      <p class="section-subtitle">A proprietary network of verified counterparties, issuers, and intermediaries across 50+ emerging markets — enabling seamless cross-border deal flow.</p>
-    </div>
-    <div class="world-map-container fade-up">
-      <!-- SVG World Map with CRB nodes -->
-      <svg class="world-map-svg" viewBox="0 0 960 500" xmlns="http://www.w3.org/2000/svg">
-        <!-- Simplified world continents -->
-        <defs>
-          <filter id="glow-filter">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-          </filter>
-        </defs>
-        <!-- Background -->
-        <rect width="960" height="500" fill="#eef2f7"/>
-        <!-- Ocean grid lines -->
-        <g stroke="rgba(15,23,42,0.06)" stroke-width="1">
-          <line x1="0" y1="100" x2="960" y2="100"/>
-          <line x1="0" y1="200" x2="960" y2="200"/>
-          <line x1="0" y1="300" x2="960" y2="300"/>
-          <line x1="0" y1="400" x2="960" y2="400"/>
-          <line x1="160" y1="0" x2="160" y2="500"/>
-          <line x1="320" y1="0" x2="320" y2="500"/>
-          <line x1="480" y1="0" x2="480" y2="500"/>
-          <line x1="640" y1="0" x2="640" y2="500"/>
-          <line x1="800" y1="0" x2="800" y2="500"/>
-        </g>
-        <!-- Continents (simplified shapes) -->
-        <!-- North America -->
-        <path d="M60,80 L180,75 L210,100 L220,140 L200,180 L180,220 L160,240 L140,250 L120,230 L90,220 L70,200 L50,170 L45,140 L60,80Z" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
-        <!-- South America -->
-        <path d="M160,260 L210,255 L230,280 L240,320 L230,380 L210,420 L190,430 L170,420 L155,390 L145,350 L148,300 L160,260Z" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
-        <!-- Europe -->
-        <path d="M430,60 L510,55 L530,80 L520,110 L490,120 L460,115 L440,100 L430,80 L430,60Z" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
-        <!-- Africa -->
-        <path d="M440,140 L530,135 L560,160 L570,210 L560,270 L540,320 L510,360 L480,370 L450,355 L430,310 L420,260 L425,200 L440,140Z" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
-        <!-- Asia -->
-        <path d="M520,55 L700,50 L780,70 L820,100 L810,150 L780,180 L720,190 L660,185 L620,170 L580,150 L545,130 L530,100 L520,80 L520,55Z" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
-        <!-- Southeast Asia -->
-        <path d="M700,190 L760,185 L790,210 L780,250 L750,265 L720,255 L700,235 L695,210 L700,190Z" fill="rgba(59,130,246,0.07)" stroke="rgba(59,130,246,0.15)" stroke-width="1"/>
-        <!-- Australia -->
-        <path d="M730,300 L820,295 L860,320 L860,370 L840,400 L800,410 L760,400 L730,375 L720,340 L730,300Z" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.2)" stroke-width="1"/>
-
-        <!-- CRB Network Connections -->
-        <g stroke="rgba(59,130,246,0.25)" stroke-width="1" class="map-connection">
-          <line x1="490" y1="220" x2="660" y2="120"/>
-          <line x1="490" y1="220" x2="550" y2="80"/>
-          <line x1="490" y1="220" x2="760" y2="225"/>
-          <line x1="490" y1="220" x2="785" y2="345"/>
-          <line x1="490" y1="220" x2="140" y2="165"/>
-          <line x1="490" y1="220" x2="185" y2="320"/>
-        </g>
-
-        <!-- CRB Nodes -->
-        <!-- Lagos, Nigeria -->
-        <g class="map-node" transform="translate(490,220)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(59,130,246,0.4)" stroke-width="1.5"/>
-          <circle r="5" fill="#3b82f6" opacity="0.9" filter="url(#glow-filter)"/>
-          <circle r="3" fill="#3b82f6"/>
-          <text y="-12" text-anchor="middle" fill="#1e293b" font-size="9" font-family="Inter,sans-serif" font-weight="600">Lagos</text>
-        </g>
-        <!-- Nairobi, Kenya -->
-        <g class="map-node" transform="translate(540,260)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(34,197,94,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#22c55e" opacity="0.9"/>
-          <circle r="2.5" fill="#22c55e"/>
-          <text y="-10" text-anchor="middle" fill="#1e293b" font-size="8" font-family="Inter,sans-serif" font-weight="600">Nairobi</text>
-        </g>
-        <!-- Dubai, UAE -->
-        <g class="map-node" transform="translate(660,145)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(59,130,246,0.4)" stroke-width="1.5"/>
-          <circle r="5" fill="#3b82f6" opacity="0.9" filter="url(#glow-filter)"/>
-          <circle r="3" fill="#3b82f6"/>
-          <text y="-12" text-anchor="middle" fill="#1e293b" font-size="9" font-family="Inter,sans-serif" font-weight="600">Dubai</text>
-        </g>
-        <!-- Singapore -->
-        <g class="map-node" transform="translate(760,225)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(34,197,94,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#22c55e" opacity="0.9"/>
-          <circle r="2.5" fill="#22c55e"/>
-          <text y="-10" text-anchor="middle" fill="#1e293b" font-size="8" font-family="Inter,sans-serif" font-weight="600">Singapore</text>
-        </g>
-        <!-- London, UK -->
-        <g class="map-node" transform="translate(455,80)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(59,130,246,0.4)" stroke-width="1.5"/>
-          <circle r="5" fill="#3b82f6" opacity="0.9" filter="url(#glow-filter)"/>
-          <circle r="3" fill="#3b82f6"/>
-          <text y="-12" text-anchor="middle" fill="#1e293b" font-size="9" font-family="Inter,sans-serif" font-weight="600">London</text>
-        </g>
-        <!-- New York, USA -->
-        <g class="map-node" transform="translate(140,165)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(59,130,246,0.4)" stroke-width="1.5"/>
-          <circle r="5" fill="#3b82f6" opacity="0.9" filter="url(#glow-filter)"/>
-          <circle r="3" fill="#3b82f6"/>
-          <text y="-12" text-anchor="middle" fill="#1e293b" font-size="9" font-family="Inter,sans-serif" font-weight="600">New York</text>
-        </g>
-        <!-- São Paulo, Brazil -->
-        <g class="map-node" transform="translate(185,320)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(34,197,94,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#22c55e" opacity="0.9"/>
-          <circle r="2.5" fill="#22c55e"/>
-          <text y="-10" text-anchor="middle" fill="#1e293b" font-size="8" font-family="Inter,sans-serif" font-weight="600">São Paulo</text>
-        </g>
-        <!-- Sydney, Australia -->
-        <g class="map-node" transform="translate(785,345)">
-          <circle class="pulse-outer" r="4" fill="none" stroke="rgba(34,197,94,0.5)" stroke-width="1.5"/>
-          <circle r="4" fill="#22c55e" opacity="0.9"/>
-          <circle r="2.5" fill="#22c55e"/>
-          <text y="-10" text-anchor="middle" fill="#1e293b" font-size="8" font-family="Inter,sans-serif" font-weight="600">Sydney</text>
-        </g>
-
-        <!-- Legend -->
-        <g transform="translate(20,460)">
-          <circle cx="6" cy="6" r="5" fill="#3b82f6" opacity="0.9"/>
-          <text x="16" y="10" fill="#475569" font-size="9" font-family="Inter,sans-serif">HQ / Primary Node</text>
-          <circle cx="120" cy="6" r="4" fill="#22c55e" opacity="0.9"/>
-          <text x="130" y="10" fill="#475569" font-size="9" font-family="Inter,sans-serif">Regional Node</text>
-        </g>
-      </svg>
-    </div>
-    <div class="text-center mt-32">
-      <a href="crb-network.html" class="btn btn-primary btn-lg">Explore the CRB Network</a>
+    <div class="feature-row feature-row--reversed _2-column-grid">
+      <div class="crb-map-wrapper reveal" aria-label="Global CRB network map">
+        <div class="crb-map-card glass-card">
+          <div class="crb-map-header">
+            <span class="crb-map-dot" aria-hidden="true"></span>
+            <span>Global CRB Network &mdash; 340+ Nodes</span>
+          </div>
+          <svg class="crb-world-map" viewBox="0 0 500 360" role="img" aria-label="World map with CRB network nodes">
+            <defs>
+              <radialGradient id="pulse-grad" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#7B2FF2" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#7B2FF2" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="node-glow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="2.5" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <rect width="500" height="360" fill="#0a0820" rx="12"/>
+            <!-- North America -->
+            <path d="M55,70 L115,62 L138,72 L148,85 L150,102 L142,118 L132,130 L118,143 L106,158 L88,168 L76,162 L64,147 L53,132 L43,116 L40,98 L44,80 Z" fill="#1a1646" stroke="rgba(123,47,242,0.4)" stroke-width="1"/>
+            <!-- Greenland -->
+            <path d="M128,35 L158,28 L170,38 L164,54 L148,60 L128,54 Z" fill="#1a1646" stroke="rgba(123,47,242,0.3)" stroke-width="0.8"/>
+            <!-- South America -->
+            <path d="M108,182 L142,172 L162,178 L170,195 L170,220 L162,248 L148,268 L130,278 L112,270 L98,252 L92,226 L97,205 Z" fill="#1a1646" stroke="rgba(123,47,242,0.4)" stroke-width="1"/>
+            <!-- Europe -->
+            <path d="M188,50 L228,44 L244,54 L248,65 L242,76 L230,84 L218,86 L202,83 L192,74 L184,62 Z" fill="#1a1646" stroke="rgba(123,47,242,0.4)" stroke-width="1"/>
+            <!-- Africa -->
+            <path d="M192,98 L232,92 L254,98 L264,114 L266,136 L260,160 L250,182 L232,197 L214,202 L196,193 L182,174 L177,152 L179,128 L186,112 Z" fill="#1a1646" stroke="rgba(123,47,242,0.4)" stroke-width="1"/>
+            <!-- Middle East -->
+            <path d="M256,88 L288,82 L300,92 L300,108 L282,118 L260,116 L250,102 Z" fill="#1a1646" stroke="rgba(123,47,242,0.3)" stroke-width="0.8"/>
+            <!-- Asia main -->
+            <path d="M278,46 L362,40 L396,50 L408,66 L410,86 L398,108 L376,122 L354,126 L328,124 L304,116 L288,100 L278,83 L270,66 Z" fill="#1a1646" stroke="rgba(123,47,242,0.4)" stroke-width="1"/>
+            <!-- India -->
+            <path d="M298,120 L326,114 L342,130 L336,156 L318,172 L298,162 L290,140 Z" fill="#1a1646" stroke="rgba(123,47,242,0.3)" stroke-width="0.8"/>
+            <!-- Southeast Asia -->
+            <path d="M348,136 L380,130 L394,142 L392,158 L372,166 L352,160 L340,148 Z" fill="#1a1646" stroke="rgba(123,47,242,0.3)" stroke-width="0.8"/>
+            <!-- Australia -->
+            <path d="M368,208 L418,202 L440,216 L442,240 L428,258 L402,264 L376,258 L360,240 L358,220 Z" fill="#1a1646" stroke="rgba(123,47,242,0.4)" stroke-width="1"/>
+            <!-- Connection arcs -->
+            <g stroke="rgba(123,47,242,0.25)" stroke-width="0.8" fill="none" stroke-dasharray="4,5">
+              <path d="M100,220 Q128,190 155,200"/>
+              <path d="M155,200 Q178,232 200,290"/>
+              <path d="M155,200 Q213,215 270,250"/>
+              <path d="M270,250 Q296,258 320,265"/>
+              <path d="M320,265 Q344,282 370,305"/>
+              <path d="M200,290 Q218,290 235,285"/>
+              <path d="M235,285 Q252,268 270,250"/>
+              <path d="M140,320 Q120,270 100,220"/>
+              <path d="M270,250 Q300,175 300,108"/>
+            </g>
+            <!-- NEW YORK (100,220) -->
+            <g class="crb-node" transform="translate(100,220)">
+              <circle r="18" fill="rgba(123,47,242,0.15)" class="pulse-ring pulse-ring-1"/>
+              <circle r="11" fill="rgba(123,47,242,0.3)" class="pulse-ring pulse-ring-2"/>
+              <circle r="6" fill="#7B2FF2" filter="url(#node-glow)"/>
+              <circle r="3" fill="#ffffff"/>
+            </g>
+            <text x="100" y="240" font-size="8" fill="rgba(255,255,255,0.85)" font-family="Montserrat,sans-serif" font-weight="600" text-anchor="middle">New York</text>
+            <!-- LONDON (155,200) -->
+            <g class="crb-node" transform="translate(155,200)">
+              <circle r="18" fill="rgba(0,212,170,0.15)" class="pulse-ring pulse-ring-2"/>
+              <circle r="11" fill="rgba(0,212,170,0.3)" class="pulse-ring pulse-ring-1"/>
+              <circle r="6" fill="#00D4AA" filter="url(#node-glow)"/>
+              <circle r="3" fill="#ffffff"/>
+            </g>
+            <text x="155" y="220" font-size="8" fill="rgba(255,255,255,0.85)" font-family="Montserrat,sans-serif" font-weight="600" text-anchor="middle">London</text>
+            <!-- LAGOS (200,290) -->
+            <g class="crb-node" transform="translate(200,290)">
+              <circle r="18" fill="rgba(245,176,65,0.15)" class="pulse-ring pulse-ring-3"/>
+              <circle r="11" fill="rgba(245,176,65,0.3)" class="pulse-ring pulse-ring-1"/>
+              <circle r="6" fill="#F5B041" filter="url(#node-glow)"/>
+              <circle r="3" fill="#ffffff"/>
+            </g>
+            <text x="200" y="310" font-size="8" fill="rgba(255,255,255,0.85)" font-family="Montserrat,sans-serif" font-weight="600" text-anchor="middle">Lagos</text>
+            <!-- NAIROBI (235,285) -->
+            <g class="crb-node" transform="translate(235,285)">
+              <circle r="14" fill="rgba(0,212,170,0.15)" class="pulse-ring pulse-ring-1"/>
+              <circle r="8" fill="rgba(0,212,170,0.3)" class="pulse-ring pulse-ring-2"/>
+              <circle r="5" fill="#00D4AA" filter="url(#node-glow)"/>
+              <circle r="2.5" fill="#ffffff"/>
+            </g>
+            <text x="248" y="296" font-size="8" fill="rgba(255,255,255,0.85)" font-family="Montserrat,sans-serif" font-weight="600" text-anchor="middle">Nairobi</text>
+            <!-- DUBAI (270,250) -->
+            <g class="crb-node" transform="translate(270,250)">
+              <circle r="18" fill="rgba(123,47,242,0.15)" class="pulse-ring pulse-ring-1"/>
+              <circle r="11" fill="rgba(123,47,242,0.3)" class="pulse-ring pulse-ring-3"/>
+              <circle r="6" fill="#7B2FF2" filter="url(#node-glow)"/>
+              <circle r="3" fill="#ffffff"/>
+            </g>
+            <text x="270" y="270" font-size="8" fill="rgba(255,255,255,0.85)" font-family="Montserrat,sans-serif" font-weight="600" text-anchor="middle">Dubai</text>
+            <!-- SINGAPORE (320,265) -->
+            <g class="crb-node" transform="translate(320,265)">
+              <circle r="18" fill="rgba(0,212,170,0.15)" class="pulse-ring pulse-ring-2"/>
+              <circle r="11" fill="rgba(0,212,170,0.3)" class="pulse-ring pulse-ring-1"/>
+              <circle r="6" fill="#00D4AA" filter="url(#node-glow)"/>
+              <circle r="3" fill="#ffffff"/>
+            </g>
+            <text x="320" y="285" font-size="8" fill="rgba(255,255,255,0.85)" font-family="Montserrat,sans-serif" font-weight="600" text-anchor="middle">Singapore</text>
+            <!-- SAO PAULO (140,320) -->
+            <g class="crb-node" transform="translate(140,320)">
+              <circle r="18" fill="rgba(245,176,65,0.15)" class="pulse-ring pulse-ring-3"/>
+              <circle r="11" fill="rgba(245,176,65,0.3)" class="pulse-ring pulse-ring-2"/>
+              <circle r="6" fill="#F5B041" filter="url(#node-glow)"/>
+              <circle r="3" fill="#ffffff"/>
+            </g>
+            <text x="140" y="340" font-size="8" fill="rgba(255,255,255,0.85)" font-family="Montserrat,sans-serif" font-weight="600" text-anchor="middle">S&#227;o Paulo</text>
+            <!-- SYDNEY (370,305) -->
+            <g class="crb-node" transform="translate(370,305)">
+              <circle r="18" fill="rgba(123,47,242,0.15)" class="pulse-ring pulse-ring-2"/>
+              <circle r="11" fill="rgba(123,47,242,0.3)" class="pulse-ring pulse-ring-3"/>
+              <circle r="6" fill="#7B2FF2" filter="url(#node-glow)"/>
+              <circle r="3" fill="#ffffff"/>
+            </g>
+            <text x="370" y="325" font-size="8" fill="rgba(255,255,255,0.85)" font-family="Montserrat,sans-serif" font-weight="600" text-anchor="middle">Sydney</text>
+          </svg>
+          <div class="crb-map-legend" aria-label="Map legend">
+            <span class="crb-legend-item"><span class="crb-legend-dot crb-legend-dot--purple" aria-hidden="true"></span>Primary Hub</span>
+            <span class="crb-legend-item"><span class="crb-legend-dot crb-legend-dot--teal" aria-hidden="true"></span>Regional Node</span>
+            <span class="crb-legend-item"><span class="crb-legend-dot crb-legend-dot--gold" aria-hidden="true"></span>Growth Market</span>
+          </div>
+        </div>
+      </div>
+      <div class="feature-text reveal">
+        <div class="section-tag">CRB NETWORK</div>
+        <h2 class="section-title" id="crb-heading">The World's Most Connected Cash Recycle Infrastructure</h2>
+        <p class="feature-desc">The Cash Recycle Bridge (CRB) Network is GCRIG's proprietary global infrastructure connecting surplus liquidity pools in developed markets with high-yield deployment opportunities in emerging economies.</p>
+        <div class="crb-stats-mini" aria-label="CRB Network statistics">
+          <div class="crb-stat-mini glass-card">
+            <span class="crb-stat-mini-num gradient-text">340+</span>
+            <span class="crb-stat-mini-label">Active CRB Nodes</span>
+          </div>
+          <div class="crb-stat-mini glass-card">
+            <span class="crb-stat-mini-num gradient-text">50+</span>
+            <span class="crb-stat-mini-label">Countries</span>
+          </div>
+          <div class="crb-stat-mini glass-card">
+            <span class="crb-stat-mini-num gradient-text">$1.8B</span>
+            <span class="crb-stat-mini-label">Monthly Volume</span>
+          </div>
+          <div class="crb-stat-mini glass-card">
+            <span class="crb-stat-mini-num gradient-text">99.9%</span>
+            <span class="crb-stat-mini-label">Uptime SLA</span>
+          </div>
+        </div>
+        <a href="crb-network.html" class="btn btn-teal magnetic-btn">
+          Explore CRB Network
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
     </div>
   </div>
 </section>
-
-<!-- CURRENCY CONVERTER -->
-<section class="section" id="converter-section">
+<!-- CURRENCY CONVERTER SECTION -->
+<section class="section section--light converter-section" id="currency-tools" aria-labelledby="converter-heading">
   <div class="container">
-    <div class="section-header centered">
-      <div class="section-tag">Live Currency Exchange</div>
-      <h2 class="section-title">Real-Time <span class="gradient-text">Currency Converter</span></h2>
-      <p class="section-subtitle">Convert between major world currencies using live exchange rates updated every minute.</p>
+    <div class="section-header reveal">
+      <div class="section-tag">LIVE CURRENCY TOOLS</div>
+      <h2 class="section-title" id="converter-heading">Real-Time Market Intelligence</h2>
+      <p class="section-subtitle">Access live foreign exchange rates and convert between major global currencies powered by real-time market data.</p>
     </div>
-    <div class="converter-card fade-up">
-      <form class="converter-form" id="currency-converter">
+    <div class="converter-card glass-card reveal" role="region" aria-label="Currency converter">
+      <h3 class="converter-title">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+        Currency Converter
+      </h3>
+      <div class="converter-form" role="form" aria-label="Convert currency">
         <div class="converter-row">
           <div class="converter-field">
-            <label>Amount</label>
-            <input type="number" id="conv-amount" value="1000" min="0" step="any" placeholder="Enter amount" />
+            <label for="conv-amount" class="conv-label">Amount</label>
+            <input type="number" id="conv-amount" class="conv-input" value="1000" min="0" step="any" aria-label="Amount to convert" placeholder="Enter amount"/>
           </div>
           <div class="converter-field">
-            <label>From</label>
-            <select id="conv-from">
-              <option value="USD" selected>🇺🇸 USD — US Dollar</option>
-              <option value="EUR">🇪🇺 EUR — Euro</option>
-              <option value="GBP">🇬🇧 GBP — British Pound</option>
-              <option value="JPY">🇯🇵 JPY — Japanese Yen</option>
-              <option value="CNY">🇨🇳 CNY — Chinese Yuan</option>
-              <option value="AED">🇦🇪 AED — UAE Dirham</option>
-              <option value="INR">🇮🇳 INR — Indian Rupee</option>
-              <option value="CAD">🇨🇦 CAD — Canadian Dollar</option>
-              <option value="AUD">🇦🇺 AUD — Australian Dollar</option>
-              <option value="CHF">🇨🇭 CHF — Swiss Franc</option>
-              <option value="NGN">🇳🇬 NGN — Nigerian Naira</option>
-              <option value="SGD">🇸🇬 SGD — Singapore Dollar</option>
+            <label for="conv-from" class="conv-label">From</label>
+            <select id="conv-from" class="conv-select" aria-label="Convert from currency">
+              <option value="USD" selected>USD &mdash; US Dollar</option>
+              <option value="EUR">EUR &mdash; Euro</option>
+              <option value="GBP">GBP &mdash; British Pound</option>
+              <option value="JPY">JPY &mdash; Japanese Yen</option>
+              <option value="CNY">CNY &mdash; Chinese Yuan</option>
+              <option value="AED">AED &mdash; UAE Dirham</option>
+              <option value="NGN">NGN &mdash; Nigerian Naira</option>
+              <option value="KES">KES &mdash; Kenyan Shilling</option>
+              <option value="ZAR">ZAR &mdash; South African Rand</option>
+              <option value="SGD">SGD &mdash; Singapore Dollar</option>
+              <option value="AUD">AUD &mdash; Australian Dollar</option>
+              <option value="BRL">BRL &mdash; Brazilian Real</option>
+              <option value="CHF">CHF &mdash; Swiss Franc</option>
+              <option value="CAD">CAD &mdash; Canadian Dollar</option>
             </select>
           </div>
-          <div class="converter-swap">
-            <button type="button" id="conv-swap" title="Swap currencies">⇄</button>
-          </div>
+          <button class="conv-swap-btn" id="conv-swap" aria-label="Swap currencies" title="Swap currencies">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 01-4 4H3"/></svg>
+          </button>
           <div class="converter-field">
-            <label>To</label>
-            <select id="conv-to">
-              <option value="USD">🇺🇸 USD — US Dollar</option>
-              <option value="EUR" selected>🇪🇺 EUR — Euro</option>
-              <option value="GBP">🇬🇧 GBP — British Pound</option>
-              <option value="JPY">🇯🇵 JPY — Japanese Yen</option>
-              <option value="CNY">🇨🇳 CNY — Chinese Yuan</option>
-              <option value="AED">🇦🇪 AED — UAE Dirham</option>
-              <option value="INR">🇮🇳 INR — Indian Rupee</option>
-              <option value="CAD">🇨🇦 CAD — Canadian Dollar</option>
-              <option value="AUD">🇦🇺 AUD — Australian Dollar</option>
-              <option value="CHF">🇨🇭 CHF — Swiss Franc</option>
-              <option value="NGN">🇳🇬 NGN — Nigerian Naira</option>
-              <option value="SGD">🇸🇬 SGD — Singapore Dollar</option>
+            <label for="conv-to" class="conv-label">To</label>
+            <select id="conv-to" class="conv-select" aria-label="Convert to currency">
+              <option value="USD">USD &mdash; US Dollar</option>
+              <option value="EUR" selected>EUR &mdash; Euro</option>
+              <option value="GBP">GBP &mdash; British Pound</option>
+              <option value="JPY">JPY &mdash; Japanese Yen</option>
+              <option value="CNY">CNY &mdash; Chinese Yuan</option>
+              <option value="AED">AED &mdash; UAE Dirham</option>
+              <option value="NGN">NGN &mdash; Nigerian Naira</option>
+              <option value="KES">KES &mdash; Kenyan Shilling</option>
+              <option value="ZAR">ZAR &mdash; South African Rand</option>
+              <option value="SGD">SGD &mdash; Singapore Dollar</option>
+              <option value="AUD">AUD &mdash; Australian Dollar</option>
+              <option value="BRL">BRL &mdash; Brazilian Real</option>
+              <option value="CHF">CHF &mdash; Swiss Franc</option>
+              <option value="CAD">CAD &mdash; Canadian Dollar</option>
             </select>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary converter-btn magnetic-btn">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
-          Convert Now
-        </button>
-      </form>
-      <div class="converter-result" id="conv-result-container" style="display:none;">
-        <div class="conv-result-main" id="conv-result">—</div>
-        <div class="conv-result-rate" id="conv-rate">—</div>
-        <div class="conv-result-updated">Last updated: <span id="conv-updated">—</span></div>
+        <div class="conv-result-area" aria-live="polite" aria-label="Conversion result">
+          <div class="conv-result" id="conv-result">
+            <span class="conv-result-amount" id="conv-result-amount">&mdash;</span>
+            <span class="conv-result-rate" id="conv-result-rate">Enter an amount to convert</span>
+          </div>
+          <button class="btn btn-primary conv-btn" id="conv-submit" aria-label="Convert currency">Convert Now</button>
+        </div>
+      </div>
+    </div>
+    <div class="charts-grid reveal" aria-label="Currency pair charts">
+      <div class="chart-card glass-card" role="region" aria-label="EUR/USD chart">
+        <div class="chart-card-header">
+          <span class="chart-pair">EUR/USD</span>
+          <span class="chart-badge chart-badge--up" id="chart-badge-eur" aria-live="polite">+0.12%</span>
+        </div>
+        <canvas id="chart-eur" height="120" aria-label="EUR/USD price chart"></canvas>
+      </div>
+      <div class="chart-card glass-card" role="region" aria-label="GBP/USD chart">
+        <div class="chart-card-header">
+          <span class="chart-pair">GBP/USD</span>
+          <span class="chart-badge chart-badge--up" id="chart-badge-gbp" aria-live="polite">+0.08%</span>
+        </div>
+        <canvas id="chart-gbp" height="120" aria-label="GBP/USD price chart"></canvas>
+      </div>
+      <div class="chart-card glass-card" role="region" aria-label="JPY/USD chart">
+        <div class="chart-card-header">
+          <span class="chart-pair">JPY/USD</span>
+          <span class="chart-badge chart-badge--down" id="chart-badge-jpy" aria-live="polite">-0.05%</span>
+        </div>
+        <canvas id="chart-jpy" height="120" aria-label="JPY/USD price chart"></canvas>
+      </div>
+      <div class="chart-card glass-card" role="region" aria-label="CNY/USD chart">
+        <div class="chart-card-header">
+          <span class="chart-pair">CNY/USD</span>
+          <span class="chart-badge chart-badge--up" id="chart-badge-cny" aria-live="polite">+0.03%</span>
+        </div>
+        <canvas id="chart-cny" height="120" aria-label="CNY/USD price chart"></canvas>
       </div>
     </div>
   </div>
 </section>
-
-<!-- CURRENCY CHARTS -->
-<section class="section section-dark" id="charts-section">
+<!-- MARKET OVERVIEW SECTION -->
+<section class="section section--dark market-section" id="markets" aria-labelledby="market-heading">
   <div class="container">
-    <div class="section-header centered">
-      <div class="section-tag">Market Intelligence</div>
-      <h2 class="section-title">Live Currency <span class="gradient-text">Charts</span></h2>
-      <p class="section-subtitle">Track major currency pairs with real-time and historical data visualizations.</p>
+    <div class="section-header reveal">
+      <div class="section-tag">LIVE MARKETS</div>
+      <h2 class="section-title" id="market-heading">Global Market Overview</h2>
+      <p class="section-subtitle">Real-time currency pair data updated every 5 seconds from global forex markets.</p>
     </div>
-    <div class="grid-2">
-      <div class="chart-card fade-up">
-        <div class="chart-card-header">
-          <span class="chart-pair">EUR / USD</span>
-          <span class="chart-rate rate-up" id="chart-rate-eur">—</span>
+    <div class="market-grid reveal" id="market-grid" role="list" aria-label="Currency pair market data" aria-live="polite">
+      <div class="market-card glass-card" role="listitem">
+        <div class="market-card-header">
+          <span class="market-card-pair">USD/EUR</span>
+          <span class="market-card-flag" aria-hidden="true">&#127482;&#127480;</span>
         </div>
-        <div class="chart-container">
-          <canvas id="chart-eurusd" height="120"></canvas>
-        </div>
+        <div class="market-card-rate" id="rate-usd-eur">&mdash;</div>
+        <div class="market-card-change market-up" id="change-usd-eur">&mdash;</div>
       </div>
-      <div class="chart-card fade-up delay-1">
-        <div class="chart-card-header">
-          <span class="chart-pair">GBP / USD</span>
-          <span class="chart-rate rate-up" id="chart-rate-gbp">—</span>
+      <div class="market-card glass-card" role="listitem">
+        <div class="market-card-header">
+          <span class="market-card-pair">USD/GBP</span>
+          <span class="market-card-flag" aria-hidden="true">&#127468;&#127463;</span>
         </div>
-        <div class="chart-container">
-          <canvas id="chart-gbpusd" height="120"></canvas>
-        </div>
+        <div class="market-card-rate" id="rate-usd-gbp">&mdash;</div>
+        <div class="market-card-change market-up" id="change-usd-gbp">&mdash;</div>
       </div>
-      <div class="chart-card fade-up delay-2">
-        <div class="chart-card-header">
-          <span class="chart-pair">JPY / USD</span>
-          <span class="chart-rate rate-down" id="chart-rate-jpy">—</span>
+      <div class="market-card glass-card" role="listitem">
+        <div class="market-card-header">
+          <span class="market-card-pair">USD/JPY</span>
+          <span class="market-card-flag" aria-hidden="true">&#127471;&#127477;</span>
         </div>
-        <div class="chart-container">
-          <canvas id="chart-jpyusd" height="120"></canvas>
-        </div>
+        <div class="market-card-rate" id="rate-usd-jpy">&mdash;</div>
+        <div class="market-card-change market-down" id="change-usd-jpy">&mdash;</div>
       </div>
-      <div class="chart-card fade-up delay-3">
-        <div class="chart-card-header">
-          <span class="chart-pair">CNY / USD</span>
-          <span class="chart-rate rate-up" id="chart-rate-cny">—</span>
+      <div class="market-card glass-card" role="listitem">
+        <div class="market-card-header">
+          <span class="market-card-pair">USD/CNY</span>
+          <span class="market-card-flag" aria-hidden="true">&#127464;&#127475;</span>
         </div>
-        <div class="chart-container">
-          <canvas id="chart-cnyusd" height="120"></canvas>
+        <div class="market-card-rate" id="rate-usd-cny">&mdash;</div>
+        <div class="market-card-change market-up" id="change-usd-cny">&mdash;</div>
+      </div>
+      <div class="market-card glass-card" role="listitem">
+        <div class="market-card-header">
+          <span class="market-card-pair">USD/AED</span>
+          <span class="market-card-flag" aria-hidden="true">&#127462;&#127466;</span>
         </div>
+        <div class="market-card-rate" id="rate-usd-aed">&mdash;</div>
+        <div class="market-card-change market-neutral" id="change-usd-aed">&mdash;</div>
+      </div>
+      <div class="market-card glass-card" role="listitem">
+        <div class="market-card-header">
+          <span class="market-card-pair">USD/NGN</span>
+          <span class="market-card-flag" aria-hidden="true">&#127475;&#127468;</span>
+        </div>
+        <div class="market-card-rate" id="rate-usd-ngn">&mdash;</div>
+        <div class="market-card-change market-up" id="change-usd-ngn">&mdash;</div>
       </div>
     </div>
   </div>
 </section>
-
-<!-- MARKET OVERVIEW -->
-<section class="section" id="market-overview">
+<!-- TESTIMONIALS SECTION -->
+<section class="section section--light testimonials-section" id="testimonials" aria-labelledby="testimonials-heading">
   <div class="container">
-    <div class="section-header centered">
-      <div class="section-tag">Global Markets</div>
-      <h2 class="section-title">Global Market <span class="gradient-text">Overview</span></h2>
-      <p class="section-subtitle">Live exchange rates across major global currency pairs.</p>
+    <div class="section-header reveal">
+      <div class="section-tag">TRUSTED BY</div>
+      <h2 class="section-title" id="testimonials-heading">What Our Clients Say</h2>
+      <p class="section-subtitle">Institutions and investors across 50+ countries trust GCRIG to deliver consistent, risk-managed returns in emerging markets.</p>
     </div>
-    <div class="market-grid fade-up">
-      <div class="market-card tilt-card" data-pair="USD/EUR">
-        <div class="market-pair">USD / EUR</div>
-        <div class="market-rate" id="mkt-usdeur">—</div>
-        <div class="market-change rate-up" id="mkt-usdeur-chg">▲ 0.12%</div>
-        <div class="market-status"><span class="status-dot active"></span> Live</div>
-      </div>
-      <div class="market-card tilt-card" data-pair="USD/GBP">
-        <div class="market-pair">USD / GBP</div>
-        <div class="market-rate" id="mkt-usdgbp">—</div>
-        <div class="market-change rate-up" id="mkt-usdgbp-chg">▲ 0.08%</div>
-        <div class="market-status"><span class="status-dot active"></span> Live</div>
-      </div>
-      <div class="market-card tilt-card" data-pair="USD/JPY">
-        <div class="market-pair">USD / JPY</div>
-        <div class="market-rate" id="mkt-usdjpy">—</div>
-        <div class="market-change rate-down" id="mkt-usdjpy-chg">▼ 0.23%</div>
-        <div class="market-status"><span class="status-dot active"></span> Live</div>
-      </div>
-      <div class="market-card tilt-card" data-pair="EUR/GBP">
-        <div class="market-pair">EUR / GBP</div>
-        <div class="market-rate" id="mkt-eurgbp">—</div>
-        <div class="market-change rate-up" id="mkt-eurgbp-chg">▲ 0.05%</div>
-        <div class="market-status"><span class="status-dot active"></span> Live</div>
-      </div>
-      <div class="market-card tilt-card" data-pair="USD/CNY">
-        <div class="market-pair">USD / CNY</div>
-        <div class="market-rate" id="mkt-usdcny">—</div>
-        <div class="market-change rate-up" id="mkt-usdcny-chg">▲ 0.07%</div>
-        <div class="market-status"><span class="status-dot active"></span> Live</div>
-      </div>
-      <div class="market-card tilt-card" data-pair="GBP/JPY">
-        <div class="market-pair">GBP / JPY</div>
-        <div class="market-rate" id="mkt-gbpjpy">—</div>
-        <div class="market-change rate-down" id="mkt-gbpjpy-chg">▼ 0.15%</div>
-        <div class="market-status"><span class="status-dot active"></span> Live</div>
-      </div>
+    <div class="testimonials-grid reveal">
+      <article class="testimonial-card glass-card" aria-label="Testimonial from Richard Mensah">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars" role="img">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="testimonial-quote">"GCRIG's AI credit models gave us unparalleled confidence deploying capital into West African sovereign bonds. The returns have consistently exceeded our 14% target, with remarkably low volatility compared to traditional EM funds."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">RM</div>
+          <div class="testimonial-info">
+            <span class="testimonial-name">Richard Mensah</span>
+            <span class="testimonial-role">CIO, Accra Capital Partners</span>
+          </div>
+        </div>
+      </article>
+      <article class="testimonial-card glass-card" aria-label="Testimonial from Yuki Tanaka">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars" role="img">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="testimonial-quote">"The CRB Network's ability to move liquidity across Southeast Asia overnight is transformative. GCRIG has become an essential partner for our fund's EM allocation strategy &mdash; their market intelligence is second to none."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">YT</div>
+          <div class="testimonial-info">
+            <span class="testimonial-name">Yuki Tanaka</span>
+            <span class="testimonial-role">Head of EM Investments, Tokyo Pacific Fund</span>
+          </div>
+        </div>
+      </article>
+      <article class="testimonial-card glass-card" aria-label="Testimonial from Fatima Al-Rashid">
+        <div class="testimonial-stars" aria-label="5 out of 5 stars" role="img">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#F5B041" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <blockquote class="testimonial-quote">"As a sovereign wealth manager, we demand institutional-grade rigour and precision. GCRIG delivers exactly that &mdash; robust risk frameworks, transparent reporting, and an AI platform that genuinely gives us an edge in emerging debt markets."</blockquote>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar" aria-hidden="true">FA</div>
+          <div class="testimonial-info">
+            <span class="testimonial-name">Fatima Al-Rashid</span>
+            <span class="testimonial-role">Deputy Director, Gulf Sovereign Capital</span>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
-
 <!-- CTA SECTION -->
-<section class="cta-section">
+<section class="cta-section section--dark" aria-labelledby="cta-heading">
+  <div class="cta-bg" aria-hidden="true"></div>
   <div class="container">
-    <div class="section-tag section-tag-center">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-      Ready to Invest Smarter?
-    </div>
-    <h2 class="cta-title">Start Your <span class="text-gradient">GCRIG Journey</span> Today</h2>
-    <p class="cta-subtitle">Join 340+ institutional investors who trust GCRIG for emerging market intelligence. Schedule a consultation with our advisory team.</p>
-    <div class="cta-actions">
-      <a href="investor-solutions.html" class="btn btn-primary btn-lg">Request Consultation</a>
-      <a href="about.html" class="btn btn-secondary btn-lg">Learn About Us</a>
+    <div class="cta-inner reveal">
+      <div class="cta-tag section-tag">GET STARTED TODAY</div>
+      <h2 class="cta-title" id="cta-heading">Ready to Access Global Investment Opportunities?</h2>
+      <p class="cta-subtitle">Join 340+ institutional partners already leveraging GCRIG's AI-powered platform to deploy capital across 50+ emerging markets with confidence.</p>
+      <div class="cta-actions">
+        <a href="investor-solutions.html" class="btn btn-primary btn-lg magnetic-btn">
+          Explore Investor Solutions
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a href="about.html" class="btn btn-outline btn-lg">Learn About GCRIG</a>
+      </div>
+      <div class="cta-trust-row" aria-label="Trust indicators">
+        <div class="cta-trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Bank-Grade Security
+        </div>
+        <div class="cta-trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          FCA Compliant
+        </div>
+        <div class="cta-trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          24/7 Support
+        </div>
+        <div class="cta-trust-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+          340+ Partners
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
-<footer class="footer">
+<footer class="footer section--dark" role="contentinfo" aria-label="Site footer">
   <div class="container">
-    <div class="footer-top">
+    <div class="footer-grid">
       <div class="footer-brand">
-        <a href="index.html" class="nav-logo mb-0">
+        <a href="index.html" class="nav-logo footer-logo" aria-label="GCRIG Home">
           <div class="nav-logo-icon">GC</div>
           <div class="nav-logo-text">
             <span class="nav-logo-name">GCRIG</span>
             <span class="nav-logo-tagline">Global Cash Recycle Investment</span>
           </div>
         </a>
-        <p class="footer-tagline">Channeling global surplus liquidity into high-yield emerging market opportunities through our AI-driven Cash Recycle Bridge (CRB) Network.</p>
-        <div class="footer-socials">
-          <a href="#" class="footer-social-link" aria-label="LinkedIn">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <p class="footer-brand-desc">GCRIG channels surplus global liquidity into high-yield emerging market opportunities through our AI-driven Cash Recycle Bridge (CRB) Network, spanning 50+ countries.</p>
+        <div class="footer-social" aria-label="Social media links">
+          <a href="https://linkedin.com" class="footer-social-link" aria-label="GCRIG on LinkedIn" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
           </a>
-          <a href="#" class="footer-social-link" aria-label="Twitter/X">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
+          <a href="https://twitter.com" class="footer-social-link" aria-label="GCRIG on Twitter" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
           </a>
-          <a href="#" class="footer-social-link" aria-label="Email">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:invest@gcrig.com" class="footer-social-link" aria-label="Email GCRIG">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           </a>
         </div>
       </div>
-      <div>
+      <nav class="footer-col" aria-label="Company navigation">
         <h4 class="footer-col-title">Company</h4>
-        <nav class="footer-links">
-          <a href="about.html" class="footer-link">About Us</a>
-          <a href="vision-mission.html" class="footer-link">Vision &amp; Mission</a>
-          <a href="business-model.html" class="footer-link">Business Model</a>
-          <a href="#" class="footer-link">Careers</a>
-          <a href="#" class="footer-link">Press &amp; Media</a>
-        </nav>
-      </div>
-      <div>
+        <ul class="footer-links" role="list">
+          <li><a href="about.html" class="footer-link">About GCRIG</a></li>
+          <li><a href="business-model.html" class="footer-link">Business Model</a></li>
+          <li><a href="vision-mission.html" class="footer-link">Vision &amp; Mission</a></li>
+          <li><a href="about.html#careers" class="footer-link">Careers</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Services navigation">
         <h4 class="footer-col-title">Services</h4>
-        <nav class="footer-links">
-          <a href="services.html" class="footer-link">Credit Ratings</a>
-          <a href="crb-network.html" class="footer-link">CRB Network</a>
-          <a href="technology.html" class="footer-link">Technology</a>
-          <a href="investor-solutions.html" class="footer-link">Investor Solutions</a>
-          <a href="services.html" class="footer-link">Risk Management</a>
-        </nav>
-      </div>
-      <div>
+        <ul class="footer-links" role="list">
+          <li><a href="services.html" class="footer-link">AI Credit Ratings</a></li>
+          <li><a href="crb-network.html" class="footer-link">CRB Network</a></li>
+          <li><a href="investor-solutions.html" class="footer-link">Investment Intelligence</a></li>
+          <li><a href="technology.html" class="footer-link">Technology</a></li>
+        </ul>
+      </nav>
+      <nav class="footer-col" aria-label="Legal navigation">
         <h4 class="footer-col-title">Legal</h4>
-        <nav class="footer-links">
-          <a href="#" class="footer-link">Privacy Policy</a>
-          <a href="#" class="footer-link">Terms of Service</a>
-          <a href="#" class="footer-link">Disclaimer</a>
-          <a href="#" class="footer-link">Regulatory Info</a>
-          <a href="#" class="footer-link">Cookie Policy</a>
-        </nav>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p class="footer-copyright">&copy; 2025 GCRIG — Global Cash Recycle Investment Group. All rights reserved.</p>
-      <nav class="footer-legal">
-        <a href="#" class="footer-legal-link">Privacy</a>
-        <a href="#" class="footer-legal-link">Terms</a>
-        <a href="#" class="footer-legal-link">Cookies</a>
-        <a href="#" class="footer-legal-link">Regulatory</a>
+        <ul class="footer-links" role="list">
+          <li><a href="#" class="footer-link">Privacy Policy</a></li>
+          <li><a href="#" class="footer-link">Terms of Service</a></li>
+          <li><a href="#" class="footer-link">Disclaimer</a></li>
+          <li><a href="#" class="footer-link">Compliance</a></li>
+        </ul>
       </nav>
     </div>
-    <p class="footer-location">Global Operations | Multiple Jurisdictions</p>
-    <div class="footer-disclaimer">
-      <strong>Important Disclaimer:</strong> GCRIG provides credit intelligence and advisory services for informational purposes only. Nothing on this website constitutes financial advice, an offer to buy or sell securities, or a guarantee of investment returns. All investments carry risk. Past performance is not indicative of future results. GCRIG is not responsible for investment decisions made based on information provided on this platform. Please consult a qualified financial adviser before making investment decisions.
+    <div class="footer-bottom">
+      <p class="footer-copyright">&copy; <span id="footer-year">2025</span> GCRIG &mdash; Global Cash Recycle Investment Group. All rights reserved.</p>
+      <p class="footer-disclaimer"><strong>Important Disclaimer:</strong> GCRIG provides financial intelligence and advisory services. The information on this website does not constitute investment advice or a solicitation to invest. Past performance is not indicative of future results. All investments carry risk, including the potential loss of capital. Please consult your financial advisor before making investment decisions.</p>
     </div>
   </div>
 </footer>
+
+<button class="scroll-top" id="scroll-top" aria-label="Scroll to top of page" title="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
 
 <script src="js/main.js"></script>
 </body>
