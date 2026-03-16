@@ -513,7 +513,7 @@
 
   function generateFallbackChartData(base, points) {
     // Generate realistic-looking sine-wave data
-    var seed = base.charCodeAt(0) + base.charCodeAt(1);
+    var seed = base.charCodeAt(0) + (base.length > 1 ? base.charCodeAt(1) : 0);
     var data = [];
     var val = (seed % 50) * 0.02 + 0.9;
     for (var i = 0; i < points; i++) {
@@ -859,7 +859,7 @@
     var colors = ['#7B2FF2','#F5B041','#00D4AA','#9B4FFF','#5A00D6','#fff'];
     var particles = [];
 
-    for (var i = 0; i < 120; i++) {
+    for (var i = 0; i < 70; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: -10 - Math.random() * 200,
@@ -1155,10 +1155,10 @@
     initHeroSparkle();
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
+  if (document.readyState !== 'loading') {
     init();
+  } else {
+    document.addEventListener('DOMContentLoaded', init);
   }
 
 }());

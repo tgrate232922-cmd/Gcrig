@@ -3268,7 +3268,7 @@ svg {
 }
 
 .accordion-item.open .accordion-body {
-  max-height: 600px;
+  max-height: 2000px;
   padding: 0 1.5rem 1.25rem;
 }
 
