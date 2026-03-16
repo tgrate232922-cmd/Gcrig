@@ -28,6 +28,7 @@
       // Only handle same-origin, non-anchor, non-JS links
       if (!href || href.startsWith('#') || href.startsWith('mailto:')
           || href.startsWith('tel:') || href.startsWith('javascript:')
+          || href.startsWith('data:') || href.startsWith('vbscript:')
           || link.target === '_blank' || e.ctrlKey || e.metaKey || e.shiftKey) return;
       // External URLs
       try {
