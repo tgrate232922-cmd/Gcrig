@@ -42,7 +42,7 @@
       overlay.style.opacity = '0';
       overlay.style.animation = 'none';
       // Force reflow
-      overlay.offsetHeight; // eslint-disable-line no-unused-expressions
+      void window.getComputedStyle(overlay).opacity;
       overlay.style.transition = 'opacity 0.3s ease';
       overlay.style.opacity = '1';
       setTimeout(function () {
@@ -308,6 +308,9 @@
     INR: 83.2156, KRW: 1325.45, AED: 3.6725, SAR: 3.7501
   };
 
+  var EXCHANGE_API_URL = 'https://open.er-api.com/v6/latest/USD';
+  var FRANKFURTER_API_BASE = 'https://api.frankfurter.app/';
+
   var liveRates = {};
   var previousRates = {};
 
@@ -347,7 +350,7 @@
     // Build with fallback first
     updateTicker(FALLBACK_RATES);
 
-    fetch('https://open.er-api.com/v6/latest/USD')
+    fetch(EXCHANGE_API_URL)
       .then(function (res) {
         if (!res.ok) throw new Error('Network response not ok');
         return res.json();
@@ -371,7 +374,7 @@
 
     // Refresh every 60 seconds
     setInterval(function () {
-      fetch('https://open.er-api.com/v6/latest/USD')
+      fetch(EXCHANGE_API_URL)
         .then(function (res) { return res.json(); })
         .then(function (data) {
           if (data && data.rates) {
@@ -612,7 +615,7 @@
       // Fetch from Frankfurter API
       var startDate = dates[0];
       var endDate   = dates[dates.length - 1];
-      var apiUrl = 'https://api.frankfurter.app/' + startDate + '..' + endDate
+      var apiUrl = FRANKFURTER_API_BASE + startDate + '..' + endDate
         + '?from=' + config.base + '&to=' + config.to;
 
       fetch(apiUrl)
@@ -1104,24 +1107,22 @@
     if (window.matchMedia('(max-width: 768px)').matches) return;
 
     var symbols = ['+2.4%', '$', '€', '¥', '£', '98.3', '↑', '7.12%', '1.0832'];
-    for (var i = 0; i < 12; i++) {
-      (function (idx) {
-        var span = document.createElement('span');
-        span.textContent = symbols[idx % symbols.length];
-        span.style.cssText = [
-          'position:absolute',
-          'color:rgba(255,255,255,0.06)',
-          'font-size:' + (12 + Math.random() * 18) + 'px',
-          'font-weight:700',
-          'left:' + (Math.random() * 90) + '%',
-          'top:' + (10 + Math.random() * 80) + '%',
-          'pointer-events:none',
-          'user-select:none',
-          'animation:float ' + (4 + Math.random() * 4) + 's ease-in-out ' + (Math.random() * 3) + 's infinite',
-          'z-index:1'
-        ].join(';');
-        hero.appendChild(span);
-      })(i);
+    for (let i = 0; i < 12; i++) {
+      const span = document.createElement('span');
+      span.textContent = symbols[i % symbols.length];
+      span.style.cssText = [
+        'position:absolute',
+        'color:rgba(255,255,255,0.06)',
+        'font-size:' + (12 + Math.random() * 18) + 'px',
+        'font-weight:700',
+        'left:' + (Math.random() * 90) + '%',
+        'top:' + (10 + Math.random() * 80) + '%',
+        'pointer-events:none',
+        'user-select:none',
+        'animation:float ' + (4 + Math.random() * 4) + 's ease-in-out ' + (Math.random() * 3) + 's infinite',
+        'z-index:1'
+      ].join(';');
+      hero.appendChild(span);
     }
   }
 

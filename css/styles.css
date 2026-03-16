@@ -1205,7 +1205,9 @@ svg {
   background: var(--gradient-gold);
 }
 
-.feature-item-text {}
+.feature-item-text {
+  flex: 1;
+}
 
 .feature-inner-title {
   font-weight: 700;
@@ -1844,7 +1846,9 @@ svg {
   letter-spacing: 0.03em;
 }
 
-.timeline-content {}
+.timeline-content {
+  flex: 1;
+}
 
 .timeline-title {
   font-size: 1.05rem;
@@ -1975,7 +1979,11 @@ svg {
   padding: 5rem 0 3.5rem;
 }
 
-.footer-brand {}
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .footer-logo {
   display: flex;
@@ -2013,7 +2021,11 @@ svg {
   max-width: 280px;
 }
 
-.footer-col {}
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
 
 .footer-col-title {
   font-size: 0.68rem;
@@ -2411,7 +2423,9 @@ svg {
   line-height: 1.75;
 }
 
-.mission {}
+.mission {
+  position: relative;
+}
 
 /* ===================================================
    29. ESG
@@ -2438,7 +2452,11 @@ svg {
   border-top-color: var(--color-gold);
 }
 
-.esg-col {}
+.esg-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
 .esg-icon {
   width: 48px;
@@ -2617,7 +2635,11 @@ svg {
 .data-row-value-teal   { color: var(--color-teal); }
 .data-row-value-gold   { color: var(--color-gold); }
 
-.data-col {}
+.data-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
 
 /* ===================================================
    31. NUMBERED CIRCLES
